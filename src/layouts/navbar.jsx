@@ -44,9 +44,21 @@ export default function Navbar() {
           <a href='/'>
             <Logo />
           </a>
+
+           {/*Desktop Navigation */}
+          <div className='hidden md:flex items-center '>
+            <ul className='flex gap-8'>
+              <a href='/seguridad'>
+                <li>Seguridad</li>
+              </a>
+              <a href='/senales'>
+                <li>Senales</li>
+              </a>
+            </ul>
+          </div>
           <button 
             onClick={toggleMobileNavigation}
-            arial-label='menu' className='min-h-[40px] min-w-[30px]  flex items-center justify-end'>
+            aria-label='menu' className='min-h-[40px] min-w-[30px]  flex items-center justify-end'>
             <ToggleMenu expanded={expanded} />
           </button>
         </nav>
