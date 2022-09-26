@@ -1,9 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "types": ["astro/client"],
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@components": ["src/components/index.js"]
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }

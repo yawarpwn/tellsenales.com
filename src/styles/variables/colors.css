@@ -1,0 +1,75 @@
+:root {
+  --colors-white: #ffffff;
+  --colors-black: #000000;
+  /* --colors-primaryLight: var(--colors-blue200); */
+  /* --colors-primaryLightHover: var(--colors-blue300); */
+  /* --colors-primaryLightActive: var(--colors-blue400); */
+  /* --colors-primaryLightContrast: var(--colors-blue600); */
+  /* --colors-primary: var(--colors-blue600); */
+  /* --colors-primaryBorder: var(--colors-blue500); */
+  /* --colors-primaryBorderHover: var(--colors-blue600); */
+  /* --colors-primarySolidHover: var(--colors-blue700); */
+  /* --colors-primaryShadow: var(--colors-blue500); */
+  /* --colors-secondaryLight: var(--colors-purple200); */
+  /* --colors-secondaryLightHover: var(--colors-purple300); */
+  /* --colors-secondaryLightActive: var(--colors-purple400); */
+  /* --colors-secondaryLightContrast: var(--colors-purple600); */
+  /* --colors-secondary: var(--colors-purple600); */
+  /* --colors-secondaryBorder: var(--colors-purple500); */
+  /* --colors-secondaryBorderHover: var(--colors-purple600); */
+  /* --colors-secondarySolidHover: var(--colors-purple700); */
+  /* --colors-secondaryShadow: var(--colors-purple500); */
+  /* --colors-successLight: var(--colors-green200); */
+  /* --colors-successLightHover: var(--colors-green300); */
+  /* --colors-successLightActive: var(--colors-green400); */
+  /* --colors-successLightContrast: var(--colors-green700); */
+  /* --colors-success: var(--colors-green600); */
+  /* --colors-successBorder: var(--colors-green500); */
+  /* --colors-successBorderHover: var(--colors-green600); */
+  /* --colors-successSolidHover: var(--colors-green700); */
+  /* --colors-successShadow: var(--colors-green500); */
+  /* --colors-warningLight: var(--colors-yellow200); */
+  /* --colors-warningLightHover: var(--colors-yellow300); */
+  /* --colors-warningLightActive: var(--colors-yellow400); */
+  /* --colors-warningLightContrast: var(--colors-yellow700); */
+  /* --colors-warning: var(--colors-yellow600); */
+  /* --colors-warningBorder: var(--colors-yellow500); */
+  /* --colors-warningBorderHover: var(--colors-yellow600); */
+  /* --colors-warningSolidHover: var(--colors-yellow700); */
+  /* --colors-warningShadow: var(--colors-yellow500); */
+  /* --colors-errorLight: var(--colors-red200); */
+  /* --colors-errorLightHover: var(--colors-red300); */
+  /* --colors-errorLightActive: var(--colors-red400); */
+  /* --colors-errorLightContrast: var(--colors-red600); */
+  /* --colors-error: var(--colors-red600); */
+  /* --colors-errorBorder: var(--colors-red500); */
+  /* --colors-errorBorderHover: var(--colors-red600); */
+  /* --colors-errorSolidHover: var(--colors-red700); */
+  /* --colors-errorShadow: var(--colors-red500); */
+  /* --colors-neutralLight: var(--colors-gray100); */
+  /* --colors-neutralLightHover: var(--colors-gray200); */
+  /* --colors-neutralLightActive: var(--colors-gray300); */
+  /* --colors-neutralLightContrast: var(--colors-gray800); */
+  /* --colors-neutral: var(--colors-gray600); */
+  /* --colors-neutralBorder: var(--colors-gray400); */
+  /* --colors-neutralBorderHover: var(--colors-gray500); */
+  /* --colors-neutralSolidHover: var(--colors-gray600); */
+  /* --colors-neutralShadow: var(--colors-gray400); */
+  /* --colors-gradient: linear-gradient( */
+  /*   112deg, */
+  /*   var(--colors-colors-cyan600) -63.59%, */
+  /*   var(--colors-colors-pink600) -20.3%, */
+  /*   var(--colors-colors-blue600) 70.46% */
+  /* ); */
+
+  --colors-accents0: var(--colors-gray50);
+  --colors-accents1: var(--colors-gray100);
+  --colors-accents2: var(--colors-gray200);
+  --colors-accents3: var(--colors-gray300);
+  --colors-accents4: var(--colors-gray400);
+  --colors-accents5: var(--colors-gray500);
+  --colors-accents6: var(--colors-gray600);
+  --colors-accents7: var(--colors-gray700);
+  --colors-accents8: var(--colors-gray800);
+  --colors-accents9: var(--colors-gray900);
+}

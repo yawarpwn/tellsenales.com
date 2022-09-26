@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { ToggleMenu, MobileNavigation } from "../components/index.js"
 import { useMediaQuery } from '../hooks/use-media-query'
 import useBodyScroll from '../hooks/use-body-scroll'
-import Logo from '../components/logo'
+import Logo from '@components/logo'
+
 
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false)
@@ -18,7 +19,7 @@ export default function Navbar() {
 
   const toggleMobileNavigation = () => {
     setExpanded(!expanded)
-    setBodyHidden(true)
+    isMobile && setBodyHidden(false)
   }  
 
   useEffect(() => {
