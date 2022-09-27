@@ -3,6 +3,7 @@ import { ToggleMenu, MobileNavigation } from "../components/index.js"
 import { useMediaQuery } from '../hooks/use-media-query'
 import useBodyScroll from '../hooks/use-body-scroll'
 import Logo from '@components/logo'
+import ToggleTheme from '../components/toggle-theme'
 
 
 export default function Navbar() {
@@ -10,8 +11,6 @@ export default function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0)
   const isMobile = useMediaQuery(960)
   const [_, setBodyHidden ] = useBodyScroll(null, { scrollLayer: true})
-
-  console.log(scrollPosition)
 
   const onScroll = () => {
     setScrollPosition(scrollY)
@@ -57,11 +56,14 @@ export default function Navbar() {
               </a>
             </ul>
           </div>
+          <ToggleTheme />
+          {/* 
           <button 
             onClick={toggleMobileNavigation}
             aria-label='menu' className='min-h-[40px] min-w-[30px]  flex items-center justify-end'>
             <ToggleMenu expanded={expanded} />
           </button>
+*/}
         </nav>
       </div>
       <MobileNavigation opened={expanded} />

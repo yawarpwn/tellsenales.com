@@ -8,45 +8,67 @@ export interface Props {
 }
 const title = Astro.props.title || setting.title
 const description = Astro.props.description || setting.description
-const canonicalURL = Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site)
-const image = new URL(Astro.props.image || '.social.png', Astro.site) 
+const canonicalURL =
+  Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site)
+const image = new URL(Astro.props.image || '.social.png', Astro.site)
 ---
-  <!-- Global Metadata -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="generator" content={Astro.generator} />
 
-  <!--Generator-->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
 
-  <!-- Primary Meta Tags -->
-  <title>{`${title} | Tell Señales` }</title>
-  <meta name="title" content={title} />
-  <meta name="description" content={description} />
-  <link rel='canonical' href={canonicalURL} />
+<!--Generator-->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={Astro.url} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={new URL(image, Astro.url)} />
+<!-- Primary Meta Tags -->
+<title>{`${title} | Tell Señales`}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={Astro.url} />
-  <meta property="twitter:title" content={title} />
-  <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
 
-  <!-- Children --> 
-  <slot />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-  <!-- Google Analytics -->
-  <script>
-    var host = window.location.hostname;
-    if(host != 'localhost') {
-      // Place Google Analytics code here.
+<!-- Children -->
+<slot />
+
+<!-- Google Analytics -->
+<script>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('theme')
     }
-  </script>
 
+    if (window.matchMedia('(prefers-colors: dark)').matches) {
+      return 'dark'
+    }
+
+    return 'light'
+  })()
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark')
+    document.documentElement.classList.add('light')
+  } else {
+    document.documentElement.classList.remove('light')
+    document.documentElement.classList.add('dark')
+  }
+
+
+  /* var host = window.location.hostname; */
+  /* if(host != 'localhost') { */
+  /*   // Place Google Analytics code here. */
+  /* } */
+</script>

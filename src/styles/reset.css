@@ -23,7 +23,7 @@ body {
 }
 
 html, body {
-  background-color: var(--colors-white);
+  background-color: var(--colors-background);
   color: var(--colors-black);
 }
 
@@ -91,39 +91,56 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
+  letter-spacing: var(--letterSpacings-tighter);
+  font-size: var(--fontSizes-5xl);
+  line-height: var(--lineHeights-md);
+  font-weight: var(--fontWeights-bold);
 }
 
-  /* h1: { */
-  /*   letterSpacing: "$tighter", */
-  /*   fontSize: "$5xl", */
-  /*   lineHeight: "$md", */
-  /*   fontWeight: "$bold", */
-  /* }, */
-  /* h2: { */
-  /*   letterSpacing: "$tighter", */
-  /*   fontSize: "$4xl", */
-  /*   fontWeight: "$semibold", */
-  /* }, */
-  /* h3: { */
-  /*   letterSpacing: "$tighter", */
-  /*   fontSize: "$2xl", */
-  /*   fontWeight: "$semibold", */
-  /* }, */
-  /* h4: { */
-  /*   letterSpacing: "$tighter", */
-  /*   fontSize: "$xl", */
-  /*   fontWeight: "$semibold", */
-  /* }, */
-  /* h5: { */
-  /*   letterSpacing: "$tight", */
-  /*   fontSize: "$md", */
-  /*   fontWeight: "$semibold", */
-  /* }, */
-  /* h6: { */
-  /*   letterSpacing: "$tight", */
-  /*   fontSize: "$sm", */
-  /*   fontWeight: "$semibold", */
-  /* }, */
+h2 {
+  letter-spacing: var(--letterSpacings-tighter);
+  font-size: var(--fontSizes-4xl);
+  font-weight: var(--fontWeights-semibold);
+}
+
+h3 {
+  letter-spacing: var(--letterSpacings-tighter);
+  font-size: var(--fontSizes-2xl);
+  font-weight: var(--fontWeights-semibold);
+}
+
+h4 {
+  letter-spacing: var(--letterSpacings-tighter);
+  font-size: var(--fontSizes-xl);
+  font-weight: var(--fontWeights-semibold);
+}
+
+h5 {
+  letter-spacing: var(--letterSpacings-tighter);
+  font-size: var(--fontSizes-md);
+  font-weight: var(--fontWeights-semibold);
+}
+
+h6 {
+  letter-spacing: var(--letterSpacings-tighter);
+  font-size: var(--fontSizes-sm);
+  font-weight: var(--fontWeights-semibold);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+button:focus, input:focus, select:focus, textarea:focus {
+  outline: none;
+}
+
+
+
+
   /* "button, input, select,textarea": { */
   /*   fontFamily: "inherit", */
   /*   fontSize: "inherit", */
@@ -177,13 +194,13 @@ h1 {
   /*   height: 0, */
   /*   background: "transparent", */
   /* }, */
-  /* hr: { */
-  /*   background: "$border", */
-  /*   borderColor: "transparent", */
-  /*   borderWidth: "0px", */
-  /*   borderStyle: "none", */
-  /*   height: "1px", */
-  /* }, */
+  hr {
+    background: lime;
+    border-color: transparent;
+    border-width: 0px;
+    border-style: none;
+    height: 1px;
+  };
   /* details: { */
   /*   backgroundColor: "$accents1", */
   /*   border: "none", */

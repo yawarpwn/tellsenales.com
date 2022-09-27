@@ -1,3 +1,6 @@
-@import url('./global.css');
-@import url('./variables/index.css');
-@import url('./reset.css');
+@import url('default-colors.css');
+@import url('default-tokens.css');
+@import url('reset.css');
+@import url('light-theme.css');
+@import url('dark-theme.css');
+
