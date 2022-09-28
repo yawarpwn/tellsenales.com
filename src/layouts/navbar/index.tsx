@@ -59,12 +59,12 @@ export default function Navbar() {
           <DesktopNav />
 
           {/*Search Navigation */}
-          <div>
+          <div className='flex items-center w-full md:w-auto justify-center'>
+            <div className='hidden items-center gap-2 md:flex mr-4'>
+              <SocialIcons />
+              <ToggleTheme />
+            </div>
             <Search />
-          </div>
-          <div className='hidden items-center gap-2 md:flex'>
-            <SocialIcons />
-            <ToggleTheme />
           </div>
 
           {/*Mobile Navigation */}

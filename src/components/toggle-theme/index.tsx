@@ -41,10 +41,13 @@ export default function ThemeToggle() {
   }, [theme])
 
   return (
-    // isMounted && (
+    isMounted ? (
       <button onClick={toggleTheme}>
-        {theme === 'light' ? <Moon /> : <Sun />}
+        {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
       </button>
+    ): (
+    <div className='w-6 h-6'>
+        </div>
     )
-  // )
+  )
 }

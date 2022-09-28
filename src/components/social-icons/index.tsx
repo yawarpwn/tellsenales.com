@@ -5,7 +5,7 @@ export default function SocialIcons() {
       {socialLinks.map(({ Icon, url }, index) => {
         return (
           <a key={index} href={url} target='_blank' rel='noopener noreferrer' className='text-current'>
-            <Icon size={20} className='navbar-social-icon ' />
+            <Icon size={20} fill={'currentColor'}/>
           </a>
         )
       })}

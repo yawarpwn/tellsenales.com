@@ -1,7 +1,7 @@
-import { AiOutlineInstagram } from 'react-icons/ai'
-import { RiFacebookFill } from 'react-icons/ri'
-import { SiTiktok } from 'react-icons/si'
-import { BsLinkedin, BsYoutube } from 'react-icons/bs'
+// import { RiFacebookFill } from 'react-icons/ri'
+// import { SiTiktok } from 'react-icons/si'
+// import { BsLinkedin, BsYoutube, BsInstagram } from 'react-icons/bs'
+import { Youtube, Facebook, Instagram, Linkedin, Tiktok  } from '@components/icons'
 
 
 export const BASE_URL = 'https://tellsenales.com'
@@ -16,28 +16,28 @@ export const LINKEDIN_LINK = 'https://www.linkedin.com/company/tellsenales/'
 
 export const socialLinks = [
   {
-    Icon: RiFacebookFill,
+    Icon: Facebook,
     name: 'Facebook',
     url: FACEBOOK_LINK,
   },
   {
-    Icon: AiOutlineInstagram,
+    Icon: Instagram,
     name: 'Instagram',
     url: INSTAGRAM_LINK,
   },
   {
-    Icon: BsYoutube,
+    Icon: Youtube,
     name: 'Youtube',
     url:
     YOUTUBE_LINK
   },
   {
-    Icon: SiTiktok,
+    Icon: Tiktok,
     name: 'Tiktok',
     url: TIKTOK_LINK,
   },
   {
-    Icon: BsLinkedin,
+    Icon: Linkedin,
     name: 'Linkedin',
     url: LINKEDIN_LINK,
   },
