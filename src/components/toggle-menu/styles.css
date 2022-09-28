@@ -1,0 +1,31 @@
+.toggle-menu__wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.toggle-menu__line {
+  width: 22px;
+  height: 1px;
+  background: var(--colors-foreground);
+  transition: transform 0.15s ease;
+}
+
+.top {
+  transform: translateY(4px) rotate(0deg);
+}
+
+.bot {
+  transform: translateY(-4px) rotate(0deg);
+}
+
+.toggle-menu__wrap.open .top {
+  transform: translateY(1px) rotate(45deg);
+}
+
+.toggle-menu__wrap.open .bot {
+  transform: translateY(0px) rotate(-45deg);
+}
+
+
+

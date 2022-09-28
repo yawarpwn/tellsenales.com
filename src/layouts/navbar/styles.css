@@ -1,0 +1,33 @@
+.toggle-menu {
+  min-height: 40px;
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbar__main-container {
+  position: sticky;
+  top: 0;
+  height: 64px;
+  z-index: var(--zIndices-max);
+}
+
+.navbar__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.isDetached-false {
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.isDetached-true {
+  box-shadow: 0 5px 25px -5px rgba(2, 1, 1, .1);
+  background: var(--colors-backgroundBlur);
+  backdrop-filter: blur(10px) saturate(180%);
+}

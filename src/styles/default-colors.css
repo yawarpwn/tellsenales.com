@@ -1,8 +1,8 @@
 :root {
   --colors-white: #ffffff;
   --colors-black: #000000;
-
   --colors-background: var(--colors-white);
+  --colors-foreground: var(--colors-black);
   --colors-backgroundAlpha: rgba(255, 255, 255, 0.8);
   --colors-foreground: var(--colors-black);
   --colors-backgroundContrast: var(--colors-white);

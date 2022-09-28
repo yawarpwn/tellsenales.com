@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Sun, Moon } from '../icons'
 
 export default function ThemeToggle() {
   const [isMounted, setIsMounted] = useState(false)
@@ -22,9 +23,6 @@ export default function ThemeToggle() {
     setIsMounted(true)
   }, [])
 
-  console.log(theme)
-
-
   const toggleTheme = () => {
     const t = theme === 'light' ? 'dark' : 'light'
     localStorage.setItem('theme', t)
@@ -33,15 +31,20 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     const root = document.documentElement
-    if(theme === 'light') {
+    if (theme === 'light') {
       root.classList.remove('dark')
       root.classList.add('light')
     } else {
       root.classList.remove('light')
       root.classList.add('dark')
     }
-
   }, [theme])
 
-  return <button onClick={toggleTheme}>toggle Theme </button>
+  return (
+    // isMounted && (
+      <button onClick={toggleTheme}>
+        {theme === 'light' ? <Moon /> : <Sun />}
+      </button>
+    )
+  // )
 }

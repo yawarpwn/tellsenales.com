@@ -1,6 +1,6 @@
 ---
 import BaseHead from '../components/baseHead.astro'
-import Navbar from './navbar'
+import Navbar from '../layouts/navbar/index.jsx'
 import '../styles/index.css'
 // import { toCustomPropertiesArray, toCustomPropertiesString } from 'object-to-css-variables'
 // console.log(toCustomPropertiesString(ob ))
@@ -17,10 +17,11 @@ const { title, description, image } = Astro.props
       </head>
   <body>
     <Navbar client:visible />
-    <button>Toggle theme</button>
     <main style="min-height: 100vh;">
       <slot />
     </main>
   </body>
 </html>
 
+<style>
+</style>

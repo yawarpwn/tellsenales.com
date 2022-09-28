@@ -4,3 +4,35 @@
 @import url('light-theme.css');
 @import url('dark-theme.css');
 
+
+@media (min-width: var(--breakpoints-xs)) {
+  .container {
+    max-width: var(--breakpoints-xs);
+  }
+}
+
+@media (min-width: 960px) {
+  .container {
+    max-width: var(--breakpoints-sm);
+  }
+}
+
+@media (min-width: var(--breakpoints-md)) {
+  .container {
+    max-width: var(--breakpoints-sm);
+  }
+}
+
+@media (min-width: var(--breakpoints-lg)) {
+  .container {
+    max-width: var(--breakpoints-lg);
+  }
+}
+
+.container {
+  max-width: var(--breakpoints-lg);
+  padding-left: calc(2 * var(--space-sm));
+  padding-right: calc(2 * var(--space-sm));
+  width: 100%;
+  margin: 0 auto;
+}

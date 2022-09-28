@@ -24,7 +24,7 @@ body {
 
 html, body {
   background-color: var(--colors-background);
-  color: var(--colors-black);
+  color: var(--colors-foreground);
 }
 
 p, small {

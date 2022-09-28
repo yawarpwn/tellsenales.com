@@ -1,8 +1,8 @@
 .dark {
 /* :root[data-theme="dark"] { */
+  --colors-foreground: var(--colors-white);
   --colors-background: var(--colors-black);
   --colors-backgroundAlpha: rgba(0, 0, 0, 0.6);
-  --colors-foreground: var(--colors-white);
   --colors-backgroundContrast: var(--colors-accents0);
   --colors-blue50: #10253e;
   --colors-blue100: #102c4c;

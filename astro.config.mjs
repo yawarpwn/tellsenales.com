@@ -3,7 +3,7 @@ import SITE from './src/config/setting'
 import { fileURLToPath } from 'url'
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
-// import tailwind from '@astrojs/tailwind' // Full Astro Configuration API Documentation:
+import tailwind from '@astrojs/tailwind' // Full Astro Configuration API Documentation:
 import sitemap from '@astrojs/sitemap'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -27,11 +27,11 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    // tailwind({
-    //   config: {
-    //     applyBaseStyles: false
-    //   }
-    // }),
+    tailwind({
+      config: {
+        // applyBaseStyles: false
+      }
+    }),
     sitemap()
   ],
   vite: {
