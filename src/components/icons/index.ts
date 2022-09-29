@@ -9,6 +9,8 @@ export interface IconProps {
   className?: string
 }
 
+export const Icon = {}
+
 // export { default as Home } from './home'
 // export { default as Anchor } from './anchor'
 // // export { default as Activity } from './activity'

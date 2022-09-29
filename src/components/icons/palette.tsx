@@ -1,10 +1,8 @@
 import * as React from "react";
-import {useTheme} from "@nextui-org/react";
 
 import {IconProps} from "./index";
 
 const Palette: React.FC<IconProps> = ({fill, size, height, width, ...props}) => {
-  const {theme} = useTheme();
 
   return (
     <svg
@@ -16,7 +14,7 @@ const Palette: React.FC<IconProps> = ({fill, size, height, width, ...props}) => 
     >
       <g
         fill="none"
-        stroke={fill || theme?.colors?.text?.value}
+        stroke={fill}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}

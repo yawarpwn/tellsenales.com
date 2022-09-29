@@ -1,0 +1,32 @@
+---
+import { getAllProducts } from "src/lib/contentful-request"
+import Layout from "../../layouts/main-layout.astro"
+
+
+export async function getStaticPaths() {
+  const products = await getAllProducts()
+
+  return products.map(product => ({
+    params: {slug: product.slug},
+    props: {product}
+  }))
+}
+
+const { product } = Astro.props
+const { name, img1, price, shortDesc } = product
+---
+
+<Layout title={name}>
+  <div>
+    <h1 class="product-title">{name}</h1>
+    <p>{shortDesc}</p>
+    <img src={img1.url} />
+    <span>{price}</span>
+  </div>
+</Layout>
+
+<style>
+.product-title {
+  font-size: 2rem;
+}
+</style>

@@ -72,7 +72,6 @@ ul, ol {
   padding: 0;
   list-style-type: 'none';
   margin: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-sm) var(--space-lg);
-  color: var(--colors-black);
 }
 
 ol {

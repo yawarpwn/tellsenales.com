@@ -6,22 +6,24 @@ import '../styles/index.css'
 // console.log(toCustomPropertiesString(ob ))
 
 const { title, description, image } = Astro.props
-
-
-
 ---
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-      <BaseHead />
-      </head>
+  <head>
+    <BaseHead />
+  </head>
   <body>
     <Navbar client:visible />
-    <main style="min-height: 100vh;">
-      <slot />
-    </main>
+    <div id="app-container" class="flex">
+      <div class="w-[32%]"></div>
+      <main style="min-height: 100vh;">
+        <slot />
+      </main>
+      <div class="w-[22%]"></div>
+    </div>
+    <style>
+
+    </style>
   </body>
 </html>
-
-<style>
-</style>

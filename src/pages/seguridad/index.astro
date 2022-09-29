@@ -1,10 +1,15 @@
 ---
 import Layout from '../../layouts/main-layout.astro'
-import World from '@components/hello-world.astro'
+import { getAllProducts } from '../../lib/contentful-request'
+import ProductCard from '@components/product-card.astro'
+import { Props } from '@components/product-card.astro'
+
+const products = (await getAllProducts())
 ---
 <Layout>
-  <h1>
-    Seguridad Page
-    <World />
-  </h1>
+  <div>
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-2">
+      {products.map(product  => <ProductCard product={product} /> )}
+    </ul>
+  </div>
 </Layout>
