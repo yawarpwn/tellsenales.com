@@ -84,6 +84,18 @@
   --colors-gray700: #787f85;
   --colors-gray800: #9ba1a6;
   --colors-gray900: #ecedee;
+  --colors-accents0: var(--colors-gray50);
+  --colors-accents1: var(--colors-gray100);
+  --colors-accents2: var(--colors-gray200);
+  --colors-accents3: var(--colors-gray300);
+  --colors-accents4: var(--colors-gray400);
+  --colors-accents5: var(--colors-gray500);
+  --colors-accents6: var(--colors-gray600);
+  --colors-accents7: var(--colors-gray700);
+  --colors-accents8: var(--colors-gray800);
+  --colors-accents9: var(--colors-gray900);
+
+
   --colors-primaryLight: var(--colors-blue50);
   --colors-primaryLightHover: var(--colors-blue100);
   --colors-primaryLightActive: var(--colors-blue200);

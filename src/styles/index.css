@@ -31,8 +31,8 @@
 
 .container {
   max-width: var(--breakpoints-lg);
-  padding-left: calc(2 * var(--space-sm));
-  padding-right: calc(2 * var(--space-sm));
+  padding-left: calc(2 * var(--space-xs));
+  padding-right: calc(2 * var(--space-xs));
   width: 100%;
   margin: 0 auto;
 }

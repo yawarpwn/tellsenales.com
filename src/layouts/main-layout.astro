@@ -1,29 +1,10 @@
 ---
-import BaseHead from '../components/baseHead.astro'
-import Navbar from '../layouts/navbar/index.jsx'
-import '../styles/index.css'
-// import { toCustomPropertiesArray, toCustomPropertiesString } from 'object-to-css-variables'
-// console.log(toCustomPropertiesString(ob ))
+import BaseLayout from './base-layout.astro'
+const { title, description, image} = Astro.props
 
-const { title, description, image } = Astro.props
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead />
-  </head>
-  <body>
-    <Navbar client:visible />
-    <div id="app-container" class="flex">
-      <div class="w-[32%]"></div>
-      <main style="min-height: 100vh;">
-        <slot />
-      </main>
-      <div class="w-[22%]"></div>
-    </div>
-    <style>
-
-    </style>
-  </body>
-</html>
+<BaseLayout title={title} description={description} image={image}>
+  <main class="container">
+     <slot />
+  </main>
+</BaseLayout>

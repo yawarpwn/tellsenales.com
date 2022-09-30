@@ -2,7 +2,6 @@
   --colors-white: #ffffff;
   --colors-black: #000000;
   --colors-background: var(--colors-white);
-  --colors-foreground: var(--colors-black);
   --colors-backgroundAlpha: rgba(255, 255, 255, 0.8);
   --colors-foreground: var(--colors-black);
   --colors-backgroundContrast: var(--colors-white);
@@ -86,11 +85,37 @@
   --colors-gray700: #7e868c;
   --colors-gray800: #687076;
   --colors-gray900: #11181c;
+  --colors-accents0: var(--colors-gray50);
+  --colors-accents1: var(--colors-gray100);
+  --colors-accents2: var(--colors-gray200);
+  --colors-accents3: var(--colors-gray300);
+  --colors-accents4: var(--colors-gray400);
+  --colors-accents5: var(--colors-gray500);
+  --colors-accents6: var(--colors-gray600);
+  --colors-accents7: var(--colors-gray700);
+  --colors-accents8: var(--colors-gray800);
+  --colors-accents9: var(--colors-gray900);
+
   --colors-text: var(--colors-gray900);
   --colors-link: var(--colors-blue600);
   --colors-codeLight: var(--colors-pink100);
   --colors-code: var(--colors-pink600);
   --colors-selection: var(--colors-blue200);
+  --colors-border: rgba(0, 0, 0, 0.15);
+  --colors-headerBackground: hsla(0, 0%, 100%, 0.8);
+  --colors-menuBackground: rgba(255, 255, 255, 0.8);
+  --colors-headerIconColor: var(--colors-accents4);
+  --colors-codeBackground: #363449;
+  --colors-codeComment: var(--colors-accents7);
+  --colors-codeCopyIconColor: var(--colors-accents2);
+  --colors-cardBackground: var(--colors-white);
+  --colors-codeHighlight: hsl(243, 16%, 30%);
+  --colors-backgroundBlur: rgba(255, 255, 255, 0.3);
+  --colors-blockLinkColor: #ff1cf7;
+  --colors-blockLinkBackground: var(--colors-accents1);
+  --colors-blockLinkHoverBackground: #ffd1ed;
+
+  --colors-backgroundBlur: rgba(255, 255, 255, 0.3);
   --colors-border: rgba(0, 0, 0, 0.15);
   --shadows-xs: 0 2px 8px 1px rgb(104 112 118 / 0.07),
     0 1px 1px -1px rgb(104 112 118 / 0.04);

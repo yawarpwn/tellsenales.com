@@ -28,6 +28,6 @@
 
 .isDetached-true {
   box-shadow: 0 5px 25px -5px rgba(2, 1, 1, .1);
-  background: var(--colors-backgroundBlur);
+  background: var(--colors-headerBackground);
   backdrop-filter: blur(10px) saturate(180%);
 }

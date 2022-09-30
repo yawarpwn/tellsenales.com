@@ -1,11 +1,9 @@
 import React from "react";
-import {useTheme} from "@nextui-org/react";
 
 import {IconProps} from "./index";
 
 const Send: React.FC<IconProps> = ({fill, size, height, width, className, ...props}) => {
-  const {theme} = useTheme();
-  const color = fill || theme?.colors?.accents3?.value;
+  const color = fill ;
 
   return (
     <svg
