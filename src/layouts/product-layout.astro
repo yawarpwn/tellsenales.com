@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/base-layout.astro'
+const { title, description , image } = Astro.props
+---
+<BaseLayout title={title} descriptio={description} image={image}>
+  <main class="flex container">
+    <div class='w-4/12'
+    >
+    </div>
+    <div class="w-full">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>
