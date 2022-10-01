@@ -1,6 +1,7 @@
 ---
 import BaseHead from '../components/baseHead.astro'
 import Navbar from '../layouts/navbar/index.jsx'
+import Footer from './footer/index.astro'
 import '../styles/index.css'
 
 const { title, description, image} = Astro.props
@@ -14,5 +15,6 @@ const { title, description, image} = Astro.props
   <body>
     <Navbar client:visible />
     <slot />
+    <Footer />
   </body>
 </html>

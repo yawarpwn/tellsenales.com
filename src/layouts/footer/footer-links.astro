@@ -1,0 +1,69 @@
+---
+const links = [
+  {
+    href: '/senales/viales/info',
+    title: 'Señales Viales',
+  },
+  {
+    href: '/senales/obras',
+    title: 'Señales Obras',
+  },
+  {
+    href: '/senales/fotoluminiscentes/info',
+    title: 'Fotoluminiscentes',
+  },
+  {
+    href: '/senales/seguridad',
+    title: 'Celtex',
+  },
+  {
+    href: '/senales/seguridad',
+    title: 'Vinil',
+  },
+  {
+    href: '/senales/decorativas/aluminio',
+    title: 'Aluminio',
+  },
+  {
+    href: '/senales/seguridad/prohibicion',
+    title: 'Acrilico',
+  },
+  {
+    href: '/senales/viales/preventivas',
+    title: 'Preventivas',
+  },
+  {
+    href: '/senales/viales/reguladoras',
+    title: 'Reguladoras',
+  },
+  {
+    href: '/senales/viales/informativas',
+    title: 'Informativas',
+  },
+  {
+    href: '/senales/obras/preventivas',
+    title: 'Triplay',
+  },
+  {
+    href: '/senales/obras/tranqueras',
+    title: 'MDF',
+  },
+  {
+    href: '/senales/viales/preventivas',
+    title: 'Sustrato de Aluminio',
+  },
+  {
+    href: '/senales/viales/reguladoras',
+    title: 'Fibra de vidrio',
+  },
+  {
+    href: '/senales/viales/preventivas',
+    title: 'Reflectivo',
+  },
+]
+---
+<div class="max-5xl mx-auto text-center">
+  {links.map(({href, title}) => (
+  <a class="inline-flex mx-4 hover:text-orange-500" href={href}>{title}</a>
+  ))}
+</div>

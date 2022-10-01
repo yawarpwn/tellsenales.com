@@ -1,0 +1,71 @@
+---
+import Indeci from '@components/icons/indeci'
+import MunicipalidadLima from '@components/icons/municipalidad-lima'
+import Indecopi from '@components/icons/indecopi'
+import Mtc from '@components/icons/mtc'
+import Inacal from '@components/icons/inacal'
+import Ntp from '@components/icons/ntp'
+
+const footerLogos = [
+  {
+    logoSvg: Indeci,
+    href: 'https://www.gob.pe/indeci',
+    title: 'Instituto Nacional de Defensa Civil'
+  },
+  {
+    logoSvg: MunicipalidadLima,
+    href: 'https://www.gob.pe/indeci',
+    title: 'Municipalidad de Lima'
+  },
+  {
+    logoSvg: Indecopi,
+    href: 'https://www.indecopi.gob.pe/indecopi',
+    title: 'Defensa de la Competencia y Proteccion de la Propiedad Intelectural'
+  },
+  {
+    logoSvg: Mtc,
+    href: 'https://portal.mtc.gob.pe/transportes/caminos/normas_carreteras/documentos/manuales/MANUALES%20DE%20CARRETERAS%202019/MC-09-16%20Manual%20de%20Dispositivos%20de%20Control%20del%20Transito%20FINALIZADO_24%20Mayo_2016.pdf',
+    title: 'Ministerio de Transporte y Comunicaciones'
+  },
+  {
+    logoSvg: Inacal,
+    href: 'https://www.gob.pe/inacal',
+    title: 'Instituto Nacional de Calidad'
+  },
+  {
+    logoSvg: Ntp,
+    href: 'http://bvpad.indeci.gob.pe/doc/pdf/esp/doc709/doc709-8.pdf',
+    title: 'Norma Técnica Peruana'
+  }
+]
+---
+
+    <div class="border-t-2 p-6 border-b-2 dark:border-zinc-800">
+    <div class="text-center text-xs mb-4 text-zinc-500">Cumple Normativa vigente: </div>
+    <div class="flex justify-center">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-16">
+      {
+        footerLogos.map(({ logoSvg: Icon, href, title }) => (
+          <a
+            class="footer-logo-entidades flex flex-col items-center justify-center text-center"
+            href={href}
+            target="_blank"
+          >
+            <Icon fill='var(--colors-accents6)' width={80} height={26}  />
+            <p class="text-[10px] text-zinc-500 min-h-[40px]  mt-2">{title}</p>
+          </a>
+        ))
+      }
+    </div>
+    </div>
+    </div>
+
+<style>
+  .footer-logo-entidades {
+  }
+
+  .footer-logo-entidades svg {
+    width: 100px;
+    height: 200px;
+  }
+</style>
