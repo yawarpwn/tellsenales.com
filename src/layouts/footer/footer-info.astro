@@ -24,7 +24,7 @@ import { ChevronRight} from '@components/icons'
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:place-content-start md:place-items-start">
   <!-- Nosotros-->
   <div>
-    <h4>Nosotros</h4>
+    <h4 class="footer__title">Nosotros</h4>
     <p>
       Somos Fabricantes de todo tipo de señalizaciones en Perú. Señales viales,
       para obras y construcción, seguridad laboral, industriales y otros.
@@ -35,7 +35,7 @@ import { ChevronRight} from '@components/icons'
   </div>
   <!-- Catalogos--->
   <div>
-    <h4>Cátalogos</h4>
+    <h4 class="footer__title">Cátalogos</h4>
     <div class="flex gap-2">
       {
         catalogos.map(({ title, imgSrc, href }) => (
@@ -50,12 +50,12 @@ import { ChevronRight} from '@components/icons'
   <!-- Info-->
   <div>
     <div>
-      <h4 class="mb-0">Contacto</h4>
+      <h4 class="footer__title mb-0">Contacto</h4>
       <p>ventas@tellsenales.com</p>
       <p>971 531 018</p>
     </div>
     <div>
-    <h4 class="mb-0 mt-2">ENCUÉNTRANOS</h4>
+    <h4 class="footer__title mb-0 mt-2">ENCUÉNTRANOS</h4>
     <p>Av. Argentina 538 Int. 1160 - Lima - Lima </p>
     <p>Maquinaria 325 - Carmen de la Legua - Callao </p>
     </div>
@@ -65,7 +65,7 @@ import { ChevronRight} from '@components/icons'
 
   <!-- Email -->
   <div>
-    <h4>RECIBE LAS MEJORES OFERTAS</h4>
+    <h4 class="footer__title">RECIBE LAS MEJORES OFERTAS</h4>
 
       <form class='flex items-center'>
         <input
@@ -86,14 +86,14 @@ import { ChevronRight} from '@components/icons'
         </button>
       </form>
 
-    <h4 class="mt-4">REDES SOCIALES</h4>
+    <h4 class="footer__title mt-4">REDES SOCIALES</h4>
     <SocialIcons />
   </div>
 </div>
 <style>
-  h4 {
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
+.footer__title {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: var(--colors-accents8);
+}
 </style>
