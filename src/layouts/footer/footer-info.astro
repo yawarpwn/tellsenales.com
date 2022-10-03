@@ -1,0 +1,99 @@
+---
+const catalogos = [
+  {
+    title: 'Catalogo Covid',
+    imgSrc: 'catalogo-covid.webp',
+    href: 'https://tellsenales.com/documents/covid-catalogo-tell.pdf'
+  },
+  {
+    title: 'Catalogo Epp',
+    imgSrc: 'catalogo-epp.webp',
+    href: 'https://tellsenales.com/documents/epp-accesorios-tell.pdf'
+  },
+  {
+    title: 'Catalogo Senales',
+    imgSrc: 'catalogo-senales.webp',
+    href: 'https://tellsenales.com/documents/senales-seguridad-tell.pdf'
+  }
+]
+
+import SocialIcons from '@components/social-icons'
+import { ChevronRight} from '@components/icons'
+---
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:place-content-start md:place-items-start">
+  <!-- Nosotros-->
+  <div>
+    <h4>Nosotros</h4>
+    <p>
+      Somos Fabricantes de todo tipo de señalizaciones en Perú. Señales viales,
+      para obras y construcción, seguridad laboral, industriales y otros.
+    </p>
+    <span class="text-xs mt-4 inline-block"
+      >©Tell Senales {new Date().getFullYear()}. Todos los derechos reservados.</span
+    >
+  </div>
+  <!-- Catalogos--->
+  <div>
+    <h4>Cátalogos</h4>
+    <div class="flex gap-2">
+      {
+        catalogos.map(({ title, imgSrc, href }) => (
+          <a href={href} target="_blank">
+            <img class="rounded-lg" src={`/images/${imgSrc}`} alt={title} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Info-->
+  <div>
+    <div>
+      <h4 class="mb-0">Contacto</h4>
+      <p>ventas@tellsenales.com</p>
+      <p>971 531 018</p>
+    </div>
+    <div>
+    <h4 class="mb-0 mt-2">ENCUÉNTRANOS</h4>
+    <p>Av. Argentina 538 Int. 1160 - Lima - Lima </p>
+    <p>Maquinaria 325 - Carmen de la Legua - Callao </p>
+    </div>
+
+    <p></p>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <h4>RECIBE LAS MEJORES OFERTAS</h4>
+
+      <form class='flex items-center'>
+        <input
+          class='w-40 rounded-l-md border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600'
+          placeholder='Ingresar Email'
+          type='email'
+          required
+        />
+
+        <button
+          class='flex  border-3 border-primary items-center justify-center rounded-r-md border 
+          border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark 
+          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+          disabled={false}
+        >
+            <ChevronRight fill={'white'} />
+          
+        </button>
+      </form>
+
+    <h4 class="mt-4">REDES SOCIALES</h4>
+    <SocialIcons />
+  </div>
+</div>
+<style>
+  h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+</style>

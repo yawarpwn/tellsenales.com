@@ -1,4 +1,5 @@
 ---
+import { getdiscountPorcent } from '@utils/maths'
 interface Img {
   url: string
   title: string
@@ -20,6 +21,7 @@ export interface Props {
 
 const { product } = Astro.props
 const { name, sku, price, offert, img1, slug, marca } = product
+
 ---
 
 <a href={`/seguridad/${slug}`}>
@@ -39,7 +41,7 @@ const { name, sku, price, offert, img1, slug, marca } = product
       <div class="min-h-[50px]">
         <div>
           <span class="line-through text-zinc-400">S/.{price}.00</span>
-          <span class="ml-2">-40%</span>
+          <span class="ml-2">-{getdiscountPorcent(price, offert)}%</span>
         </div>
         <div>
           </div>

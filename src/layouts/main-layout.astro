@@ -4,7 +4,7 @@ const { title, description, image} = Astro.props
 
 ---
 <BaseLayout title={title} description={description} image={image}>
-  <main class="container">
+  <main class="overflow-hidden">
      <slot />
   </main>
 </BaseLayout>

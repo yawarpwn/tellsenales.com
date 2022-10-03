@@ -141,6 +141,7 @@
   --colors-blockLinkColor: #ffa4e3;
   --colors-blockLinkBackground: var(--colors-accents1);
   --colors-blockLinkHoverBackground: #55057a;
+  --colors-gradient: linear-gradient(112deg, var(--colors-cyan600) -63.59%, var(--colors-pink600) -20.3%, var(--colors-blue600) 70.46%);
   --shadows-xs: 0 2px 8px 1px rgb(0 0 0 / 0.07),
     0 1px 1px -1px rgb(0 0 0 / 0.04);
   --shadows-sm: 0 2px 8px 2px rgb(0 0 0 / 0.07),
