@@ -8,15 +8,8 @@ export default function ThemeToggle() {
       return undefined
     }
 
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
-    }
+    return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
 
-    if (window.matchMedia('(prefers-colors-scheme: dark)').matches) {
-      return 'dark'
-    }
-
-    return 'light'
   })
 
   useEffect(() => {
@@ -33,9 +26,7 @@ export default function ThemeToggle() {
     const root = document.documentElement
     if (theme === 'light') {
       root.classList.remove('dark')
-      root.classList.add('light')
     } else {
-      root.classList.remove('light')
       root.classList.add('dark')
     }
   }, [theme])

@@ -10,18 +10,6 @@ const categories = Array.from(new Set(allCategories))
 ---
 
 <ProductLayout title="Dispositivos e Implementos de Seguridad">
-  <div class="w-[32%]">
-    <div class="py-2 font-bold">Categorias</div>
-    {categories.map(category => (
-    <ul class="py-1 m-0 ">
-        <li>
-          <a href="/seguridad/category has-children">
-          {category}
-          </a>
-        </li>
-        </ul>
-    ))}
-  </div>
   <div>
     <ul class="grid grid-cols-2 md:grid-cols-4 gap-2">
       {products.map(product => <ProductCard product={product} />)}

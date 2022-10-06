@@ -1,0 +1,342 @@
+{
+  "routes": [
+    {
+      "title": "Señales",
+      "keywords": "docs, doc, documentation, getting started, nextui",
+      "subtitle": "For an advanced search please use the search input",
+      "icon": "note",
+      "section": "Scope",
+      "heading": true,
+      "routes": [
+        {
+          "title": "Seguridad",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/seguridad.svg",
+          "routes": [
+            {
+              "title": "Introducción",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/seguridad"
+            },
+            {
+              "title": "Evacuación",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/seguridad/evacuacion"
+            },
+            {
+              "title": "Lucha contra incendio",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/seguridad/incendio"
+            },
+            {
+              "title": "Advertencia",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/seguridad/advertencia"
+            },
+            {
+              "title": "Prohibción",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/seguridad/prohibicion"
+            },
+            {
+              "title": "Obligación",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/seguridad/obligacion"
+            }
+          ]
+        },
+        {
+          "title": "Fotoluminiscentes",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/fotoluminiscente.svg",
+          "routes": [
+            {
+              "title": "Conoce más",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/fotoluminiscentes/info"
+            },
+            {
+              "title": "Evacuación",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/fotoluminiscentes/evacuacion"
+            },
+            {
+              "title": "Lucha contra incendio",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/fotoluminiscentes/incendio"
+            },
+            {
+              "title": "Advertencia",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/fotoluminiscentes/advertencia"
+            },
+            {
+              "title": "Prohibción",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/fotoluminiscentes/prohibicion"
+            },
+            {
+              "title": "Obligación",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/fotoluminiscentes/obligacion"
+            }
+          ]
+        },
+        {
+          "title": "Decorativas",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/aluminio.svg",
+          "routes": [
+            {
+              "title": "Aluminio",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/decorativas/aluminio"
+            }
+          ]
+        },
+        {
+          "title": "Covid-19",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/covid.svg",
+          "routes": [
+            {
+              "title": "Introducción",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/covid-19"
+            },
+            {
+              "title": "Bioseguridad",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/covid-19/bioseguridad"
+            },
+            {
+              "title": "Piso",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/covid-19/piso"
+            },
+            {
+              "title": "Colegio",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/covid-19/colegio"
+            },
+            {
+              "title": "Informativas",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/covid-19/informativas"
+            }
+          ]
+        },
+        {
+          "title": "Viales",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/vial.svg",
+          "routes": [
+            {
+              "title": "Conoce más",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/viales/info"
+            },
+            {
+              "title": "Preventivas",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/viales/preventivas"
+            },
+            {
+              "title": "Reglamentarias",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/viales/reglamentarias"
+            },
+            {
+              "title": "Informativas",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/viales/informativas"
+            }
+          ]
+        },
+        {
+          "title": "Obras",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/obras.svg",
+          "routes": [
+            {
+              "title": "Introduccion",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/obras"
+            },
+            {
+              "title": "Preventivas",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/obras/preventivas"
+            },
+            {
+              "title": "Tranqueras",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/obras/tranqueras"
+            },
+            {
+              "title": "Epp",
+              "keywords": "getting started, start, nextui",
+              "path": "/senales/obras/epp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Seguridad",
+      "keywords": "docs, doc, documentation, getting started, nextui",
+      "subtitle": "For an advanced search please use the search input",
+      "icon": "note",
+      "section": "Scope",
+      "heading": true,
+      "routes": [
+        {
+          "title": "Proteccion Vial",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/proteccion-vial.svg",
+          "path": "/seguridad/proteccion-vial",
+          "isLast": true
+        },
+        {
+          "title": "Cintas seguridad",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/cinta-seguridad.svg",
+          "path": "/seguridad/cintas-seguridad",
+          "isLast": true
+        },
+        {
+          "title": "Articulos seguridad",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/articulos-seguridad.svg",
+          "path": "/seguridad/articulos-seguridad",
+          "isLast": true
+        },
+        {
+          "title": "Ropa seguridad",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/ropa-seguridad.svg",
+          "path": "/seguridad/ropa-seguridad",
+          "isLast": true
+        },
+        {
+          "title": "Lucha contra incendio",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/extintor.svg",
+          "path": "/seguridad/lucha-contra-incendio",
+          "isLast": true
+        },
+        {
+          "title": "Viniles",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/vinil.svg",
+          "path": "/seguridad/viniles",
+          "isLast": true
+        }
+      ]
+    },
+    {
+      "title": "Epps",
+      "keywords": "docs, doc, documentation, getting started, nextui",
+      "subtitle": "For an advanced search please use the search input",
+      "icon": "note",
+      "section": "Scope",
+      "heading": true,
+      "routes": [
+        {
+          "title": "Protección Visual ",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/visual.svg",
+          "path": "/epps/proteccion-visual",
+          "isLast": true
+        },
+        {
+          "title": "Protección Auditiva",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/auditiva.svg",
+          "path": "/epps/proteccion-auditiva",
+          "isLast": true
+        },
+        {
+          "title": "Protección Respiratoria",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/respiratoria.svg",
+          "path": "/epps/proteccion-respiratoria",
+          "isLast": true
+        },
+        {
+          "title": "Protección Cabeza",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/casco.svg",
+          "path": "/epps/proteccion-cabeza",
+          "isLast": true
+        },
+        {
+          "title": "Protección Manos",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/guante.svg",
+          "path": "/epps/proteccion-manos",
+          "isLast": true
+        },
+        {
+          "title": "Protección Pies",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/bota.svg",
+          "path": "/epps/proteccion-pies",
+          "isLast": true
+        }
+      ]
+    },
+    {
+      "title": "Nosotros",
+      "keywords": "docs, doc, documentation, getting started, nextui",
+      "subtitle": "For an advanced search please use the search input",
+      "icon": "note",
+      "section": "Scope",
+      "heading": true,
+      "routes": [
+        {
+          "title": "Servicios",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/servicios.svg",
+          "path": "/servicios",
+          "isLast": true
+        },
+        {
+          "title": "Contacto",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/contacto.svg",
+          "path": "/contacto",
+          "isLast": true
+        },
+        {
+          "title": "Galeria",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/galeria.svg",
+          "path": "/galeria",
+          "isLast": true
+        }
+      ]
+    }
+  ]
+}
