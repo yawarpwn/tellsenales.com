@@ -1,7 +1,7 @@
 ---
 import HeadCommon from '../components/head-common.astro'
 import HeadSEO from '../components/head-seo.astro'
-import Navbar from '../layouts/navbar/index.jsx'
+import Header from '../layouts/header/header.astro'
 import Footer from './footer/index.astro'
 
 const { content = {} } = Astro.props
@@ -35,7 +35,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     </script>
   </head>
   <body>
-    <Navbar client:visible />
+    <Header />
     <slot />
     <Footer />
   </body>

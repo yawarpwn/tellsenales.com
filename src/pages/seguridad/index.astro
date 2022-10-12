@@ -1,5 +1,5 @@
 ---
-import ProductLayout from '../../layouts/product-layout.astro'
+import MainLayout from '../../layouts/main-layout.astro'
 import { getAllProducts } from '../../lib/contentful-request'
 import ProductCard from '@components/product-card.astro'
 import { Props } from '@components/product-card.astro'
@@ -9,22 +9,10 @@ const allCategories = products.map(product => product.category)
 const categories = Array.from(new Set(allCategories))
 ---
 
-<ProductLayout title="Dispositivos e Implementos de Seguridad">
+<MainLayout title="Dispositivos e Implementos de Seguridad">
   <div>
     <ul class="grid grid-cols-2 md:grid-cols-4 gap-2">
       {products.map(product => <ProductCard product={product} />)}
     </ul>
   </div>
-</ProductLayout>
-<style>
-.has-children:before {
-    color: #777;
-    content: '+';
-    display: inline-block;
-    float: right;
-    font-family: Arial,Roboto,"-apple-system",Helvetica,sans-serif;
-    font-size: 18px;
-    padding-top: 2px;
-    vertical-align: top;
-}
-</style>
+</MainLayout>

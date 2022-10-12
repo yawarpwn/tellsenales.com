@@ -1,10 +1,58 @@
 ---
 import BaseLayout from './base-layout.astro'
-const { title, description, image} = Astro.props
-
+const { content = {} } = Astro.props
 ---
-<BaseLayout title={title} description={description} image={image}>
-  <main class="overflow-hidden">
-     <slot />
+
+<head>
+  <title>Seguridad Page TEmplate</title>
+  <style>
+  .sidebar {
+    border: 1px solid orange;
+    position: fixed;
+    top: 4rem;
+    height: 100%;
+    z-index: 10;
+  }
+
+  #left-sidebar {
+    display: none;
+  }
+
+  #right-sidebar {
+    width: 18rem;
+    inset-inline-end: 0;
+    display: none;
+  }
+
+  @media not screen and (min-width: 50em) {
+    #left-sidebar {
+      display: block;
+      width: 100%;
+      inset-inline-end: 0;
+    }
+  }
+
+  @media (min-width: 50em) {
+    #left-sidebar {
+      width: 18rem;
+      display: flex;
+    }
+  }
+
+  @media (min-width: 72em) {
+
+  #right-sidebar {
+    display: flex;
+  }
+  }
+</style>
+</head>
+<BaseLayout {content}>
+  <main>
+    <aside class="sidebar" id="left-sidebar">Navegacion</aside>
+    <div class="main-column" id="column">
+      <slot />
+    </div>
+    <aside class="sidebar" id="right-sidebar">RightSidebar</aside>
   </main>
 </BaseLayout>

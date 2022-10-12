@@ -193,13 +193,6 @@ button:focus, input:focus, select:focus, textarea:focus {
   /*   height: 0, */
   /*   background: "transparent", */
   /* }, */
-  hr {
-    background: lime;
-    border-color: transparent;
-    border-width: 0px;
-    border-style: none;
-    height: 1px;
-  };
   /* details: { */
   /*   backgroundColor: "$accents1", */
   /*   border: "none", */
