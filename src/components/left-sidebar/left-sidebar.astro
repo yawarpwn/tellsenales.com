@@ -1,0 +1,17 @@
+---
+import manifest from '../../config/manifest.json'
+import Category from './category.astro'
+---
+
+<div>
+  {
+    manifest.routes.map(({ title, routes }) => {
+      return (
+        <div>
+          <h2>{title}</h2>
+          <Category routes={routes} />
+        </div>
+      )
+    })
+  }
+</div>

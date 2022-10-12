@@ -91,7 +91,7 @@
   --colors-selection: var(--colors-blue200);
   --colors-border: rgba(0, 0, 0, 0.15);
   --colors-headerBackground: hsla(0, 0%, 100%, 0.8);
-  --colors-menuBackground: rgba(255, 255, 255, 0.8);
+  --colors-menuBackground: rgba(255, 255, 255, 0.9);
   --colors-headerIconColor: var(--colors-accents4);
   --colors-codeBackground: #363449;
   --colors-codeComment: var(--colors-accents7);
@@ -118,9 +118,4 @@
   --dropShadows-lg: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15))
     drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
   --dropShadows-xl: drop-shadow(0 25px 34px rgb(104 112 118 / 0.35));
-  --fonts-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  --fonts-mono: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
 }

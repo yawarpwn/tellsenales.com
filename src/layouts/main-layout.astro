@@ -1,56 +1,79 @@
 ---
 import BaseLayout from './base-layout.astro'
+import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
 const { content = {} } = Astro.props
 ---
 
 <head>
   <title>Seguridad Page TEmplate</title>
   <style>
-  .sidebar {
-    border: 1px solid orange;
-    position: fixed;
-    top: 4rem;
-    height: 100%;
-    z-index: 10;
-  }
-
-  #left-sidebar {
-    display: none;
-  }
-
-  #right-sidebar {
-    width: 18rem;
-    inset-inline-end: 0;
-    display: none;
-  }
-
-  @media not screen and (min-width: 50em) {
-    #left-sidebar {
-      display: block;
-      width: 100%;
-      inset-inline-end: 0;
+    .sidebar {
+      border: 1px solid orange;
+      position: fixed;
+      top: 4rem;
+      height: 100%;
+      z-index: 10;
     }
-  }
 
-  @media (min-width: 50em) {
     #left-sidebar {
+      display: none;
+      background: var(--colors-menuBackground);
+      backdrop-filter: blur(10px) saturate(180%);
+    }
+
+    #right-sidebar {
       width: 18rem;
-      display: flex;
+      inset-inline-end: 0;
+      display: none;
     }
-  }
 
-  @media (min-width: 72em) {
+    #main-content {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      height: 100%;
+    }
 
-  #right-sidebar {
-    display: flex;
-  }
-  }
-</style>
+    @media not screen and (min-width: 50em) {
+      :global(.mobile-sidebar-toggle #left-sidebar) {
+        display: block;
+        width: 100%;
+        inset-inline-end: 0;
+      }
+
+      :global(.mobile-sidebar-toggle) {
+        overflow: hidden;
+      }
+      :global(.mobile-sidebar-toggle #left-sidebar ul) {
+        overscroll-behavior: contain;
+      }
+    }
+
+    @media (min-width: 50em) {
+      #left-sidebar {
+        width: 18rem;
+        display: flex;
+      }
+    }
+
+    @media (min-width: 72em) {
+      #right-sidebar {
+        display: flex;
+      }
+
+      .main-column {
+        margin-inline-end: 18rem;
+        margin-inline-start: 18rem;
+      }
+    }
+  </style>
 </head>
 <BaseLayout {content}>
   <main>
-    <aside class="sidebar" id="left-sidebar">Navegacion</aside>
-    <div class="main-column" id="column">
+    <aside class="sidebar" id="left-sidebar">
+      <LeftSidebar />
+    </aside>
+    <div class="main-column" id="main-content">
       <slot />
     </div>
     <aside class="sidebar" id="right-sidebar">RightSidebar</aside>

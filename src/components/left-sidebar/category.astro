@@ -1,0 +1,32 @@
+---
+const { routes } = Astro.props
+---
+
+<div>
+  {
+    routes.map(({ title, path, routes: deepRoutes }) => {
+      if (path) {
+        return (
+          <div>
+            <a>{title}</a>
+          </div>
+        )
+      }
+      return (
+        <details>
+          <summary>{title}</summary>
+          <ul>
+            {deepRoutes.map(({ title, path }) => {
+              return (
+                <li>
+                  <a href={path}>{title}</a>
+                </li>
+              )
+            })}
+          </ul>
+        </details>
+      )
+    })
+  }
+  Category
+</div>
