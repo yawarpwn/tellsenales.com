@@ -4,6 +4,7 @@
     sans-serif;
   --fonts-mono: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+  --theme-min-spacing-inline: 1.5rem;
   --fontSizes-xs: 0.75rem;
   --fontSizes-sm: 0.875rem;
   --fontSizes-base: 1rem;

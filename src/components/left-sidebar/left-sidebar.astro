@@ -3,15 +3,15 @@ import manifest from '../../config/manifest.json'
 import Category from './category.astro'
 ---
 
-<div>
+<nav>
   {
     manifest.routes.map(({ title, routes }) => {
       return (
-        <div>
+        <ul>
           <h2>{title}</h2>
           <Category routes={routes} />
-        </div>
+        </ul>
       )
     })
   }
-</div>
+</nav>

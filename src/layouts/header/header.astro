@@ -1,12 +1,13 @@
 ---
 import Logo from '@components/logo'
 import MenuToggle from '@components/menu-toggle'
+import SocialIcons from '@components/social-icons';
 import ThemeToggle from '@components/toggle-theme'
 ---
 
 <header>
   <div class="nav-container">
-    <nav class="flex items-center w-full h-full">
+    <nav class="flex items-center w-full h-full gap-8">
       <div class="flex-1">
         <a href="/" class="logo-container">
           <svg width={33} height={25} viewBox="0 0 25 25" fill="red">
@@ -28,7 +29,7 @@ import ThemeToggle from '@components/toggle-theme'
         </a>
       </div>
       <div>
-          <ul class="flex items-center gap-4 border">
+          <ul class="hidden md:flex items-center gap-4">
             <li>
               <a href="/seguridad">
                Senales 
@@ -46,6 +47,13 @@ import ThemeToggle from '@components/toggle-theme'
             </li>
           </ul>
       </div>
+      <div class="hidden md:flex items-center">
+        <input placeholder="Buscar productos" />
+        <div class="flex items-center">
+          <SocialIcons />
+          <ThemeToggle client:load />
+        </div>
+      </div>
       <div class="flex md:hidden items-center">
         <ThemeToggle client:load />
         <MenuToggle client:idle />
@@ -58,8 +66,9 @@ import ThemeToggle from '@components/toggle-theme'
     height: 4rem;
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
-    width: 100%;
   }
 
   .nav-container {
@@ -67,6 +76,7 @@ import ThemeToggle from '@components/toggle-theme'
     height: 100%;
     background: var(--colors-headerBackground);
     backdrop-filter: blur(10px) saturate(180%);
+    padding-inline: var(--theme-min-spacing-inline);
     box-shadow: 0 5px 25px -5px rgba(2, 1, 1, 0.2);
   }
 
