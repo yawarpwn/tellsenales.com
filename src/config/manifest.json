@@ -1,7 +1,7 @@
 {
   "routes": [
     {
-      "title": "Señales",
+      "title": "Señalizaciones",
       "keywords": "docs, doc, documentation, getting started, nextui",
       "subtitle": "For an advanced search please use the search input",
       "icon": "note",
@@ -189,7 +189,7 @@
       ]
     },
     {
-      "title": "Seguridad",
+      "title": "Dispositivos Seguridad",
       "keywords": "docs, doc, documentation, getting started, nextui",
       "subtitle": "For an advanced search please use the search input",
       "icon": "note",
@@ -201,7 +201,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/proteccion-vial.svg",
-          "path": "/seguridad/proteccion-vial",
+          "path": "/seguridad/c/proteccion-vial",
           "isLast": true
         },
         {
@@ -209,7 +209,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/cinta-seguridad.svg",
-          "path": "/seguridad/cintas-seguridad",
+          "path": "/seguridad/c/cintas-seguridad",
           "isLast": true
         },
         {
@@ -217,7 +217,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/articulos-seguridad.svg",
-          "path": "/seguridad/articulos-seguridad",
+          "path": "/seguridad/c/articulos-seguridad",
           "isLast": true
         },
         {
@@ -243,17 +243,7 @@
           "icon": "/vinil.svg",
           "path": "/seguridad/viniles",
           "isLast": true
-        }
-      ]
-    },
-    {
-      "title": "Epps",
-      "keywords": "docs, doc, documentation, getting started, nextui",
-      "subtitle": "For an advanced search please use the search input",
-      "icon": "note",
-      "section": "Scope",
-      "heading": true,
-      "routes": [
+        },
         {
           "title": "Protección Visual ",
           "open": true,

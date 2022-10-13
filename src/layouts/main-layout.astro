@@ -1,81 +1,132 @@
 ---
-import BaseLayout from './base-layout.astro'
 import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
-const { content = {} } = Astro.props
+import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
+import HeadCommon from '@components/head-common.astro'
+import HeadSeo from '@components/head-seo.astro'
+import Header from './header/header.astro'
+import PageContent from './page-content.astro'
+import WhatsappBtnPopup from '@components/whatsapp-btn-popup' 
+import AttentionFloating from '@components/attention-floating.astro'
+
+export interface Props {
+  hideRightSidebar?: boolean
+}
+const { content = {}, hideRightSidebar = false } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
-<head>
-  <title>Seguridad Page TEmplate</title>
-  <style>
-    .sidebar {
-      border: 1px solid orange;
-      position: fixed;
-      top: 4rem;
-      height: 100%;
-      z-index: 10;
-    }
+<html dir="ltr" lang="es">
+  <head>
+    <HeadCommon />
+    <HeadSeo {content} {canonicalURL} />
+    <title>Seguridad Page TEmplate</title>
 
-    #left-sidebar {
-      display: none;
-      background: var(--colors-menuBackground);
-      backdrop-filter: blur(10px) saturate(180%);
-    }
+    <script is:inline>
+      const theme = (() => {
+        if (localStorage.getItem('theme')) {
+          return localStorage.getItem('theme')
+        }
 
-    #right-sidebar {
-      width: 18rem;
-      inset-inline-end: 0;
-      display: none;
-    }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark'
+        }
 
-    #main-content {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      height: 100%;
-    }
+        return 'light'
+      })()
 
-    @media not screen and (min-width: 50em) {
-      :global(.mobile-sidebar-toggle #left-sidebar) {
-        display: block;
-        width: 100%;
-        inset-inline-end: 0;
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark')
+      } else {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
+    <style>
+      .sidebar {
+        position: fixed;
+        top: 4rem;
+        height: 100%;
+        z-index: 10;
       }
 
-      :global(.mobile-sidebar-toggle) {
-        overflow: hidden;
-      }
-      :global(.mobile-sidebar-toggle #left-sidebar ul) {
-        overscroll-behavior: contain;
-      }
-    }
-
-    @media (min-width: 50em) {
       #left-sidebar {
-        width: 18rem;
-        display: flex;
+        display: none;
+				background: var(--theme-bg-gradient);
+        backdrop-filter: blur(10px) saturate(180%);
       }
-    }
 
-    @media (min-width: 72em) {
       #right-sidebar {
-        display: flex;
+        width: 18rem;
+        top: 4rem;
+        inset-inline-end: 0;
+        display: none;
       }
 
-      .main-column {
-        margin-inline-end: 18rem;
-        margin-inline-start: 18rem;
+      #main-content {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        height: 100%;
       }
-    }
-  </style>
-</head>
-<BaseLayout {content}>
-  <main>
-    <aside class="sidebar" id="left-sidebar">
-      <LeftSidebar />
-    </aside>
-    <div class="main-column" id="main-content">
-      <slot />
-    </div>
-    <aside class="sidebar" id="right-sidebar">RightSidebar</aside>
-  </main>
-</BaseLayout>
+
+      @media not screen and (min-width: 50em) {
+        :global(.mobile-sidebar-toggle #left-sidebar) {
+          display: block;
+          width: 100%;
+          inset-inline-end: 0;
+        }
+
+        :global(.mobile-sidebar-toggle) {
+          overflow: hidden;
+        }
+        :global(.mobile-sidebar-toggle #left-sidebar ul) {
+          overscroll-behavior: contain;
+        }
+      }
+
+      @media (min-width: 50em) {
+        .main-column {
+          margin-inline-start: 18rem;
+        }
+
+        #left-sidebar {
+          display: flex;
+          padding-inline-start: 1rem;
+          padding-inline-end: 1rem;
+          top: 4rem;
+          width: 18rem;
+          background: transparent;
+        }
+
+      }
+
+      @media (min-width: 72em) {
+        #right-sidebar {
+          display: flex;
+        }
+
+        .main-column {
+          margin-inline-end: 18rem;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <Header />
+      <aside class="sidebar" id="left-sidebar">
+        <LeftSidebar />
+      </aside>
+      <div class="main-column" id="main-content">
+        <PageContent>
+          <slot />
+        </PageContent>
+      </div>
+      <aside class="sidebar" id="right-sidebar">
+      {!hideRightSidebar && <RightSidebar />}
+      </aside>
+      <WhatsappBtnPopup client:load />
+      <AttentionFloating />
+    </main>
+  </body>
+</html>

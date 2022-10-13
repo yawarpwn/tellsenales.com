@@ -18,7 +18,7 @@
 .line {
   width: 22px;
   height: 1px;
-  background: var(--colors-foreground);
+  background: var(--theme-text);
   transition: all 150ms ease;
 }
 

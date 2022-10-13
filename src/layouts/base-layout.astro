@@ -9,7 +9,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="es">
   <head>
     <HeadCommon />
     <HeadSEO {content} {canonicalURL} />
@@ -39,3 +39,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <slot />
   </body>
 </html>
+<style>
+
+
+</style>

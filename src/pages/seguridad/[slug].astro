@@ -57,7 +57,7 @@ const images = [img1.url, img2 && img2.url, img3 && img3.url, img4 && img4.url]
 const whatsappApi = `${WHATSAPP_LINK}Hola, Quiero consultar este Producto ${name} , este es su enlace : ${BASE_URL + Astro.url.pathname}`
 ---
 
-<MainLayout title={name} description={shortDesc} image={img2 ? img2.url : img1.url}>
+<MainLayout hideRightSidebar >
   <div class="flex flex-col md:flex-row flex-wrap my-8">
     <div class="w-full md:w-[60%] mb-8">
       <ProductSlide images={images} />

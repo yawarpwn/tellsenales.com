@@ -1,7 +1,7 @@
 ---
 import { getAllProducts } from 'src/lib/contentful-request'
 import ProductCard from '@components/product-card.astro'
-import ProductLayout from '@layouts/product-layout.astro'
+import MainLayout from '@layouts/main-layout.astro'
 import slugify from 'slugify'
 export async function getStaticPaths() {
   const products = await getAllProducts()
@@ -25,8 +25,8 @@ export async function getStaticPaths() {
 
 const { products } = Astro.props
 ---
-<ProductLayout>
-  <div class="grid grid-cols-2 md:grid-cols-5">
+<MainLayout>
+  <div class="grid grid-cols-2 md:grid-cols-4">
   {products.map(product => <ProductCard product={product} />)}
   </div>
-</ProductLayout>
+</MainLayout>

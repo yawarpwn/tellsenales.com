@@ -1,15 +1,15 @@
-import path, { dirname } from 'path';
-import SITE from './src/config/setting';
-import { fileURLToPath } from 'url';
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind'; // Full Astro Configuration API Documentation:
+import path, { dirname } from 'path'
+import SITE from './src/config/setting'
+import { fileURLToPath } from 'url'
+import { defineConfig } from 'astro/config'
+import tailwind from '@astrojs/tailwind' // Full Astro Configuration API Documentation:
 
-import sitemap from '@astrojs/sitemap';
-import preact from "@astrojs/preact";
+import sitemap from '@astrojs/sitemap'
+import preact from '@astrojs/preact'
 
-const __filename = fileURLToPath(import.meta.url);
+const __filename = fileURLToPath(import.meta.url)
 
-const __dirname = dirname(__filename); // https://docs.astro.build/reference/configuration-reference
+const __dirname = dirname(__filename) // https://docs.astro.build/reference/configuration-reference
 // @type-check enabled!
 // VSCode and other TypeScript-enabled text editors will provide auto-completion,
 // helpful tooltips, and warnings if your exported object is invalid.
@@ -18,20 +18,24 @@ const __dirname = dirname(__filename); // https://docs.astro.build/reference/con
 // https://astro.build/config
 // https://astro.build/config
 
-
-
 // https://astro.build/config
 export default defineConfig({
   // root: '.',     // Where to resolve all URLs relative to. Useful if you have a monorepo project.
   // outDir: './dist',       // When running `astro build`, path to final static output
   // publicDir: './public',   // A folder of static files Astro will copy to the root. Useful for favicons, images, and other files that don’t need processing.
   site: SITE.url,
-  server: {// port: 3000,
+  server: {
+    // port: 3000,
   },
-  integrations: [tailwind({
-    config: {// applyBaseStyles: false
-    }
-  }), sitemap(), preact()],
+  integrations: [
+    tailwind({
+      config: {
+        // applyBaseStyles: false
+      }
+    }),
+    sitemap(),
+    preact()
+  ],
   vite: {
     plugins: [],
     resolve: {
@@ -45,4 +49,4 @@ export default defineConfig({
   optimizeDeps: {
     allowNodeBuiltins: true
   }
-});
+})

@@ -4,14 +4,43 @@ import Category from './category.astro'
 ---
 
 <nav>
-  {
-    manifest.routes.map(({ title, routes }) => {
-      return (
-        <ul>
-          <h2>{title}</h2>
-          <Category routes={routes} />
-        </ul>
-      )
-    })
-  }
+  <ul class="nav-groups">
+    {
+      manifest.routes.map(({ title, routes }) => {
+        return (
+              <li>
+                {title}
+              </li>
+            <Category routes={routes} />
+        )
+      })
+    }
+  </ul>
 </nav>
+
+<style>
+  nav {
+    width: 100%;
+    height: 100%;
+    overflow-x: visible;
+    overflow-y: auto;
+    padding: 0 2rem;
+    font-size: var(--theme-text-sm);
+  }
+  .nav-groups {
+    overflow-y: auto;
+    overflow-x: visible;
+  }
+
+  details > summary {
+    list-style: none;
+  }
+
+  summary h2 {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    gap: 0.5rem;
+    font-weight: 700;
+  }
+</style>
