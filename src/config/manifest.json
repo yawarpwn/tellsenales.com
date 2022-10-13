@@ -225,7 +225,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/ropa-seguridad.svg",
-          "path": "/seguridad/ropa-seguridad",
+          "path": "/seguridad/c/ropa-seguridad",
           "isLast": true
         },
         {
@@ -233,7 +233,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/extintor.svg",
-          "path": "/seguridad/lucha-contra-incendio",
+          "path": "/seguridad/c/lucha-contra-incendio",
           "isLast": true
         },
         {
@@ -241,7 +241,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/vinil.svg",
-          "path": "/seguridad/viniles",
+          "path": "/seguridad/c/viniles",
           "isLast": true
         },
         {
@@ -249,7 +249,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/visual.svg",
-          "path": "/epps/proteccion-visual",
+          "path": "/seguridad/c/proteccion-visual",
           "isLast": true
         },
         {
@@ -257,7 +257,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/auditiva.svg",
-          "path": "/epps/proteccion-auditiva",
+          "path": "/seguridad/c/proteccion-auditiva",
           "isLast": true
         },
         {
@@ -265,7 +265,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/respiratoria.svg",
-          "path": "/epps/proteccion-respiratoria",
+          "path": "/seguridad/c/proteccion-respiratoria",
           "isLast": true
         },
         {
@@ -273,7 +273,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/casco.svg",
-          "path": "/epps/proteccion-cabeza",
+          "path": "/seguridad/c/proteccion-cabeza",
           "isLast": true
         },
         {
@@ -281,7 +281,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/guante.svg",
-          "path": "/epps/proteccion-manos",
+          "path": "/seguridad/c/proteccion-manos",
           "isLast": true
         },
         {
@@ -289,7 +289,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/bota.svg",
-          "path": "/epps/proteccion-pies",
+          "path": "/seguridad/c/proteccion-pies",
           "isLast": true
         }
       ]

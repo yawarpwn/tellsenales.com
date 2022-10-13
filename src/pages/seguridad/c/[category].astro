@@ -18,15 +18,36 @@ export async function getStaticPaths() {
   return  all.map(([title, products]) => {
     return {
       params: {category: slugify(title, {lower: true})},
-      props: {products}
+      props: {products, title}
     }
   })
 }
 
-const { products } = Astro.props
+const { products, title = 'default title' } = Astro.props
 ---
-<MainLayout>
+<MainLayout content={{title}}>
+  <div class="relative h-24 md:h-32 flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="shadow-image"></div>
+      <img class="w-full h-full object-cover" src={`/assets/images/${slugify(title)}.webp`} alt={title} />
+    </div>
+    <h1 class="text-3xl font-extrabold z-10 text-white">{title.toUpperCase()}</h1>
+  </div>
   <div class="grid grid-cols-2 md:grid-cols-4">
   {products.map(product => <ProductCard product={product} />)}
   </div>
 </MainLayout>
+<style>
+.shadow-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: var(--theme-gradient); */
+  background: black;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+</style>

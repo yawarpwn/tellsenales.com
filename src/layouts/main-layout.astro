@@ -19,7 +19,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
   <head>
     <HeadCommon />
     <HeadSeo {content} {canonicalURL} />
-    <title>Seguridad Page TEmplate</title>
+    <title>{content.title} | Tell Señales</title>
 
     <script is:inline>
       const theme = (() => {
