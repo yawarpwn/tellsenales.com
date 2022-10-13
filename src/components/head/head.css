@@ -1,34 +1,3 @@
----
-import HeadCommon from '@components/head-common.astro'
-import HeadSeo from '@components/head-seo.astro'
-const { content = {}, hideRightSidebar = false } = Astro.props
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
----
-<>
-<HeadCommon />
-<HeadSeo {content} {canonicalURL} />
-<title>{content.title} | Tell Señales</title>
-
-<script is:inline>
-  const theme = (() => {
-    if (localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
-    }
-
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    }
-
-    return 'light'
-  })()
-
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark')
-  } else {
-    document.documentElement.classList.add('dark')
-  }
-</script>
-<style>
   :global(.sidebar) {
     position: fixed;
     top: 4rem;
@@ -94,5 +63,3 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
       margin-inline-end: 18rem;
     }
   }
-</style>
-</>

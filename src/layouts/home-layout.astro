@@ -1,11 +1,11 @@
 ---
 import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
-import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
 import Header from './header/header.astro'
 import PageContent from './page-content.astro'
 import WhatsappBtnPopup from '@components/whatsapp-btn-popup' 
 import AttentionFloating from '@components/attention-floating.astro'
 import HeadMain from '@components/head/head-main.astro'
+import Footer from './footer/footer.astro'
 
 export interface Props {
   hideRightSidebar?: boolean
@@ -18,32 +18,31 @@ const { hideRightSidebar, content= {} } = Astro.props
   <head>
     <HeadMain {content} />
     <style>
-    #right-sidebar.hide-right-sidebar {
+    #left-sidebar {
       display: none;
     }
 
-    #main-content.hide-right-sidebar {
-      margin-inline-end: 0;
+    @media (min-width: 50em) {
+      #left-sidebar {
+        display: none;
+      }
     }
+
 
     </style>
   </head>
   <body>
     <main>
       <Header />
-      <aside class={`sidebar `} id="left-sidebar">
+      <aside class='sidebar' id="left-sidebar">
         <LeftSidebar />
       </aside>
-      <div class={`main-column ${hideRightSidebar ? 'hide-right-sidebar' : ''}`} id="main-content">
-        <PageContent>
+      <div class="pt-16">
           <slot />
-        </PageContent>
       </div>
-      <aside class={`sidebar ${hideRightSidebar ? 'hide-right-sidebar' : ''}`} id="right-sidebar">
-        <RightSidebar />
-      </aside>
       <WhatsappBtnPopup client:load />
       <AttentionFloating />
+      <Footer />
     </main>
   </body>
 </html>

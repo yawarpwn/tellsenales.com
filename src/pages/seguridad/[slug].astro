@@ -3,8 +3,8 @@ import { getAllProducts } from 'src/lib/contentful-request'
 import ProductSlide from '@components/product-slide.astro'
 import MainLayout from '../../layouts/main-layout.astro'
 import { ChevronDown } from '@components/icons'
-import {getdiscountPorcent} from '@utils/maths'
-import { BASE_URL, WHATSAPP_LINK} from '@utils/constants'
+import { getdiscountPorcent } from '@utils/maths'
+import { BASE_URL, WHATSAPP_LINK } from '@utils/constants'
 
 type Img = {
   url: string
@@ -54,25 +54,32 @@ const {
   description: { description }
 } = product
 const images = [img1.url, img2 && img2.url, img3 && img3.url, img4 && img4.url]
-const whatsappApi = `${WHATSAPP_LINK}Hola, Quiero consultar este Producto ${name} , este es su enlace : ${BASE_URL + Astro.url.pathname}`
-const content = { title: name, image: img2 && img2.url || img1.url, description: shortDesc | description[0]}
+const whatsappApi = `${WHATSAPP_LINK}Hola, Quiero consultar este Producto ${name} , este es su enlace : ${
+  BASE_URL + Astro.url.pathname
+}`
+const content = {
+  title: name,
+  image: (img2 && img2.url) || img1.url,
+  description: shortDesc | description[0]
+}
 ---
 
-<MainLayout hideRightSidebar {content} >
-  <div class="flex flex-col md:flex-row flex-wrap my-8">
+<MainLayout hideRightSidebar {content}>
+  <div class="flex flex-col md:flex-row flex-wrap my-8 px-4">
     <div class="w-full md:w-[60%] mb-8">
       <ProductSlide images={images} />
     </div>
-    <div class="w-full md:w-[calc(40%-3rem)] ml-auto flex flex-col space-y-4 mb-8">
-      <h1 class="product-title text-xl">{name}</h1>
-      <div class="mb-2">
-        <span class="text-base">Marca:{'  '}</span><span
-          class="text-base font-semibold underline">{marca}</span
-        >
-      </div>
+    <div
+      class="w-full md:w-[calc(40%-3rem)] flex flex-col space-y-4 mb-8 border-2"
+    >
+      <h1 class="text-3xl font-bold">{name}</h1>
+      <p class="mb-2">
+        <span class="text-base">Marca:{'  '}</span>
+        <span class="text-base font-semibold underline">{marca}</span>
+      </p>
       <div class="min-h-[100px]">
         <p class="mb-4">{shortDesc}</p>
-        </div>
+      </div>
       <div>
         <span class="line-through text-zinc-400">S/. {price}.00</span>
         <span class="ml-2">- {getdiscountPorcent(price, offert)}%</span>
@@ -219,9 +226,3 @@ const content = { title: name, image: img2 && img2.url || img1.url, description:
     </div>
   </div>
 </MainLayout>
-
-<style>
-  .product-title {
-    font-size: 2rem;
-  }
-</style>

@@ -1,4 +1,4 @@
-<header class="hero__container">
+<header class="min-h-[calc(100vh-4rem)] overflow-hidden">
   <div
     class="px-4 sm:px-6 md:max-w-2xl md:px-4 lg:max-w-7xl lg:px-8 mx-auto md:mt-24"
   >
@@ -53,34 +53,18 @@
             >
             </div>
           </div>
-          <img src="/assets/hero-image.png" alt="" class="relative" />
-        </div>
-        <div
-          class="relative mt-16 flex flex-col sm:flex-row sm:justify-center lg:hidden"
-        >
-          <button
-            type="button"
-            class="bg-primary rounded-full text-white py-2 px-10 hover:bg-primary-dark "
-            >Señales</button
-          ><a
-            href="#get-refactoring-ui"
-            class="py-2 px-10 border text-inherit rounded-full mt-4 text-center "
-            >Seguridad</a
-          >
+          <img class='-mt-16 md:mt-0' src="/assets/hero-image.png" alt="" class="relative" />
         </div>
       </div>
     </div>
   </div>
 </header>
 <style>
-  .hero__container {
-    min-height: calc(100vh - 4rem);
-    padding: 3rem 0;
-  }
 
   .hero__title {
     line-height: 1.2;
-    font-size: 3rem;
+    font-size: 2rem;
+    font-weight: 700;
     background: linear-gradient(
       90deg,
       rgba(93, 0, 255, 1) 0%,
@@ -97,15 +81,4 @@
     }
   }
 
-  /* 
-class="bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] 
-bg-clip-text 
-text-5xl 
-leading-[1.2] 
-tracking-tighter 
-text-transparent 
-sm:text-center 
-sm:text-[4rem] 
-sm:leading-[4.75rem] 
-lg:text-left" */
 </style>

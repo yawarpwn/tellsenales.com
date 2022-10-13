@@ -33,7 +33,7 @@ const { products, title = 'default title' } = Astro.props
     </div>
     <h1 class="text-3xl font-extrabold z-10 text-white">{title.toUpperCase()}</h1>
   </div>
-  <div class="grid grid-cols-2 md:grid-cols-4">
+  <div class="grid grid-cols-2 md:grid-cols-4 px-4 gap-2">
   {products.map(product => <ProductCard product={product} />)}
   </div>
 </MainLayout>
