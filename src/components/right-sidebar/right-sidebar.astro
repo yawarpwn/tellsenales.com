@@ -6,6 +6,11 @@ const data = [
     href: '/senales/fotoluminiscentes'
   },
   {
+    name: 'Decorativas',
+    image: '/assets/images/aluminio.webp',
+    href: '/senales/decorativas'
+  },
+  {
     name: 'Vias y Calles',
     image: '/assets/images/preventivas.webp',
     href: '/senales/viales'
@@ -26,6 +31,11 @@ const data = [
     href: '/seguridad/cintas-seguridad'
   },
   {
+    name: 'Lucha contra incendio',
+    image: '/assets/images/cintas-seguridad.webp',
+    href: '/seguridad/cintas-seguridad'
+  },
+  {
     name: 'Ropa Seguridad',
     image: '/assets/images/ropa-seguridad.webp',
     href: '/seguridad/ropa-seguridad'
@@ -40,7 +50,7 @@ const data = [
         data.map((item) => (
           <li class="right-sidebar__item">
               <a href={item.href}>
-                <h5 class="mt-3 text-sm font-bold text-white">{item.name}</h5>
+                <h5 class="text-sm font-bold text-white">{item.name}</h5>
                 <img
                   class="right-sidebar__img"
                   src={item.image}
@@ -54,7 +64,7 @@ const data = [
   </div>
   <style>
     .right-sidebar__item {
-      width: 170px;
+      width: 15rem;
       height: 40px;
       padding: 0.5rem;
       position: relative;
@@ -65,6 +75,8 @@ const data = [
       border-radius: 0.2rem;
       cursor: pointer;
     }
+
+
 
     .right-sidebar__item:hover img {
       transform: scale(1.1);

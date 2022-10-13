@@ -6,6 +6,7 @@ import PageContent from './page-content.astro'
 import WhatsappBtnPopup from '@components/whatsapp-btn-popup' 
 import AttentionFloating from '@components/attention-floating.astro'
 import HeadMain from '@components/head/head-main.astro'
+import FooterInfo from './footer/footer-info.astro'
 
 export interface Props {
   hideRightSidebar?: boolean
@@ -37,6 +38,9 @@ const { hideRightSidebar, content= {} } = Astro.props
       <div class={`main-column ${hideRightSidebar ? 'hide-right-sidebar' : ''}`} id="main-content">
         <PageContent>
           <slot />
+          <div class="py-16 px-4 md:pb-0">
+           <FooterInfo /> 
+          </div>
         </PageContent>
       </div>
       <aside class={`sidebar ${hideRightSidebar ? 'hide-right-sidebar' : ''}`} id="right-sidebar">
