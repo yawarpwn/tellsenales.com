@@ -1,115 +1,20 @@
 ---
 import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
 import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
-import HeadCommon from '@components/head-common.astro'
-import HeadSeo from '@components/head-seo.astro'
 import Header from './header/header.astro'
 import PageContent from './page-content.astro'
 import WhatsappBtnPopup from '@components/whatsapp-btn-popup' 
 import AttentionFloating from '@components/attention-floating.astro'
+import HeadMain from '@components/head-main.astro'
 
 export interface Props {
   hideRightSidebar?: boolean
 }
-const { content = {}, hideRightSidebar = false } = Astro.props
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <html dir="ltr" lang="es">
   <head>
-    <HeadCommon />
-    <HeadSeo {content} {canonicalURL} />
-    <title>{content.title} | Tell Señales</title>
-
-    <script is:inline>
-      const theme = (() => {
-        if (localStorage.getItem('theme')) {
-          return localStorage.getItem('theme')
-        }
-
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark'
-        }
-
-        return 'light'
-      })()
-
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark')
-      } else {
-        document.documentElement.classList.add('dark')
-      }
-    </script>
-    <style>
-      .sidebar {
-        position: fixed;
-        top: 4rem;
-        height: 100%;
-        z-index: 10;
-      }
-
-      #left-sidebar {
-        display: none;
-				background: var(--theme-bg-gradient);
-        backdrop-filter: blur(10px) saturate(180%);
-      }
-
-      #right-sidebar {
-        width: 18rem;
-        top: 4rem;
-        inset-inline-end: 0;
-        display: none;
-      }
-
-      #main-content {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        height: 100%;
-      }
-
-      @media not screen and (min-width: 50em) {
-        :global(.mobile-sidebar-toggle #left-sidebar) {
-          display: block;
-          width: 100%;
-          inset-inline-end: 0;
-        }
-
-        :global(.mobile-sidebar-toggle) {
-          overflow: hidden;
-        }
-        :global(.mobile-sidebar-toggle #left-sidebar ul) {
-          overscroll-behavior: contain;
-        }
-      }
-
-      @media (min-width: 50em) {
-        .main-column {
-          margin-inline-start: 18rem;
-        }
-
-        #left-sidebar {
-          display: flex;
-          padding-inline-start: 1rem;
-          padding-inline-end: 1rem;
-          top: 4rem;
-          width: 18rem;
-          background: transparent;
-        }
-
-      }
-
-      @media (min-width: 72em) {
-        #right-sidebar {
-          display: flex;
-        }
-
-        .main-column {
-          margin-inline-end: 18rem;
-        }
-      }
-
-    </style>
+    <HeadMain />
   </head>
   <body>
     <main>
@@ -123,7 +28,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
         </PageContent>
       </div>
       <aside class="sidebar" id="right-sidebar">
-      {!hideRightSidebar && <RightSidebar />}
+        <RightSidebar />
       </aside>
       <WhatsappBtnPopup client:load />
       <AttentionFloating />

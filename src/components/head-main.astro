@@ -1,0 +1,98 @@
+---
+import HeadCommon from '@components/head-common.astro'
+import HeadSeo from '@components/head-seo.astro'
+const { content = {}, hideRightSidebar = false } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+---
+<>
+<HeadCommon />
+<HeadSeo {content} {canonicalURL} />
+<title>{content.title} | Tell Señales</title>
+
+<script is:inline>
+  const theme = (() => {
+    if (localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
+    }
+
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
+    }
+
+    return 'light'
+  })()
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark')
+  } else {
+    document.documentElement.classList.add('dark')
+  }
+</script>
+<style>
+  :global(.sidebar) {
+    position: fixed;
+    top: 4rem;
+    height: 100%;
+    z-index: 10;
+  }
+
+  :global(#left-sidebar) {
+    display: none;
+    background: var(--theme-bg-gradient);
+    backdrop-filter: blur(10px) saturate(180%);
+  }
+
+  :global(#right-sidebar) {
+    width: 18rem;
+    top: 4rem;
+    inset-inline-end: 0;
+    display: none;
+  }
+
+  :global(#main-content) {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+  }
+
+  @media not screen and (min-width: 50em) {
+    :global(.mobile-sidebar-toggle #left-sidebar) {
+      display: block;
+      width: 100%;
+      inset-inline-end: 0;
+    }
+
+    :global(.mobile-sidebar-toggle) {
+      overflow: hidden;
+    }
+    :global(.mobile-sidebar-toggle #left-sidebar ul) {
+      overscroll-behavior: contain;
+    }
+  }
+
+  @media (min-width: 50em) {
+    :global(.main-column) {
+      margin-inline-start: 18rem;
+    }
+
+    :global(#left-sidebar) {
+      display: flex;
+      padding-inline-start: 1rem;
+      padding-inline-end: 1rem;
+      top: 4rem;
+      width: 18rem;
+    }
+  }
+
+  @media (min-width: 72em) {
+    :global(#right-sidebar) {
+      display: flex;
+    }
+
+    :global(.main-column) {
+      margin-inline-end: 18rem;
+    }
+  }
+</style>
+</>
