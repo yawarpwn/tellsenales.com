@@ -4,7 +4,6 @@ import './styles.css'
 export default function ToggleMenu() {
   const [sidebarShown, setSidebarShown] = useState(false)
   useEffect(() => {
-    console.log(sidebarShown)
     const body = document.querySelector('body')
     if (sidebarShown) {
       body.classList.add('mobile-sidebar-toggle')

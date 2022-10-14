@@ -2,6 +2,9 @@
 import MenuToggle from '@components/menu-toggle'
 import SocialIcons from '@components/social-icons';
 import ThemeToggle from '@components/toggle-theme'
+// import Search from '@components/search/search.astro'
+// import Search from '@components/search/search.astro'
+import Autocomplete from '@components/search/autocomplete.astro'
 ---
 
 <header>
@@ -47,7 +50,7 @@ import ThemeToggle from '@components/toggle-theme'
           </ul>
       </div>
       <div class="hidden md:flex items-center">
-        <input placeholder="Buscar productos" />
+        <Autocomplete />
         <div class="flex items-center">
           <SocialIcons />
           <ThemeToggle client:load />
