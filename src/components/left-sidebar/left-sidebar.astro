@@ -6,13 +6,60 @@ import Category from './category.astro'
 <nav>
   <ul class="nav-groups">
     {
-      manifest.routes.map(({ title, routes }) => {
+      manifest.routes.map(({ title, routes, path, icon }) => {
+      if (path) {
         return (
-              <li>
+          <div class="nav-group-title">
+            <a class="flex items-center gap-2" href={path}>
+              <img
+                width="20"
+                height="20"
+                src={`/icons${icon.replace('.svg', '-light.svg')}`}
+              />
                 {title}
-              </li>
-            <Category routes={routes} />
+            </a>
+          </div>
         )
+      }
+      return (
+        <details open>
+          <summary class="nav-group-title">
+            <h2>
+              <img
+                width="20"
+                height="20"
+                src={`/icons${icon.replace('.svg', '-light.svg')}`}
+              />
+              <span>{title}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 1 16 16"
+                width="16"
+                height="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"
+                />
+              </svg>
+            </h2>
+          </summary>
+          <ul>
+            {routes.map(({ title, path }) => {
+              return (
+                <li class="nav-link">
+                  <a href={path}>{title}</a>
+                </li>
+              )
+            })}
+          </ul>
+        </details>
+      )
+
+
+
+
       })
     }
   </ul>
@@ -43,4 +90,64 @@ import Category from './category.astro'
     gap: 0.5rem;
     font-weight: 700;
   }
+
+  .nav-group {
+    margin-bottom: 1rem;
+  }
+
+  .nav-group-title {
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0.3rem 0;
+    display: flex;
+    gap: 0.3rem;
+  }
+
+
+  .nav-link a {
+    margin: 1px;
+    padding: 0.3rem 1rem;
+		color: var(--theme-text-lighter);
+    text-decoration: none;
+    display: block;
+    font: inherit;
+  }
+
+  .nav-link a:hover, .nav-link a:focus {
+			background-color: var(--theme-bg-hover);
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::marker,
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] > summary svg {
+    transform: rotate(90deg);
+  }
+
+  summary {
+    cursor: pointer;
+  }
+
+  summary h2 {
+    all: inherit;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    transform: rotate(0deg);
+    transition: 0.15s transform ease;
+  }
+
+  svg path {
+    fill: currentColor;
+  }
+
+
 </style>
