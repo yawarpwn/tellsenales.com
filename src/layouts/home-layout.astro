@@ -7,11 +7,7 @@ import AttentionFloating from '@components/attention-floating.astro'
 import HeadMain from '@components/head/head-main.astro'
 import Footer from './footer/footer.astro'
 
-export interface Props {
-  hideRightSidebar?: boolean
-}
-
-const { hideRightSidebar, content= {} } = Astro.props
+const { content= {} } = Astro.props
 ---
 
 <html dir="ltr" lang="es">

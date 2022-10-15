@@ -1,10 +1,8 @@
 ---
 import MenuToggle from '@components/menu-toggle'
-import SocialIcons from '@components/social-icons';
+import SocialIcons from '@components/social-icons'
 import ThemeToggle from '@components/toggle-theme'
-// import Search from '@components/search/search.astro'
-// import Search from '@components/search/search.astro'
-import Autocomplete from '@components/search/autocomplete.astro'
+import Search from '@components/search/search.astro'
 ---
 
 <header>
@@ -31,26 +29,20 @@ import Autocomplete from '@components/search/autocomplete.astro'
         </a>
       </div>
       <div>
-          <ul class="hidden md:flex items-center gap-4">
-            <li>
-              <a href="/seguridad">
-               Senales 
-              </a>
-            </li>
-            <li>
-              <a href="/seguridad">
-                Seguridad
-              </a>
-            </li>
-            <li>
-              <a class="/seguridad">
-               Contacto 
-              </a>
-            </li>
-          </ul>
+        <ul class="hidden md:flex items-center gap-4">
+          <li>
+            <a href="/seguridad"> Senales</a>
+          </li>
+          <li>
+            <a href="/seguridad"> Seguridad</a>
+          </li>
+          <li>
+            <a class="/seguridad"> Contacto</a>
+          </li>
+        </ul>
       </div>
+      <Search />
       <div class="hidden md:flex items-center">
-        <Autocomplete />
         <div class="flex items-center">
           <SocialIcons />
           <ThemeToggle client:load />
@@ -70,7 +62,7 @@ import Autocomplete from '@components/search/autocomplete.astro'
     top: 0;
     left: 0;
     right: 0;
-    z-index: 9999;
+    z-index: 100;
   }
 
   .nav-container {

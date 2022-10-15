@@ -1,29 +1,28 @@
-import { createPortal } from 'preact/compat'
-import {useState, useEffect, useRef, useCallback} from 'preact/hooks'
-export default function Autcomplete() {
-  const [isOpen, setIsOpen] = useState(false)
-  const searchButtonRef = useRef(document.querySelector('#docsearch-search-button'))
-  const [initialQuer, setInitialQuery] = useState<string>()
+import { autocomplete } from '@algolia/autocomplete-js'
+import { useEffect, useRef } from 'preact/hooks'
+import { createElement, render, Fragment } from 'preact'
+
+export default function Autocomplete(props) {
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    console.log(isOpen)
-  }, [isOpen])
+    if (!containerRef.current) {
+      return undefined
+    }
 
-  const onOpen = useCallback(() => {
-    setIsOpen(!isOpen)
-  }, [setIsOpen] )
+    const search = autocomplete({
+      container: containerRef.current,
+      placeholder: 'Buscar Producto',
+      defaultActiveItemId: 0,
+      renderer: { createElement , Fragment, render },
+      ...props
+    })
 
-  useEffect(() => {
-    searchButtonRef.current?.addEventListener('click', onOpen)
-    return searchButtonRef.current?.removeEventListener('click', onOpen)
-  }, [searchButtonRef.current, onOpen])
 
+    return () => {
+      search.destroy()
+    }
+  }, [props])
 
-  if(!isOpen) return null
-
-  return createPortal(
-    <div className='fixed z-50 bg-black top-0 h-40 w-40'>MODAL</div>,
-    document.body
-  ) 
-  
+  return <div ref={containerRef} />
 }
