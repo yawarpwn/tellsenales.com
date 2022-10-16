@@ -7,29 +7,34 @@
       "icon": "/seguridad.svg",
       "routes": [
         {
-          "title": "seguridad",
+          "title": "Seguridad",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/seguridad"
+          "path": "/senales/c/seguridad"
         },
         {
-          "title": "fotoluminiscentes",
+          "title": "Fotoluminiscentes",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/seguridad/evacuacion"
+          "path": "/senales/c/fotoluminiscentes"
         },
         {
-          "title": "covid-19",
+          "title": "Decorativas",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/seguridad/incendio"
+          "path": "/senales/c/decorativas"
         },
         {
-          "title": "viales",
+          "title": "Covid-19",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/seguridad/advertencia"
+          "path": "/senales/c/covid-19"
         },
         {
-          "title": "obras",
+          "title": "Viales",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/seguridad/prohibicion"
+          "path": "/senales/c/viales"
+        },
+        {
+          "title": "Obras",
+          "keywords": "getting started, start, nextui",
+          "path": "/senales/c/obras"
         }
       ]
     },
@@ -155,14 +160,6 @@
       "keywords": "guide, getting started, start, nextui",
       "icon": "/contacto.svg",
       "path": "/contacto",
-      "isLast": true
-    },
-    {
-      "title": "Servicios",
-      "open": true,
-      "keywords": "guide, getting started, start, nextui",
-      "icon": "/servicios.svg",
-      "path": "/servicios",
       "isLast": true
     }
   ]

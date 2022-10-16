@@ -42,6 +42,12 @@ export async function getAllProducts() {
             url
             title
           }
+      contentfulMetadata {
+        tags {
+            id
+            name
+        }
+      }
         }
       }
     }
@@ -54,5 +60,4 @@ export async function getAllProducts() {
   }
 }
 
-console.log(await getAllProducts())
 

@@ -1,12 +1,12 @@
 ---
 import MainLayout from '../../layouts/main-layout.astro'
-import { getAllProducts } from '../../lib/contentful-request'
+import { getAllSenales } from '../../lib/contentful-request'
 import ProductCard from '@components/product-card.astro'
 
-const products = await getAllProducts()
-const content = { 
-  title: 'Dispositivos e Implementos de seguridad',
-  description: 'Venta y distribución de dispositivos de seguridad, proteccion vial, cintas de seguridad y equpos de epp'
+const products = await getAllSenales()
+const content = {
+  title: 'Señales Seguridad',
+  description: 'Fabricación de todo tipo de señales de seguridad'
 }
 ---
 

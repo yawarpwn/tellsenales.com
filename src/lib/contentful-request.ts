@@ -43,6 +43,12 @@ export async function getAllProducts() {
             url
             title
           }
+          contentfulMetadata {
+            tags {
+              id
+              name
+            }
+          }
         }
       }
     }
@@ -55,38 +61,22 @@ export async function getAllProducts() {
   }
 }
 
-export async function getFullProducts() {
+export async function getAllSenales() {
   const query = gql`
     {
-      productCollection(limit: 200) {
+      senalesCollection(limit: 450) {
         items {
-          sku
           name
-          slug
-          price
-          offert
-          minimumOrder
-          description
-          marca
+          code
           category
-          dataSheet
-          available
-          shortDesc
-          img1 {
+          img {
             url
             title
           }
-          img2 {
-            url
-            title
-          }
-          img3 {
-            url
-            title
-          }
-          img4 {
-            url
-            title
+          contentfulMetadata {
+            tags {
+              name
+            }
           }
         }
       }
@@ -94,172 +84,8 @@ export async function getFullProducts() {
   `
   try {
     const data = await graphQlclient.request(query)
-    return data.productCollection.items
+    return data.senalesCollection.items
   } catch (error) {
     console.error(JSON.stringify(error, undefined, 2))
   }
 }
-
-// async function callContentful({ query, variables }) {
-//   return await graphQlclient.request(query, variables)
-// }
-
-// export async function getAllSlug() {
-//   const query = gql`
-//     {
-//       productCollection(limit: 200) {
-//         items {
-//           slug
-//         }
-//       }
-//     }
-//   `
-//   try {
-//     const data = await callContentful({ query })
-//     const slugs = data ? data.productCollection.items : []
-//     return slugs
-//   } catch (error) {
-//     console.error(JSON.stringify(error, undefined, 2))
-//   }
-// }
-
-// export async function getProductByCategory(category) {
-//   const variables = { category }
-//   const query = gql`
-
-//     query getProductByCategory($category: String) {
-//       productCollection(where: { category: $category }, order: name_ASC) {
-//         items {
-//           slug
-//           name
-//           marca
-//           price
-//           offert
-//           sku
-//           sys {
-//             id
-//             firstPublishedAt
-//           }
-//           img1 {
-//             url
-//             title
-//           }
-//         }
-//       }
-//     }
-//   `
-//   try {
-//     const data  = await graphQlclient.request(query, variables)
-//     return data.productCollection.items
-//   } catch (error) {
-//     console.error(JSON.stringify(error, undefined, 2))
-//   }
-// }
-// export async function getProductByName(name) {
-//   const variables = { name }
-//   const query = gql`
-//     query getProductByCategory($name: String) {
-//       productCollection(where: { category: $name }, order: name_ASC) {
-//         items {
-//           slug
-//           name
-//           marca
-//           price
-//           offert
-
-//           sku
-//           sys {
-//             id
-//           }
-//           img1 {
-//             url
-//             title
-//           }
-//         }
-//       }
-//     }
-//   `
-//   try {
-//     const data = await graphQlclient.request(query, variables)
-//     return data.productCollection.items
-//   } catch (error) {
-//     console.error(JSON.stringify(error, undefined, 2))
-//   }
-// }
-
-// export async function getSenalesByCategory(category) {
-//   const variables = { category }
-//   const query = gql`
-//     query getSenalesByCategory($category: String) {
-//       senalesCollection(where: { category: $category }, order: code_ASC) {
-//         items {
-//           name
-//           code
-//           sys {
-//             id
-//             firstPublishedAt
-//           }
-//           img {
-//             url
-//             title
-//           }
-//         }
-//       }
-//     }
-//   `
-//   try {
-//     const data = await graphQlclient.request(query, variables)
-//     return data.senalesCollection.items
-//   } catch (error) {
-//     console.error(JSON.stringify(error, undefined, 2))
-//   }
-// }
-
-// export async function getProductBySlug(slug) {
-//   const variables = { slug }
-//   const query = gql`
-//     query GetProductBySlug($slug: String) {
-//       productCollection(where: { slug: $slug }) {
-//         items {
-//           sku
-//           name
-//           slug
-//           price
-//           offert
-//           minimumOrder
-//           description
-//           marca
-//           category
-//           dataSheet
-//           available
-//           shortDesc
-//           img1 {
-//             url
-//             title
-//           }
-//           img2 {
-//             url
-//             title
-//           }
-//           img3 {
-//             url
-//             title
-//           }
-//           img4 {
-//             url
-//             title
-//           }
-//         }
-//       }
-//     }
-//   `
-
-//   try {
-//     const data = await graphQlclient.request(query, variables)
-//     return data.productCollection.items
-//       ? data.productCollection.items.pop()
-//       : {}
-//   } catch (error) {
-//     console.error(JSON.stringify(error, undefined, 2))
-//   }
-// }

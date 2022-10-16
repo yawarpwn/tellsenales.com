@@ -11,7 +11,7 @@ const searchClient = algoliasearch(
   '14bdd4985f3b412d4dd6ffb765545816'
 )
 
-export default function Autocomplete(props) {
+export default function Autocomplete() {
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -23,7 +23,6 @@ export default function Autocomplete(props) {
       container: containerRef.current,
       placeholder: 'Buscar Producto',
       defaultActiveItemId: 0,
-      autoFocus: true,
       renderer: { createElement, Fragment, render },
       getSources: ({ query }) => [
         {
@@ -62,7 +61,7 @@ export default function Autocomplete(props) {
     return () => {
       search.destroy()
     }
-  }, [props])
+  }, [])
 
   return <div ref={containerRef} />
 }

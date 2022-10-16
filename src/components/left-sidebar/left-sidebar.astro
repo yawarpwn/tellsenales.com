@@ -12,8 +12,8 @@ import Category from './category.astro'
           <div class="nav-group-title">
             <a class="flex items-center gap-2" href={path}>
               <img
-                width="20"
-                height="20"
+                width="25"
+                height="25"
                 src={`/icons${icon.replace('.svg', '-light.svg')}`}
               />
                 {title}
@@ -26,8 +26,8 @@ import Category from './category.astro'
           <summary class="nav-group-title">
             <h2>
               <img
-                width="20"
-                height="20"
+                width="25"
+                height="25"
                 src={`/icons${icon.replace('.svg', '-light.svg')}`}
               />
               <span>{title}</span>
@@ -73,6 +73,8 @@ import Category from './category.astro'
     overflow-y: auto;
     padding: 0 2rem;
     font-size: var(--theme-text-sm);
+    overflow-y: auto;
+    overflow-x: visible;
   }
   .nav-groups {
     overflow-y: auto;
@@ -96,11 +98,11 @@ import Category from './category.astro'
   }
 
   .nav-group-title {
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 600;
     padding: 0.3rem 0;
     display: flex;
-    gap: 0.3rem;
+    gap: 0.5rem;
   }
 
 
@@ -134,10 +136,12 @@ import Category from './category.astro'
 
   summary h2 {
     all: inherit;
+    font-size: 1rem;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
+    gap: 0.5rem;
   }
 
   svg {

@@ -29,7 +29,7 @@ const { products, title = 'default title' } = Astro.props
   <div class="relative h-24 md:h-32 flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <div class="shadow-image"></div>
-      <img class="w-full h-full object-cover" src={`/assets/images/${slugify(title)}.webp`} alt={title} />
+      <img class="w-full h-full object-cover" src={`/assets/images/${slugify(title, {lower: true})}.webp`} alt={title} />
     </div>
     <h1 class="text-3xl font-extrabold z-10 text-white">{title.toUpperCase()}</h1>
   </div>

@@ -20,7 +20,7 @@ export interface Props {
 }
 
 const { product } = Astro.props
-const { name, sku, price, offert, img1, slug, marca } = product
+const { name, sku, price, offert, img1, slug, marca, img, code } = product
 
 ---
 
@@ -29,11 +29,11 @@ const { name, sku, price, offert, img1, slug, marca } = product
     <div class="relative h-0 w-full pb-[100%]">
       <img
         class="absolute inset-0 max-h-[155px] m-auto max-w-[85%]"
-        src={img1.url}
+        src={img ? img.url : img1.url}
       />
     </div>
     <div class="product-card__body p-2">
-      <span class="font-bold text-xs uppercase">{marca || sku}</span>
+      <span class="font-bold text-xs uppercase">{code || marca || sku}</span>
       <div class="min-h-[50px]">
         <p class="text-xs">{name}</p>
       </div>
@@ -51,8 +51,8 @@ const { name, sku, price, offert, img1, slug, marca } = product
         </div>
 
       ) : (
-
-      <div class="min-h-[50px]">
+      
+      <div class={`min-h-[50px] ${code && 'hidden'}`}>
         <div>
           <span class="text-red-500 font-bold">S/. {price}.00</span>
         </div>
