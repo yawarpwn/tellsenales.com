@@ -3,6 +3,7 @@ import HeadCommon from './head-common.astro'
 import HeadSeo from './head-seo.astro'
 const { content = {}, hideRightSidebar = false } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+import '../../styles/main.css'
 ---
 <>
 <HeadCommon />

@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-
 const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   darkMode: 'class',
@@ -9,7 +8,7 @@ module.exports = {
      'sm': '650px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '960px',
+      'md': '50em',
       // => @media (min-width: 768px) { ... }
 
       'lg': '1024px',

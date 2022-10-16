@@ -1,13 +1,74 @@
+---
+
+const { content, currentPage  } = Astro.props 
+const title = content.title 
+// const title = content.title.replace('@astrojs/', '<span class="scope">@astrojs/</span>');
+---
 <article id="article" class="content">
-  <slot />
+  <section class="main-section">
+		<h1 class="content-title" id="overview" set:html={title}></h1>
+    <slot />
+  </section>
 </article>
 <style>
-.content {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  width: 100%;
-  margin-inline: auto;
-}
+/* .content { */
+/*   padding-top: 4rem; */
+/*   padding-bottom: 4rem; */
+/*   width: 100%; */
+/*   margin-inline: auto; */
+/* } */
+
+	.content-title :global(.scope) {
+		font-weight: 700;
+		color: var(--theme-text-lighter);
+	}
+	.content {
+		padding-top: calc(
+			var(--theme-navbar-height)  + var(--doc-padding-block)
+		);
+		padding-bottom: var(--doc-padding-block);
+		padding-inline: var(--min-spacing-inline);
+		width: 100%;
+		height: 100%;
+		max-width: 80ch;
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		overflow-x: hidden;
+	}
+	.content > section {
+		margin-bottom: 4rem;
+	}
+	.next-previous-nav {
+		display: flex;
+		flex-wrap: wrap;
+		width: auto;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+	.mobile-toc {
+		display: block;
+		position: fixed;
+		inset-inline: 0;
+		top: calc(var(--theme-navbar-height));
+		z-index: 2;
+	}
+	@media (min-width: 50em) {
+		.mobile-toc {
+			inset-inline-start: var(--theme-left-sidebar-width);
+			margin-top: 0;
+		}
+	}
+	@media (min-width: 72em) {
+		.content {
+			padding-top: calc(var(--theme-navbar-height) + var(--doc-padding-block));
+		}
+		.mobile-toc {
+			display: none;
+		}
+	}
+
+
 </style>
 
 

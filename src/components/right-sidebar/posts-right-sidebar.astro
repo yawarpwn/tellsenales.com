@@ -1,0 +1,23 @@
+---
+// import TableOfContents from './table-of-contents';
+const { content } = Astro.props
+console.log(content.astro.props.headings)
+---
+
+<nav aria-label="rightSidebar.a11yTitle">Estoy right sidebar</nav>
+
+<style>
+  nav {
+    width: 100%;
+    padding: var(--doc-padding-block) 0;
+    overflow: auto;
+    font-size: var(--theme-text-xs);
+  }
+
+  /* style applied only on Firefox, this avoids scrollbars overlapping. */
+  @supports (-moz-appearance: none) {
+    .sidebar-nav {
+      padding-inline-end: 1.5rem;
+    }
+  }
+</style>

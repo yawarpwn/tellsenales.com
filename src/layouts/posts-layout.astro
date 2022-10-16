@@ -13,13 +13,13 @@ export interface Props {
   withPageContent?: boolean
 }
 
-const { hideRightSidebar, withPageContent, content = {} } = Astro.props
+const { hideRightSidebar, content = {} } = Astro.props
 ---
 
 <html dir="ltr" lang="es">
   <head>
     <HeadMain {content} />
-    <style is:global>
+    <style>
       #right-sidebar.hide-right-sidebar {
         display: none;
       }
@@ -40,9 +40,9 @@ const { hideRightSidebar, withPageContent, content = {} } = Astro.props
         class={`main-column ${hideRightSidebar ? 'hide-right-sidebar' : ''}`}
         id="main-content"
       >
-            <div class="py-16">
-              <slot />
-            </div>
+        <PageContent {content}>
+            <slot />
+        </PageContent>
       </div>
       <div class="main-column px-4 md:px-0 mb-8 md:mb-0">
         <FooterInfo />

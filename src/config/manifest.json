@@ -67,7 +67,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/articulos-seguridad.svg",
-          "path": "/seguridad/c/accesorios-seguridad",
+          "path": "/seguridad/c/articulos-seguridad",
           "isLast": true
         },
         {
@@ -95,56 +95,38 @@
           "isLast": true
         },
         {
-          "title": "Protección Visual ",
+          "title": "Epps",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "icon": "/visual.svg",
-          "path": "/seguridad/c/proteccion-visual",
-          "isLast": true
-        },
-        {
-          "title": "Protección Auditiva",
-          "open": true,
-          "keywords": "guide, getting started, start, nextui",
-          "icon": "/auditiva.svg",
-          "path": "/seguridad/c/proteccion-auditiva",
-          "isLast": true
-        },
-        {
-          "title": "Protección Respiratoria",
-          "open": true,
-          "keywords": "guide, getting started, start, nextui",
-          "icon": "/respiratoria.svg",
-          "path": "/seguridad/c/proteccion-respiratoria",
-          "isLast": true
-        },
-        {
-          "title": "Protección Cabeza",
-          "open": true,
-          "keywords": "guide, getting started, start, nextui",
-          "icon": "/casco.svg",
-          "path": "/seguridad/c/proteccion-cabeza",
-          "isLast": true
-        },
-        {
-          "title": "Protección Manos",
-          "open": true,
-          "keywords": "guide, getting started, start, nextui",
-          "icon": "/guante.svg",
-          "path": "/seguridad/c/proteccion-manos",
-          "isLast": true
-        },
-        {
-          "title": "Protección Pies",
-          "open": true,
-          "keywords": "guide, getting started, start, nextui",
-          "icon": "/bota.svg",
-          "path": "/seguridad/c/proteccion-pies",
+          "icon": "/vinil.svg",
+          "path": "/seguridad/c/epps",
           "isLast": true
         }
       ]
     },
-
+    {
+      "title": "Posts",
+      "keywords": "docs, doc, documentation, getting started, nextui",
+      "subtitle": "For an advanced search please use the search input",
+      "icon": "/posts.svg",
+      "section": "Scope",
+      "heading": true,
+      "routes": [
+        {
+          "title": "Señales Viales",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/senales-viales"
+        },
+        {
+          "title": "Señales Fotoluminiscentes",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "icon": "/cinta-seguridad.svg",
+          "path": "/posts/senales-fotoluminiscentes"
+        }
+      ]
+    },
     {
       "title": "Galeria",
       "open": true,
@@ -153,7 +135,6 @@
       "path": "/galeria",
       "isLast": true
     },
-
     {
       "title": "Contacto",
       "open": true,

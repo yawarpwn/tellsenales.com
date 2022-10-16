@@ -21,10 +21,10 @@ export interface Props {
 
 const { product } = Astro.props
 const { name, sku, price, offert, img1, slug, marca, img, code } = product
-
+const Component = slug ? 'a' : 'div'
 ---
 
-<a href={`/seguridad/${slug}`}>
+<Component href={`/seguridad/${slug}`}>
   <div class="product-card shadow-md rounded-md transition-all">
     <div class="relative h-0 w-full pb-[100%]">
       <img
@@ -37,31 +37,27 @@ const { name, sku, price, offert, img1, slug, marca, img, code } = product
       <div class="min-h-[50px]">
         <p class="text-xs">{name}</p>
       </div>
-      {offert ? (
-      <div class="min-h-[50px]">
-        <div>
-          <span class="line-through text-zinc-400">S/.{price}.00</span>
-          <span class="ml-2">-{getdiscountPorcent(price, offert)}%</span>
-        </div>
-        <div>
+      {
+        offert ? (
+          <div class="min-h-[50px]">
+            <div>
+              <span class="text-zinc-400 line-through">S/.{price}.00</span>
+              <span class="ml-2">-{getdiscountPorcent(price, offert)}%</span>
+            </div>
+            <div></div>
+            <div>
+              <span class="font-bold text-red-500">S/. {offert}.00</span>
+            </div>
           </div>
-        <div>
-          <span class="text-red-500 font-bold">S/. {offert}.00</span>
-        </div>
-        </div>
-
-      ) : (
-      
-      <div class={`min-h-[50px] ${code && 'hidden'}`}>
-        <div>
-          <span class="text-red-500 font-bold">S/. {price}.00</span>
-        </div>
-      </div>
-
-      )}
+        ) : (
+          <div class={`min-h-[50px] ${code && 'hidden'}`}>
+            <div>
+              <span class="font-bold text-red-500">S/. {price}.00</span>
+            </div>
+          </div>
+        )
+      }
     </div>
   </div>
-</a>
-<style>
-
-</style>
+</Component>
+<style></style>
