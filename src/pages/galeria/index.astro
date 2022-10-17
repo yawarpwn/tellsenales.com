@@ -1,27 +1,39 @@
 ---
+import { readdir } from 'node:fs/promises'
 import MainLayout from "@layouts/main-layout.astro";
 import fs from 'fs'
 import path from 'path'
 
-const allImages = await Astro.glob('../../../public/galery/**/*.webp'); // returns an array of posts that live at ./src/pages/post/*.md
 
-// const dirPath = path.resolve(process.cwd(), '../../../public/galery/')
-const dirUrl = new URL(
-  import.meta.env.DEV ? '../../../public/galery' : `${process.cwd()}/galery'`, 
-  import.meta.url)
-const galeryDirs = fs.readdirSync(dirUrl)
-const allPathImages = galeryDirs.map(dir => {
-  return {
-    title: dir,
-    paths: allImages
-    .filter(img => img.default.includes(`/${dir}/`)) 
-    .map(obj => obj.default)
+async function getAllPaths(dir) {
+  let files = []
+  const entries = await readdir(dir, { withFileTypes: true})
+  for (const entry of entries) {
+    if(entry.isDirectory()) {
+      const deepDir = await getAllPaths(`${dir}/${entry.name}`)
+      files = [...files,...deepDir]
+    } else {
+      files.push(`${dir}/${entry.name}`)
+    }
+  }
+  return files
 }
+
+const dirURL = import.meta.env.DEV ? 'public/galery' : '../../../galery'
+const allImages = await getAllPaths(dirURL)
+const entries = await readdir(dirURL)
+const allPathImages = entries.map(entry => {
+  return {
+    paths: allImages.filter(img => img.includes(entry)),
+    title: entry
+  }
 })
 
-// console.log(allPathImages)
 
 
+// const paths = allImages.map(path => path.split('public')[1])
+// const category = paths.map(path => path.)
+// console.log(paths)
 
 
 
@@ -42,9 +54,11 @@ const content = {
       return (
         <h2 class="uppercase text-2xl">Señales {title}</h2>
         <div class="flex overflow-x-scroll gap-4">
-  {paths.map(path => (
-  <img src={path} width="300" height="auto" />
-  ))}
+          {paths.map(path => {
+              return(
+          <img src={path} width="300" height="auto" />
+          )}
+            )}
         </div>
       )
     })}
