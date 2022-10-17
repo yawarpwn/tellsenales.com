@@ -3,7 +3,7 @@ layout: '@layouts/posts-layout.astro'
 title: Señales Fotoluminiscentes 
 description: Fabricación y distribución de señales fotoluminiscentes con diferentes soporte pvc celtex, acrílico, sustrato. 
 url: https://tellsenales.com/senales/fotoluminiscentes/info
-image: 'https://tellsenales.com/assets/images/senales-fotoluminiscentes-tell.webp'
+image: '/assets/images/senales-fotoluminiscentes-tell.webp'
 ---
 
 Son ideales para la identificación inmediata de rutas de evacuación, salidas de emergencia y equipos de protección contraincendios en situaciones de emergencia, apagones repentinos o desastres naturales en edificios y espacios cerrados o reducidos .

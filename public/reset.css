@@ -461,10 +461,6 @@ video {
 	margin-right: 0;
 }
 
-.flex {
-	display: flex;
-	align-items: center;
-}
 
 button {
 	display: flex;

@@ -2,17 +2,17 @@
 const catalogos = [
   {
     title: 'Catalogo Covid',
-    imgSrc: 'catalogo-covid.webp',
+    imgSrc: '/assets/images/catalogo-covid.webp',
     href: 'https://tellsenales.com/documents/covid-catalogo-tell.pdf'
   },
   {
     title: 'Catalogo Epp',
-    imgSrc: 'catalogo-epp.webp',
+    imgSrc: '/assets/images/catalogo-epp.webp',
     href: 'https://tellsenales.com/documents/epp-accesorios-tell.pdf'
   },
   {
     title: 'Catalogo Senales',
-    imgSrc: 'catalogo-senales.webp',
+    imgSrc: '/assets/images/catalogo-senales.webp',
     href: 'https://tellsenales.com/documents/senales-seguridad-tell.pdf'
   }
 ]
@@ -40,7 +40,7 @@ import { ChevronRight} from '@components/icons'
       {
         catalogos.map(({ title, imgSrc, href }) => (
           <a href={href} target="_blank">
-            <img class="rounded-lg" src={`/images/${imgSrc}`} alt={title} />
+            <img class="rounded-lg" src={imgSrc} alt={title} />
           </a>
         ))
       }

@@ -60,7 +60,7 @@ const whatsappApi = `${WHATSAPP_LINK}Hola, Quiero consultar este Producto ${name
 const content = {
   title: name,
   image: (img2 && img2.url) || img1.url,
-  description: shortDesc | description[0]
+  description: shortDesc || description[0]
 }
 ---
 
@@ -78,13 +78,18 @@ const content = {
         <span class="text-base font-semibold underline">{marca}</span>
       </p>
       <div class="min-h-[100px]">
-        <p class="mb-4">{shortDesc}</p>
+        <p class="mb-4">{shortDesc || description[0]}</p>
       </div>
-      <div>
-        <span class="line-through text-zinc-400">S/. {price}.00</span>
-        <span class="ml-2">- {getdiscountPorcent(price, offert)}%</span>
-      </div>
-      <span class="text-3xl font-bold text-red-500">S/. {offert}.00</span>
+      {offert ? (
+        <div>
+          <span class="line-through text-zinc-400">S/. {price}.00</span>
+          <span class="ml-2">- {getdiscountPorcent(price, offert)}%</span>
+        </div>
+        <p class="text-3xl font-bold text-red-500">S/. {offert}.00</p>
+      ): (
+        <p class="text-3xl font-bold text-red-500">S/. {price}.00</p>
+      )}
+
       <div class="flex gap-4">
         <a
           class="bg-green-500 hover:bg-green-600 transition-all p-4 text-white rounded-lg w-[50%] flex items-center gap-2 text-sm"

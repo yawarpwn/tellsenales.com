@@ -1,0 +1,54 @@
+---
+import MainLayout from "@layouts/main-layout.astro";
+import fs from 'fs'
+import path from 'path'
+
+const allImages = await Astro.glob('../../../public/galery/**/*.webp'); // returns an array of posts that live at ./src/pages/post/*.md
+
+// const dirPath = path.resolve(process.cwd(), '../../../public/galery/')
+const dirUrl = new URL(
+  import.meta.env.DEV ? '../../../public/galery' : `${process.cwd()}/galery'`, 
+  import.meta.url)
+const galeryDirs = fs.readdirSync(dirUrl)
+const allPathImages = galeryDirs.map(dir => {
+  return {
+    title: dir,
+    paths: allImages
+    .filter(img => img.default.includes(`/${dir}/`)) 
+    .map(obj => obj.default)
+}
+})
+
+// console.log(allPathImages)
+
+
+
+
+
+const content = { 
+  title: 'Galeria',
+  description: 'Nuestra galeria de trabajos',
+  image: '/assets/images/chevron.webp'
+}
+---
+<MainLayout hideRightSidebar {content}>
+  <div class="px-4 md:px-0">
+    <h1 class="text-center">Galeria</h1>
+    <p class="max-w-5xl">
+      Con dedicación, esfuerzo y buen desempeño, hemos desarrollado a lo largo de los años diversas soluciones para nuestros clientes.
+      A continuación, queremos enseñarles algo de lo que hemos hecho:
+    </p>
+    {allPathImages.map(({paths, title}) => {
+      return (
+        <h2 class="uppercase text-2xl">Señales {title}</h2>
+        <div class="flex overflow-x-scroll gap-4">
+  {paths.map(path => (
+  <img src={path} width="300" height="auto" />
+  ))}
+        </div>
+      )
+    })}
+  </div>
+
+
+</MainLayout>

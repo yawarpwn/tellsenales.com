@@ -3,7 +3,7 @@ title: Señalización Vial
 layout: '@layouts/posts-layout.astro'
 description: Fabricación de señales reflectivas para vias y calles 
 url: https://tellsenales.com/senales/viales/info
-image: 'https://tellsenales.com/assets/images/senales-viales-tell.webp'
+image: '/assets/images/senales-viales-tell.webp'
 ---
 
 La señalización vial son todas aquellas que brindan información a los conductores de los automóviles en relación a las propiedades de las vías por las que conducen, y tienen como función principal la de informar, advertir y orientar a los usuarios.
