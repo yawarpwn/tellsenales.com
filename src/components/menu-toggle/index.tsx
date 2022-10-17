@@ -7,8 +7,14 @@ export default function ToggleMenu() {
     const body = document.querySelector('body')
     if (sidebarShown) {
       body.classList.add('mobile-sidebar-toggle')
+			document.querySelectorAll('aside nav details').forEach((e) => {
+				e.removeAttribute('open');
+			});
     } else {
       body.classList.remove('mobile-sidebar-toggle')
+			document.querySelectorAll('aside nav details').forEach((e) => {
+				e.setAttribute('open', '');
+			});
     }
   }, [sidebarShown])
   return (

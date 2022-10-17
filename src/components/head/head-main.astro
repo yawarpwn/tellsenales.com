@@ -5,7 +5,6 @@ const { content = {}, hideRightSidebar = false } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 import '../../styles/main.css'
 ---
-<>
 <HeadCommon />
 <HeadSeo {content} {canonicalURL} />
 <title>{content.title} | Tell Señales</title>
@@ -34,7 +33,7 @@ import '../../styles/main.css'
     position: fixed;
     top: 4rem;
     height: 100%;
-    z-index: 10;
+    z-index: 100;
   }
 
   :global(#left-sidebar) {
@@ -96,4 +95,3 @@ import '../../styles/main.css'
     }
   }
 </style>
-</>

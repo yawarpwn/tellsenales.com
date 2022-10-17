@@ -1,11 +1,8 @@
 ---
 import { readdir } from 'node:fs/promises'
 import MainLayout from "@layouts/main-layout.astro";
-import fs from 'fs'
-import path from 'path'
 
-
-async function getAllPaths(dir) {
+async function getAllPaths(dir: string) {
   let files = []
   const entries = await readdir(dir, { withFileTypes: true})
   for (const entry of entries) {
@@ -19,8 +16,8 @@ async function getAllPaths(dir) {
   return files
 }
 
-const dirURL = import.meta.env.DEV ? 'public/galery' : '../../../galery'
-const allImages = await getAllPaths(dirURL)
+const dirURL = 'public/galery'
+const allImages = (await getAllPaths(dirURL)).map(imgUrl => imgUrl.split('public')[1])
 const entries = await readdir(dirURL)
 const allPathImages = entries.map(entry => {
   return {
@@ -28,13 +25,6 @@ const allPathImages = entries.map(entry => {
     title: entry
   }
 })
-
-
-
-// const paths = allImages.map(path => path.split('public')[1])
-// const category = paths.map(path => path.)
-// console.log(paths)
-
 
 
 const content = { 

@@ -7,25 +7,103 @@ import AttentionFloating from '@components/attention-floating.astro'
 import HeadMain from '@components/head/head-main.astro'
 import Footer from './footer/footer.astro'
 
+import HeadCommon from '../components/head/head-common.astro'
+import HeadSeo from '../components/head/head-seo.astro'
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+import '../styles/main.css'
+
 const { content= {} } = Astro.props
 ---
 
 <html dir="ltr" lang="es">
   <head>
-    <HeadMain {content} />
-    <style>
-    #left-sidebar {
-      display: none;
+<HeadCommon />
+<HeadSeo {content} {canonicalURL} />
+<title>{content.title} | Tell Señales</title>
+
+<script is:inline>
+  const theme = (() => {
+    if (localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
     }
 
-    @media (min-width: 50em) {
-      #left-sidebar {
-        display: none;
-      }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
     }
 
+    return 'light'
+  })()
 
-    </style>
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark')
+  } else {
+    document.documentElement.classList.add('dark')
+  }
+</script>
+<style>
+  :global(.sidebar) {
+    position: fixed;
+    top: 4rem;
+    height: 100%;
+    z-index: 100;
+  }
+
+  :global(#left-sidebar) {
+    display: none;
+    background: var(--theme-bg-gradient);
+    backdrop-filter: blur(10px) saturate(180%);
+  }
+
+  :global(#right-sidebar) {
+    width: 18rem;
+    top: 4rem;
+    inset-inline-end: 0;
+    display: none;
+  }
+
+  :global(#main-content) {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+  }
+
+  @media not screen and (min-width: 50em) {
+    :global(.mobile-sidebar-toggle #left-sidebar) {
+      display: block;
+      width: 100%;
+      inset-inline-end: 0;
+    }
+
+    :global(.mobile-sidebar-toggle) {
+      overflow: hidden;
+    }
+    :global(.mobile-sidebar-toggle #left-sidebar ul) {
+      overscroll-behavior: contain;
+    }
+  }
+
+  @media (min-width: 50em) {
+    :global(.main-column) {
+      margin-inline-start: 18rem;
+    }
+
+    :global(#left-sidebar) {
+      display: none !important;
+      padding-inline-start: 1rem;
+      padding-inline-end: 1rem;
+      top: 4rem;
+      width: 18rem;
+    }
+  }
+
+  @media (min-width: 72em) {
+
+    :global(.main-column) {
+      margin-inline-end: 18rem;
+    }
+  }
+</style>
   </head>
   <body>
     <main>

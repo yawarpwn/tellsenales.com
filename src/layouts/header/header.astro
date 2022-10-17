@@ -1,7 +1,7 @@
 ---
 import MenuToggle from '@components/menu-toggle'
 import SocialIcons from '@components/social-icons'
-import ThemeToggle from '@components/toggle-theme'
+import ThemeToggleButton from '@components/theme-toggle-button'
 import Search from '@components/search/search.astro'
 import Autocomplete from '@components/search/autocomplete';
 ---
@@ -48,14 +48,14 @@ import Autocomplete from '@components/search/autocomplete';
       <div class="hidden md:flex items-center">
         <div class="flex items-center gap-2">
           <SocialIcons />
-          <ThemeToggle client:load />
+          <ThemeToggleButton client:visible isInsideHeader={true} />
+			
         </div>
       </div>
       <div class="w-full min-w-[180px] md:max-w-[300px]">
         <Autocomplete client:only='preact' />
       </div>
       <div class="flex md:hidden items-center">
-        <ThemeToggle client:load />
         <MenuToggle client:idle />
       </div>
     </nav>

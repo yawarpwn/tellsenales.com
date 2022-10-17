@@ -35,7 +35,7 @@ const content = {
       <div class="shadow-image"></div>
       <img class="w-full h-full object-cover" src={`/assets/images/${slugify(title, {lower: true})}.webp`} alt={title} />
     </div>
-    <h1 class="text-2xl md:text-3xl text-center font-extrabold z-[2] text-white uppercase">{title}</h1>
+    <h1 class="text-2xl md:text-3xl text-center font-extrabold z-[1] text-white uppercase">{title}</h1>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
   {products.map(product => <ProductCard product={product} />)}
