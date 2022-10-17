@@ -22,9 +22,9 @@ const entries = await readdir(dirURL)
 const allPathImages = entries.map(entry => {
   return {
     paths: allImages.filter(img => img.includes(entry)),
-    title: entry
+    title: entry.replace('-', ' ')
   }
-})
+}).reverse() 
 
 
 const content = { 
@@ -34,7 +34,7 @@ const content = {
 }
 ---
 <MainLayout hideRightSidebar {content}>
-  <div class="px-4 md:px-0">
+  <div class="px-4 md:px-0 mt-8">
     <h1 class="text-center">Galeria</h1>
     <p class="max-w-5xl">
       Con dedicación, esfuerzo y buen desempeño, hemos desarrollado a lo largo de los años diversas soluciones para nuestros clientes.
@@ -45,8 +45,11 @@ const content = {
         <h2 class="uppercase text-2xl">Señales {title}</h2>
         <div class="flex overflow-x-scroll gap-4">
           {paths.map(path => {
+              const index = path.lastIndexOf('/')
+              const alt = path.substring(index + 1, path.length).replace('.webp', '')
+              console.log('alt', alt)
               return(
-          <img src={path} width="300" height="auto" />
+          <img src={path} width="300" height="auto" loading="lazy" alt={alt} />
           )}
             )}
         </div>

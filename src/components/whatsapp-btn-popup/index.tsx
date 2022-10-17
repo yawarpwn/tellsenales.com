@@ -95,7 +95,7 @@ bg-white
               >
                 <div className='w-[50px]'>
                   <img
-                    src='/assets/team/raquel_maldonado.png'
+                    src='/assets/team/raquel_maldonado.webp'
                     alt='Raquel Maldonado Ramirez'
                   />
                 </div>
