@@ -86,7 +86,7 @@ bg-white
             <div className='text-center text-xs '>
               El equipo suele responder en unos minutos
             </div>
-            <div className=' mt-[14px] bg-black/10'>
+            <div className=' mt-[14px] bg-slate-50/5'>
               <a
                 href={`${WHATSAPP_LINK}Hola Raquel, vengo de la pagina. Estoy interesado en sus productos.`}
                 target='_blank'

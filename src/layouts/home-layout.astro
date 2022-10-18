@@ -114,9 +114,11 @@ const { content= {} } = Astro.props
       <div class="pt-16">
           <slot />
       </div>
+      <div class="mb-6 md:mb-0">
+          <Footer />
+      </div>
       <WhatsappBtnPopup client:load />
       <AttentionFloating />
-      <Footer />
     </main>
   </body>
 </html>

@@ -19,11 +19,12 @@ const catalogos = [
 
 import SocialIcons from '@components/social-icons'
 import { ChevronRight} from '@components/icons'
+const { hideOurSection } = Astro.props
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:place-content-start md:place-items-start py-16">
+<div class={`grid grid-cols-1 ${hideOurSection ?  'md:grid-cols-3 ': 'md:grid-cols-4' }  gap-8 md:place-content-start md:place-items-start py-16`}>
   <!-- Nosotros-->
-  <div>
+  <div class={`${hideOurSection ? 'hidden' : ''}`}>
     <h4 class="footer__title">Nosotros</h4>
     <p>
       Somos Fabricantes de todo tipo de señalizaciones en Perú. Señales viales,

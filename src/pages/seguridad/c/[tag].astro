@@ -48,7 +48,9 @@ const content = {
 
   <!-- Product List -->
   <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
-  {products.map(product => <ProductCard product={product} />)}
+  {products
+    .sort((a, b) => a.name > b.name ? 1 : -1)
+    .map(product => <ProductCard product={product} />)}
   </div>
 
 </MainLayout>
