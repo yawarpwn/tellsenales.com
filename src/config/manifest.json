@@ -9,32 +9,38 @@
         {
           "title": "Seguridad",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/seguridad"
+          "path": "/senales/c/seguridad",
+          "icon": "/extintor.svg"
         },
         {
           "title": "Fotoluminiscentes",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/fotoluminiscentes"
+          "path": "/senales/c/fotoluminiscentes",
+          "icon": "/fotoluminiscente.svg"
         },
         {
           "title": "Decorativas",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/decorativas"
+          "path": "/senales/c/decorativas",
+          "icon": "/aluminio.svg"
         },
         {
           "title": "Covid-19",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/covid-19"
+          "path": "/senales/c/covid-19",
+          "icon": "/covid.svg"
         },
         {
           "title": "Viales",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/viales"
+          "path": "/senales/c/viales",
+          "icon": "/vial.svg"
         },
         {
           "title": "Obras",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/obras"
+          "path": "/senales/c/obras",
+          "icon": "/obras.svg"
         }
       ]
     },
@@ -47,7 +53,7 @@
       "heading": true,
       "routes": [
         {
-          "title": "Proteccion Vial",
+          "title": "Protección Vial",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/proteccion-vial.svg",
@@ -98,7 +104,7 @@
           "title": "Epps",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "icon": "/vinil.svg",
+          "icon": "/casco.svg",
           "path": "/seguridad/c/epps",
           "isLast": true
         }

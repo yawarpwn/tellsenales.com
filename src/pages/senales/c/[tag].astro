@@ -2,6 +2,8 @@
 import { getAllSenales } from '../../../lib/contentful-request'
 import ProductCard from '@components/product-card.astro'
 import MainLayout from '@layouts/main-layout.astro'
+import PageNavigation from '@components/page-navigation/page-navigation.astro'
+import manifest from '../../../config/manifest.json'
 import slugify from 'slugify'
 export async function getStaticPaths() {
   const allSenales = await getAllSenales()
@@ -41,6 +43,8 @@ const title = products[0].contentfulMetadata.tags[0]?.name.toUpperCase()
         Señales {title}
       </h1>
     </div>
+  <!--Page Navigation -->
+  <PageNavigation navigation={manifest.routes[0].routes} />
     <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
       {products.map(product => <ProductCard product={product} />)}
     </div>

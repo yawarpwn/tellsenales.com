@@ -2,6 +2,8 @@
 import { getAllProducts } from '../../../lib/contentful-request'
 import ProductCard from '@components/product-card.astro'
 import MainLayout from '@layouts/main-layout.astro'
+import PageNavigation from '@components/page-navigation/page-navigation.astro'
+import manifest from '../../../config/manifest.json'
 import slugify from 'slugify'
 export async function getStaticPaths() {
   const allProducts = await getAllProducts()
@@ -28,8 +30,11 @@ const content = {
   description: `Venta y distribución de implementos de seguridad ${title}`,
   image: `/assets/images/${slugify(title, {lower: true})}.webp` 
 }
+
+
 ---
 <MainLayout {content}>
+  <!--Navigation -->
   <div class="relative h-24 md:h-32 flex items-center justify-center overflow-hidden mb-4">
     <div class="absolute inset-0">
       <div class="shadow-image"></div>
@@ -37,9 +42,15 @@ const content = {
     </div>
     <h1 class="text-2xl md:text-3xl text-center font-extrabold z-[1] text-white uppercase">{title}</h1>
   </div>
+
+  <!--Page Navigation -->
+  <PageNavigation navigation={manifest.routes[1].routes} />
+
+  <!-- Product List -->
   <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
   {products.map(product => <ProductCard product={product} />)}
   </div>
+
 </MainLayout>
 <style>
 .shadow-image {
@@ -54,4 +65,6 @@ const content = {
   height: 100%;
   opacity: 0.6;
 }
+
+
 </style>

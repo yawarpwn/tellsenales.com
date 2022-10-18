@@ -35,7 +35,7 @@ export default function Autocomplete() {
                   indexName: 'tellsenales-seguridad',
                   query,
                   params: {
-                    hitsPerPage: 10
+                    hitsPerPage:9 
                   }
                 }
               ]
@@ -53,8 +53,8 @@ export default function Autocomplete() {
             item({ item, components }) {
               return <ProductItem hit={item} components={components} />
             },
-            noResults() {
-              return 'Producto no encontrado.'
+            noResults({ state}) {
+              return `Producto: "${state.query}" no encontrado.`
             }
           }
         }

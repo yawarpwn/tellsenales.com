@@ -34,7 +34,11 @@ const Component = slug ? 'a' : 'div'
       />
     </div>
     <div class="product-card__body p-2">
-      <span class="font-bold text-xs uppercase">{code || marca || sku}</span>
+{code ? (
+      <span class="font-bold text-xs uppercase">Código: {code}</span>
+): (
+      <span class="font-bold text-xs uppercase">{marca || sku}</span>
+)}
       <div class="min-h-[50px]">
         <p class="text-xs">{name}</p>
       </div>
