@@ -5,7 +5,6 @@ export interface Props {
 
 const { images } = Astro.props
 ---
-
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
@@ -19,7 +18,7 @@ const { images } = Astro.props
             if (!url) return
             return (
               <div class="swiper-slide">
-                <img src={url} />
+                <img src={url} alt={'Thumbs swiper producto seguridad'} width="75" height="auto" />
               </div>
             )
           })
@@ -31,10 +30,10 @@ const { images } = Astro.props
     <div class="swiper-wrapper">
       {
         images.map((url: string) => {
-          if (!url) return
+          if(!url) return
           return (
             <div class="swiper-slide">
-              <img src={url} />
+              <img src={url} width="350" alt={'Slider producto segurida'} />
             </div>
           )
         })
@@ -45,6 +44,7 @@ const { images } = Astro.props
     <div class="swiper-button-next"></div>
   </div>
 </div>
+
 
 <script type="module">
   import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js'
@@ -82,8 +82,8 @@ const { images } = Astro.props
 <style>
   .main-swiper {
     height: 354px;
-    margin-left: 5rem;
   }
+
 
   .main-swiper .swiper-slide {
     display: flex;
@@ -108,7 +108,7 @@ const { images } = Astro.props
     align-items: center;
     width: 75px;
     height: 75px !important;
-    border: 1px solid var(--colors-accents2);
+    border: 2px solid var(--theme-text);
   }
 
   .thumb-swiper .swiper-slide:first-child {
@@ -126,15 +126,15 @@ const { images } = Astro.props
   }
 
   .thumb-swiper .swiper-slide-thumb-active {
-    border-color: orange;
+    border-color: orange !important;
   }
 
   .swiper-button-prev,
   .swiper-button-next {
     --swiper-theme-color: var(--colors-accents7);
     --swiper-navigation-size: 20px;
-    border: 1px solid var(--colors-accents2);
-    background: var(--colors-background);
+    border: 1px solid var(--theme-text);
+    background: var(--theme-bg);
     width: 50px !important;
     height: 50px !important;
     border-radius: 100%;

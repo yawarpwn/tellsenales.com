@@ -33,7 +33,10 @@ export default function Autocomplete() {
               queries: [
                 {
                   indexName: 'tellsenales-seguridad',
-                  query
+                  query,
+                  params: {
+                    hitsPerPage: 10
+                  }
                 }
               ]
             })

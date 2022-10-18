@@ -1,0 +1,23 @@
+---
+export interface Props {
+  images: string[]
+}
+
+const { images } = Astro.props
+---
+
+  <div class="">
+    <div class="flex gap-4 overflow-x-scroll">
+      {
+        images.map((url: string) => {
+          const index = url.lastIndexOf('/')
+          const alt = url.substring(index + 1, url.length).replace('.webp', '')
+          if (!url) return
+          return (
+              <img src={url} class="rounded-lg" width="300" height="auto" alt={alt} loading="lazy" />
+          )
+        })
+      }
+    </div>
+  </div>
+
