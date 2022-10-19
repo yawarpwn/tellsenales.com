@@ -4,12 +4,38 @@ layout: '@layouts/posts-layout.astro'
 description: Fabricación de señales reflectivas para vias y calles 
 url: https://tellsenales.com/senales/viales/info
 image: '/assets/images/senales-viales-tell.webp'
+setup: |
+  import Iframe from '@/components/iframe/iframe.astro';
 ---
 
-La señalización vial son todas aquellas que brindan información a los conductores de los automóviles en relación a las propiedades de las vías por las que conducen, y tienen como función principal la de informar, advertir y orientar a los usuarios.
+Son  aquellas señales que dan información a los conductores sobre las características de las vías por las que conducen. Tenen como función principal la de informar, advertir y orientar.
 ![Senales Viales](/assets/images/senales-viales-tell.webp)
 
-Contar con señaleticas viales son un sinónimo de seguridad en los caminos, calles o carreteras, lo cual es de gran importancia debido a que cuidan la integridad de nuestras vidas.
+## ¿Cuántos Tipos de señales viales existen?
+Existen 2 tipos de señales viales:
+- Verticales: Instaladas a través de postes.
+- Horizontales: Son aquellas pintadas o adheridas al pavimento
+
+## ¿Cómo se clasifican las señales viales verticales? 
+Se clasifican en: 
+- Preventivas
+- Reguladoras o Reglamentarias 
+- Informativas
+- Turísticas
+<Iframe />
+
+## Características:  
+- Preventivas
+
+Son de fondo amarrillo y pictograma color negro Su función es prevenir a los conductores de la existencia de peligros en el camino.
+
+- Reguladoras o Reglamentarias
+
+Son de fondo blanco con un aro de color rojo. Su objetivo es indicar las limitaciones o prohibiciones. 
+
+- Informativas 
+
+Son leyendas o símbolos que tienen el objetivo de guiar al usuario a lo largo de las calles o carreteras.
 
 ## Soportes
 En Perú las señales verticales pueden ser trabajadas con bases o paneles de fibra de vidrio, fierro galvanizado, aluminio y aluminio compuesto. 

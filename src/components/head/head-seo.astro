@@ -1,9 +1,10 @@
 ---
+import site from '../../config/setting'
 export interface Props {
   canonicalUrl: URL
 }
 const { content, canonicalURL } = Astro.props
-const { title, description, image} = content
+const { title, description, image } = content
 ---
 
 <!-- Primary Meta Tags -->
@@ -12,11 +13,12 @@ const { title, description, image} = content
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta name="description" property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={site.name} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -24,3 +26,33 @@ const { title, description, image} = content
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERP9CTT7P"
+></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || []
+  function gtag() {
+    dataLayer.push(arguments)
+  }
+  gtag('js', new Date())
+
+  gtag('config', 'G-3ERP9CTT7P')
+</script>
+<!-- Meta Pixel Code -->
+<script is:inline>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '825596415540655');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=825596415540655&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->

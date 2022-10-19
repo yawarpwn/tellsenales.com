@@ -2,6 +2,7 @@
 import { readdir } from 'node:fs/promises'
 import MainLayout from "@layouts/main-layout.astro";
 import GalerySlider from '@components/galery-slide.astro'
+import Iframe from '@components/iframe/iframe.astro'
 
 async function getAllPaths(dir: string) {
   let files = []
