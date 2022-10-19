@@ -32,7 +32,7 @@ export default function Autocomplete() {
               searchClient,
               queries: [
                 {
-                  indexName: 'tellsenales-seguridad',
+                  indexName: 'seguridad-tellsenales',
                   query,
                   params: {
                     hitsPerPage:9 
@@ -42,20 +42,9 @@ export default function Autocomplete() {
             })
           },
           templates: {
-            header() {
-              return (
-                <Fragment>
-                  <span className='aa-SourceHeaderTitle'>Seguridad</span>
-                  <div className='aa-SourceHeaderLine' />
-                </Fragment>
-              )
-            },
             item({ item, components }) {
               return <ProductItem hit={item} components={components} />
             },
-            noResults({ state}) {
-              return `Producto: "${state.query}" no encontrado.`
-            }
           }
         }
       ]

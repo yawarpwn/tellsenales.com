@@ -9,10 +9,9 @@ export default function ProductItem({ hit, components }) {
           </div>
           <div className='aa-ItemContentBody'>
             <div className='aa-ItemContentTitle'>
-              <components.Highlight hit={hit} attribute='name' />
+              {name}
             </div>
             <div className='aa-ItemContentDescription'>
-              <components.Snippet hit={hit} attribute='description' />
             </div>
           </div>
         </div>
@@ -28,6 +27,7 @@ export default function ProductItem({ hit, components }) {
           </button>
         </div>
       </div>
+
     </a>
   )
 }
