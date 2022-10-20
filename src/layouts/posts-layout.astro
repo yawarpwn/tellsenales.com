@@ -44,8 +44,8 @@ const { hideRightSidebar, content = {} } = Astro.props
             <slot />
         </PageContent>
       </div>
-      <div class="main-column px-4 md:px-0 mb-8 md:mb-0">
-        <FooterInfo />
+      <div class="main-column px-4 md:pl-16 mb-8 md:mb-0">
+        <FooterInfo hideOurSection />
       </div>
       <aside
         class={`sidebar ${hideRightSidebar ? 'hide-right-sidebar' : ''}`}

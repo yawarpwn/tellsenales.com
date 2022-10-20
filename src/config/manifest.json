@@ -125,6 +125,18 @@
           "path": "/posts/senales-viales"
         },
         {
+          "title": "Lámina señales verticales",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/laminas-senales-verticales"
+        },
+        {
+          "title": "Soportes señales verticales",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/soportes-senales-verticales"
+        },
+        {
           "title": "Señales Fotoluminiscentes",
           "open": true,
           "keywords": "guide, getting started, start, nextui",

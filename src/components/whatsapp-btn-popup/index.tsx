@@ -6,7 +6,7 @@ export default function WhatsappBtnPopup() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <div className='fixed bottom-[15px] right-[30px] z-50 lg:animate-bounce '>
+      <div className='fixed bottom-[15px] right-[30px] z-[45] lg:animate-bounce '>
         <div
           className={`
           duration-400 transition ease-in-out
