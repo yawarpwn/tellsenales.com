@@ -1,6 +1,5 @@
 ---
 import manifest from '../../config/manifest.json'
-import Category from './category.astro'
 import ThemeToggleButton from '@components/theme-toggle-button'
 ---
 
@@ -121,7 +120,7 @@ import ThemeToggleButton from '@components/theme-toggle-button'
 
   .nav-link a {
     margin: 1px;
-    padding: 0.3rem 2rem;
+    padding: 0.3rem 2.5rem;
     color: var(--theme-text-lighter);
     text-decoration: none;
     display: block;
@@ -129,10 +128,14 @@ import ThemeToggleButton from '@components/theme-toggle-button'
   }
 
 	@media (min-width: 50em) {
-		.nav-group-title,
-		.nav-link a {
+		.nav-group-title {
+
 			padding: 0.2rem 1rem;
-		}
+    }
+
+    .nav-link a {
+			padding: 0.2rem 1.5rem;
+    }
 	}
 
   .nav-link a:hover,
