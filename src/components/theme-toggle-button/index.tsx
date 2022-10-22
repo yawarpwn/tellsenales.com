@@ -4,10 +4,6 @@ import { useState, useEffect } from 'preact/hooks';
 import './styles.css';
 
 interface Props {
-	labels: {
-		useLight: string;
-		useDark: string;
-	};
 	isInsideHeader: boolean;
 }
 

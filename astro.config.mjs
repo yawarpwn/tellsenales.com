@@ -1,4 +1,7 @@
 import path, { dirname } from 'path';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import myRehypePlugin from './my-rehype-plugin';
 import SITE from './src/config/setting';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
@@ -9,7 +12,7 @@ import { toString } from 'hast-util-to-string';
 import { escape } from 'html-escaper';
 import sitemap from '@astrojs/sitemap';
 import preact from '@astrojs/preact';
-import { tokens, foregroundPrimary, backgroundPrimary } from './syntax-highlighting-theme';
+// import { tokens, foregroundPrimary, backgroundPrimary } from './syntax-highlighting-theme';
 import mdx from "@astrojs/mdx";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -44,11 +47,37 @@ export default defineConfig({
   site: SITE.url,
   server: {// port: 3000,
   },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), sitemap(), preact(), mdx()],
+  integrations: [
+    tailwind({ config: { applyBaseStyles: false}}), 
+    sitemap(), 
+    preact(), 
+    mdx({
+      rehypePlugins: [
+        rehypeSlug, 
+        [rehypeAutolinkHeadings, {
+					properties: {
+						class: 'anchor-link',
+					},
+					behavior: 'after',
+					group: ({ tagName }) =>
+						h(`div.heading-wrapper.level-${tagName}`, {
+							tabIndex: -1,
+						}),
+					content: (heading) => [
+						h(
+							`span.anchor-icon`,
+							{
+								ariaHidden: 'true',
+							},
+							AnchorLinkIcon
+						),
+						createSROnlyLabel(toString(heading)),
+					],
+        }]
+      ],
+      extendPlugins: 'astroDefaults'
+    })
+  ],
   vite: {
     plugins: [],
     resolve: {
@@ -61,37 +90,6 @@ export default defineConfig({
         '@components': path.resolve(__dirname, './src/components')
       }
     }
-  },
-  markdown: {
-    syntaxHighlight: 'shiki',
-    shikiConfig: {
-      theme: {
-        name: 'Star gazer',
-        type: 'dark',
-        settings: tokens,
-        fg: foregroundPrimary,
-        bg: backgroundPrimary
-      }
-    },
-    remarkPlugins: [// These are here because setting custom plugins disables the default plugins
-    'remark-gfm', ['remark-smartypants', {
-      dashes: false
-    }]],
-    rehypePlugins: ['rehype-slug', // This adds links to headings
-    ['rehype-autolink-headings', {
-      properties: {
-        class: 'anchor-link'
-      },
-      behavior: 'after',
-      group: ({
-        tagName
-      }) => h(`div.heading-wrapper.level-${tagName}`, {
-        tabIndex: -1
-      }),
-      content: heading => [h(`span.anchor-icon`, {
-        ariaHidden: 'true'
-      }, AnchorLinkIcon), createSROnlyLabel(toString(heading))]
-    }]]
   },
   optimizeDeps: {
     allowNodeBuiltins: true

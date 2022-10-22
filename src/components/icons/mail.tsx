@@ -1,16 +1,14 @@
 import React from "react";
-import {useTheme} from "@nextui-org/react";
 
 import {IconProps} from "./index";
 
 const Mail: React.FC<IconProps> = ({fill, size, height, width, ...props}) => {
-  const {theme} = useTheme();
 
   return (
     <svg height={size || height || 24} viewBox="0 0 24 24" width={size || width || 24} {...props}>
       <g
         fill="none"
-        stroke={fill || theme?.colors?.text?.value}
+        stroke={fill}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}

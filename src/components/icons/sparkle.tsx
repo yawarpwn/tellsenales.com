@@ -1,5 +1,4 @@
 import * as React from "react";
-import {yellow} from "@nextui-org/react";
 
 export interface Props {
   fill?: string;
@@ -11,7 +10,7 @@ export interface Props {
 export type SparkleProps = Props & React.HTMLAttributes<SVGElement>;
 
 const Sparkle: React.FC<SparkleProps> = ({
-  fill = yellow.yellow600,
+  fill ,
   size,
   width = 24,
   height = 24,

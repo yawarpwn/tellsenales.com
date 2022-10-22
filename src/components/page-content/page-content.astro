@@ -34,7 +34,7 @@ const { content, previous, next } = Astro.props
 		color: var(--theme-text-lighter);
 	}
   .content {
-    padding-top: calc(var(--theme-navbar-height) + var(--doc-padding-block));
+    padding-top: var(--doc-padding-block);
     padding-bottom: var(--doc-padding-block);
     padding-inline: var(--min-spacing-inline);
     width: 100%;
@@ -51,7 +51,7 @@ const { content, previous, next } = Astro.props
   }
   .next-previous-nav {
     display: flex;
-    flex-wrap: auto;
+    flex-wrap: wrap;
     width: auto;
     gap: 1rem;
     margin-bottom: 1.5rem;
