@@ -1,6 +1,9 @@
 import { AstroGlobal } from "astro";
 import { readdir } from 'node:fs/promises'
-import links from './nav'
+import manifest from '../config/manifest.json'
+
+
+const links = manifest.routes[2].routes 
 
 interface NavItem {
   text: string
@@ -25,8 +28,8 @@ interface PreviousAndNext {
 */
 export  function getNavLinks(Astro: AstroGlobal) {
 
-  const index = links.findIndex(x => Astro.url.pathname.endsWith(x.slug))
-  const makeLink = ({text, slug}) => ({text, link: `/posts/${slug}/`})
+  const index = links.findIndex(x => Astro.url.pathname.endsWith(x.path))
+  const makeLink = ({title, path}) => ({text: title, link: path})
 
   const previous = index > 0 ? makeLink(links[index - 1]) : undefined  
   const next  = index !== -1 && index < links.length - 1 ? makeLink(links[index + 1]) : undefined 

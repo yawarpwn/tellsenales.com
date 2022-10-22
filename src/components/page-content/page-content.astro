@@ -1,0 +1,59 @@
+---
+import ArticleNavigationButton from './article-navigation-button.astro'
+
+export interface Props {
+  previous?: { text: string; link: string }
+  next?: { text: string; link: string }
+  content: { title: string }
+}
+
+const { content, previous, next } = Astro.props
+---
+
+<article id="article" class="content">
+  <section class="main-section">
+    <header>
+      <slot name='before-title' />
+      <h1 class="content-title" id="overview">{content.title}</h1>
+      <slot name='after-title' />
+    </header>
+    <slot />
+  </section>
+  {
+    (previous || next) && (
+      <aside class="next-previous-nav">
+        {previous && <ArticleNavigationButton rel="prev" item={previous} />}
+        {next && <ArticleNavigationButton rel="next" item={next} />}
+      </aside>
+    )
+  }
+</article>
+<style>
+	.content-title :global(.scope) {
+		font-weight: 300;
+		color: var(--theme-text-lighter);
+	}
+  .content {
+    padding-top: calc(var(--theme-navbar-height) + var(--doc-padding-block));
+    padding-bottom: var(--doc-padding-block);
+    padding-inline: var(--min-spacing-inline);
+    width: 100%;
+    height: 100%;
+    max-width: 90ch;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .content > section {
+    margin-bottom: 4rem;
+  }
+  .next-previous-nav {
+    display: flex;
+    flex-wrap: auto;
+    width: auto;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+</style>

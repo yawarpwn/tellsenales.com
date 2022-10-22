@@ -1,14 +1,18 @@
 ---
 
-const { content, currentPage  } = Astro.props 
-const title = content.title 
-// const title = content.title.replace('@astrojs/', '<span class="scope">@astrojs/</span>');
+export interface Props {
+  previous: { text: string, link: string}
+  next: {text: string, link: string}
+  content: {title: string}
+}
+
+const { content, previous, next} = Astro.props
 ---
 <article id="article" class="content">
   <section class="main-section">
-		<h1 class="content-title" id="overview" set:html={title}></h1>
     <slot />
   </section>
+  {previous || next}
 </article>
 <style>
 /* .content { */
