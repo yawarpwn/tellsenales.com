@@ -140,8 +140,13 @@
           "title": "Señales Fotoluminiscentes",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "icon": "/cinta-seguridad.svg",
           "path": "/posts/senales-fotoluminiscentes"
+        },
+        {
+          "title": "Señales Aluminio",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/senales-aluminio"
         }
       ]
     },
