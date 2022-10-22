@@ -1,60 +1,27 @@
 ---
-import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
-import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
-import Header from './header/header.astro'
+import BaseLayout from './base-layout.astro'
 import PageContent from './page-content.astro'
 import WhatsappBtnPopup from '@components/whatsapp-btn-popup'
 import AttentionFloating from '@components/attention-floating.astro'
 import HeadMain from '@components/head/head-main.astro'
 import FooterInfo from './footer/footer-info.astro'
+import PostsRightSidebar from '@components/right-sidebar/posts-right-sidebar.astro'
+
+import { getNavLinks } from '@utils/get-nav-links'
 
 export interface Props {
   hideRightSidebar?: boolean
   withPageContent?: boolean
 }
 
-const { hideRightSidebar, content = {} } = Astro.props
+const { content = {} } = Astro.props
+console.log(getNavLinks(Astro))
 ---
 
-<html dir="ltr" lang="es">
-  <head>
-    <HeadMain {content} />
-    <style>
-      #right-sidebar.hide-right-sidebar {
-        display: none;
-      }
+<BaseLayout {...Astro.props}>
+  <PostsRightSidebar slot="secondary-sidebar" />
+  <PageContent {...{content}}>
+    <slot />
+  </PageContent>
+</BaseLayout>
 
-      #main-content.hide-right-sidebar {
-        margin-inline-end: 0;
-      }
-
-    </style>
-  </head>
-  <body>
-    <main>
-      <Header />
-      <aside class={`sidebar `} id="left-sidebar">
-        <LeftSidebar />
-      </aside>
-      <div
-        class={`main-column ${hideRightSidebar ? 'hide-right-sidebar' : ''}`}
-        id="main-content"
-      >
-        <PageContent {content}>
-            <slot />
-        </PageContent>
-      </div>
-      <div class="main-column px-4 md:pl-16 mb-8 md:mb-0">
-        <FooterInfo hideOurSection />
-      </div>
-      <aside
-        class={`sidebar ${hideRightSidebar ? 'hide-right-sidebar' : ''}`}
-        id="right-sidebar"
-      >
-        <RightSidebar />
-      </aside>
-      <WhatsappBtnPopup client:load />
-      <AttentionFloating />
-    </main>
-  </body>
-</html>

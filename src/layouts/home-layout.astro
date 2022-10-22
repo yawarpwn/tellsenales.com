@@ -1,124 +1,118 @@
 ---
 import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
 import Header from './header/header.astro'
-import PageContent from './page-content.astro'
-import WhatsappBtnPopup from '@components/whatsapp-btn-popup' 
+import WhatsappBtnPopup from '@components/whatsapp-btn-popup'
 import AttentionFloating from '@components/attention-floating.astro'
-import HeadMain from '@components/head/head-main.astro'
+import HeadCommon from '@components/head/head-common.astro'
+import HeadSeo from '@components/head/head-seo.astro'
 import Footer from './footer/footer.astro'
-
-import HeadCommon from '../components/head/head-common.astro'
-import HeadSeo from '../components/head/head-seo.astro'
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 import '../styles/main.css'
 
-const { content= {} } = Astro.props
+const { content = {} } = Astro.props
+const url = new URL(Astro.url)
+const currentPage = url.pathname
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 ---
 
-<html dir="ltr" lang="es">
+<html dir="ltr" lang="es" class="initial">
   <head>
-<HeadCommon />
-<HeadSeo {content} {canonicalURL} />
-<title>{content.title} | Tell Señales</title>
-
-<script is:inline>
-  const theme = (() => {
-    if (localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
-    }
-
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    }
-
-    return 'light'
-  })()
-
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark')
-  } else {
-    document.documentElement.classList.add('dark')
-  }
-</script>
-<style>
-  :global(.sidebar) {
-    position: fixed;
-    top: 4rem;
-    height: 100%;
-    z-index: 100;
-  }
-
-  :global(#left-sidebar) {
-    display: none;
-    background: var(--theme-bg-gradient);
-    backdrop-filter: blur(10px) saturate(180%);
-  }
-
-  :global(#right-sidebar) {
-    width: 18rem;
-    top: 4rem;
-    inset-inline-end: 0;
-    display: none;
-  }
-
-  :global(#main-content) {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    height: 100%;
-  }
-
-  @media not screen and (min-width: 50em) {
-    :global(.mobile-sidebar-toggle #left-sidebar) {
-      display: block;
-      width: 100%;
-      inset-inline-end: 0;
-    }
-
-    :global(.mobile-sidebar-toggle) {
-      overflow: hidden;
-    }
-    :global(.mobile-sidebar-toggle #left-sidebar ul) {
-      overscroll-behavior: contain;
-    }
-  }
-
-  @media (min-width: 50em) {
-    :global(.main-column) {
-      margin-inline-start: 18rem;
-    }
-
-    :global(#left-sidebar) {
-      display: none !important;
-      padding-inline-start: 1rem;
-      padding-inline-end: 1rem;
-      top: 4rem;
-      width: 18rem;
-    }
-  }
-
-  @media (min-width: 72em) {
-
-    :global(.main-column) {
-      margin-inline-end: 18rem;
-    }
-  }
-</style>
+    <HeadCommon />
+    <HeadSeo {content} {canonicalUrl} />
+    <title>{content.title} | Tell Señales</title>
+    <style>
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        padding: 0;
+      }
+      #left-sidebar {
+        display: none;
+        background: var(--theme-bg-gradient);
+        z-index: 10;
+        inset-inline-start: 0;
+      }
+      #right-sidebar {
+        display: none;
+        top: var(--theme-navbar-height);
+        inset-inline-end: 0;
+        width: var(--theme-right-sidebar-width);
+      }
+      #main-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-width: 0;
+      }
+      /* Allow showing left sidebar as an overlay, but only while viewport stays narrow */
+      @media not screen and (min-width: 50em) {
+        /* Make the left sidebar visible and fill the entire viewport below the navbar */
+        :global(.mobile-sidebar-toggle #left-sidebar) {
+          display: block;
+          top: var(--theme-navbar-height);
+          inset-inline-end: 0;
+        }
+        /*
+					Try to prevent the rest of the page from scrolling,
+					and the main content from being visible below the overlay.
+					Unfortunately, iOS Safari doesn't currently play well with this
+					and will sometimes still scroll the page even though it shouldn't.
+					Once overscroll-behavior is properly supported, this should be fixed.
+				*/
+        :global(.mobile-sidebar-toggle) {
+          overflow: hidden;
+        }
+        :global(.mobile-sidebar-toggle .main-column) {
+          visibility: hidden;
+        }
+        :global(.mobile-sidebar-toggle #left-sidebar ul) {
+          overscroll-behavior: contain;
+        }
+      }
+    </style>
+    <script is:inline>
+      // This code was migrated/copied from ThemToggleBotton to make the
+      // dark mode toggle instant, vs. hidden inside of a Preact useEffect() call.
+      const theme = (() => {
+        if (
+          typeof localStorage !== 'undefined' &&
+          localStorage.getItem('theme')
+        ) {
+          return localStorage.getItem('theme')
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark'
+        }
+        return 'light'
+      })()
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark')
+      } else {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
   </head>
   <body>
     <main>
       <Header />
-      <aside class='sidebar' id="left-sidebar">
-        <LeftSidebar />
-      </aside>
-      <div class="pt-16">
+      <main>
+        <aside id="left-sidebar" class={`sidebar`}>
+          <slot name="primary-sidebar">
+            <LeftSidebar />
+          </slot>
+        </aside>
+        <aside id="right-sidebar" class="sidebar">
+          <slot name="secondary-sidebar" />
+        </aside>
+        <div class="mt-16">
           <slot />
-      </div>
-      <div class="mb-6 md:mb-0">
-          <Footer />
-      </div>
+        </div>
+      </main>
+      <Footer />
       <WhatsappBtnPopup client:load />
       <AttentionFloating />
     </main>
   </body>
 </html>
+
+

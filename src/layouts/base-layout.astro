@@ -1,32 +1,101 @@
 ---
-import HeadCommon from '../components/head-common.astro'
-import HeadSEO from '../components/head-seo.astro'
-import Header from '../layouts/header/header.astro'
-import Footer from './footer/index.astro'
+import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
+import Header from './header/header.astro'
+import PageContent from './page-content.astro'
+import WhatsappBtnPopup from '@components/whatsapp-btn-popup'
+import AttentionFloating from '@components/attention-floating.astro'
+import HeadCommon from '@components/head/head-common.astro'
+import HeadSeo from '@components/head/head-seo.astro'
+import FooterInfo from './footer/footer-info.astro'
+import '../styles/main.css'
 
 const { content = {} } = Astro.props
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const url = new URL(Astro.url)
+const currentPage = url.pathname
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 ---
 
-<!DOCTYPE html>
-<html dir="ltr" lang="es">
+<html dir="ltr" lang="es" class="initial">
   <head>
     <HeadCommon />
-    <HeadSEO {content} {canonicalURL} />
-    <title>{content.title}</title>
+    <HeadSeo {content} {canonicalUrl} />
+    <title>{content.title} | Tell Señales</title>
+    <style>
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        padding: 0;
+      }
+      #left-sidebar {
+        display: none;
+        background: var(--theme-bg-gradient);
+        z-index: 10;
+        inset-inline-start: 0;
+      }
+      #right-sidebar {
+        display: none;
+        top: var(--theme-navbar-height);
+        inset-inline-end: 0;
+        width: var(--theme-right-sidebar-width);
+      }
+      #main-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-width: 0;
+      }
+      @media not screen and (min-width: 50em) {
+        :global(.mobile-sidebar-toggle #left-sidebar) {
+          display: block;
+          top: var(--theme-navbar-height);
+          inset-inline-end: 0;
+        }
+        :global(.mobile-sidebar-toggle) {
+          overflow: hidden;
+        }
+        :global(.mobile-sidebar-toggle .main-column) {
+          visibility: hidden;
+        }
+        :global(.mobile-sidebar-toggle #left-sidebar ul) {
+          overscroll-behavior: contain;
+        }
+      }
+      @media (min-width: 50em) {
+        .main-column {
+          margin-inline-start: var(--theme-left-sidebar-width);
+        }
+        #left-sidebar {
+          display: flex;
+          padding-inline-start: var(--min-spacing-inline);
+          padding-inline-end: 1rem;
+          top: var(--theme-navbar-height);
+          width: var(--theme-left-sidebar-width);
+          background: transparent;
+        }
+      }
+      @media (min-width: 72em) {
+        .main-column {
+          margin-inline-end: var(--theme-right-sidebar-width);
+        }
+        #right-sidebar {
+          display: flex;
+        }
+      }
+    </style>
     <script is:inline>
       const theme = (() => {
-        if (localStorage.getItem('theme')) {
+        if (
+          typeof localStorage !== 'undefined' &&
+          localStorage.getItem('theme')
+        ) {
           return localStorage.getItem('theme')
         }
-
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           return 'dark'
         }
-
         return 'light'
       })()
-
       if (theme === 'light') {
         document.documentElement.classList.remove('dark')
       } else {
@@ -35,11 +104,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     </script>
   </head>
   <body>
-    <Header />
-    <slot />
+    <main>
+      <Header />
+      <main>
+        <aside id="left-sidebar" class={`sidebar`}>
+          <slot name="primary-sidebar">
+            <LeftSidebar />
+          </slot>
+        </aside>
+        <aside id="right-sidebar" class="sidebar">
+          <slot name="secondary-sidebar" />
+        </aside>
+        <div id="main-content" class="main-column">
+          <div class="mt-16">
+            <slot />
+          </div>
+        </div>
+      </main>
+      <div class="main-column">
+        <FooterInfo hideOurSection />
+      </div>
+      <slot name='footer' />
+      <WhatsappBtnPopup client:load />
+      <AttentionFloating />
+    </main>
   </body>
 </html>
-<style>
 
-
-</style>

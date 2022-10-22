@@ -2,7 +2,7 @@
 	Define common sizes and spacings
 */
 :root {
-	--theme-navbar-height: 6rem;
+	--theme-navbar-height: 4rem;
 	--theme-mobile-toc-height: 4rem;
 	--theme-left-sidebar-width: 18rem;
 	--theme-right-sidebar-width: 18rem;

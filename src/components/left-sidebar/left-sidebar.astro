@@ -85,7 +85,7 @@ import ThemeToggleButton from '@components/theme-toggle-button'
   @media (min-width: 50em) {
     .nav-groups {
       position: fixed;
-      top: 4rem;
+      top: calc(var(--theme-navbar-height) + 2rem);
       bottom: 0;
       width: calc(
         var(--theme-left-sidebar-width) - var(--min-spacing-inline) * 1.6

@@ -20,6 +20,8 @@ export default function ToggleMenu() {
   return (
     <button
       className='menu'
+      id='menu-toggle'
+      aria-label='toggle menu button'
       onClick={() => setSidebarShown(!sidebarShown)}
     >
       <div className={`menu-wrap ${sidebarShown ? 'open' : ''}`}>

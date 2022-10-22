@@ -1,60 +1,10 @@
 ---
-import LeftSidebar from '@components/left-sidebar/left-sidebar.astro'
-import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
-import Header from './header/header.astro'
-import PageContent from './page-content.astro'
-import WhatsappBtnPopup from '@components/whatsapp-btn-popup'
-import AttentionFloating from '@components/attention-floating.astro'
-import HeadMain from '@components/head/head-main.astro'
-import FooterInfo from './footer/footer-info.astro'
-
-export interface Props {
-  hideRightSidebar?: boolean
-  withPageContent?: boolean
-}
-
-const { hideRightSidebar, withPageContent, content = {} } = Astro.props
+import BaseLayout from "./base-layout.astro";
+import RightSidebar from "@components/right-sidebar/right-sidebar.astro";
+import PageContent from "./page-content.astro";
 ---
+<BaseLayout {...Astro.props}>
+  <RightSidebar slot="secondary-sidebar" />
+    <slot />
+</BaseLayout>
 
-<html dir="ltr" lang="es">
-  <head>
-    <HeadMain {content} />
-    <style is:global>
-      #right-sidebar.hide-right-sidebar {
-        display: none;
-      }
-
-      #main-content.hide-right-sidebar {
-        margin-inline-end: 0;
-      }
-
-    </style>
-  </head>
-  <body>
-    <main>
-      <Header />
-      <aside class={`sidebar `} id="left-sidebar">
-        <LeftSidebar />
-      </aside>
-      <div
-        class={`main-column ${hideRightSidebar ? 'hide-right-sidebar' : ''}`}
-        id="main-content"
-      >
-            <div class="py-16">
-              <slot />
-            </div>
-      </div>
-      <div class="main-column px-4 md:px-0 mb-8 md:mb-0">
-        <FooterInfo hideOurSection />
-      </div>
-      <aside
-        class={`sidebar ${hideRightSidebar ? 'hide-right-sidebar' : ''}`}
-        id="right-sidebar"
-      >
-        <RightSidebar />
-      </aside>
-      <WhatsappBtnPopup client:load />
-      <AttentionFloating />
-    </main>
-  </body>
-</html>
