@@ -2,6 +2,7 @@
 import BaseLayout from './base-layout.astro'
 import PageContent from '@components/page-content/page-content.astro'
 import PostsRightSidebar from '@components/right-sidebar/posts-right-sidebar.astro'
+import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
 
 import { getNavLinks } from '@utils/get-nav-links'
 const { previous, next } = getNavLinks(Astro)
@@ -9,7 +10,7 @@ const { content = {} } = Astro.props
 ---
 
 <BaseLayout {...Astro.props}>
-  <PostsRightSidebar slot="secondary-sidebar" />
+  <RightSidebar slot="secondary-sidebar" {content} />
   <PageContent {...{content, previous, next}} >
     <slot />
   </PageContent>

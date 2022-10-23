@@ -1,7 +1,6 @@
 import path, { dirname } from 'path';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import myRehypePlugin from './my-rehype-plugin';
 import SITE from './src/config/setting';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
@@ -75,7 +74,6 @@ export default defineConfig({
 					],
         }]
       ],
-      extendPlugins: 'astroDefaults'
     })
   ],
   vite: {
