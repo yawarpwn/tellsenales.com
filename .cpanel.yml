@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/com8tells/
-    - /bin/cp -r /dist /$DEPLOYPATH/public_html
+    - export DEPLOYPATH=/home/com8tells/public_html/
+    - /bin/cp /dist/* $DEPLOYPATH
