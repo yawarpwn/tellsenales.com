@@ -81,6 +81,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
           display: flex;
         }
       }
+
+      .main-container {
+        margin-top: var(--theme-navbar-height);
+      }
     </style>
     <script is:inline>
       const theme = (() => {
@@ -115,7 +119,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
           <slot name="secondary-sidebar" />
         </aside>
         <div id="main-content" class="main-column">
-          <div class="mt-16">
+          <div class="main-container">
             <slot />
           </div>
         </div>
