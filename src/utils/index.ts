@@ -185,3 +185,13 @@ export const addColorAlpha = (colorProp?: string, alpha?: number) => {
 };
 
 export const isProd = process.env.NODE_ENV === "production";
+
+/** Remove \ and / from beginning of string */
+export function removeLeadingSlash(path: string) {
+	return path.replace(/^[/\\]+/, '');
+}
+
+/** Remove \ and / from end of string */
+export function removeTrailingSlash(path: string) {
+	return path.replace(/[/\\]+$/, '');
+}

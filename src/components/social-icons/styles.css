@@ -1,0 +1,6 @@
+.social-icon {
+  color: var(--theme-text-lighter);
+}
+.social-icon:hover {
+  color: var(--theme-text);
+}

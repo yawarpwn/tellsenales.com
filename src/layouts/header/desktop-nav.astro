@@ -1,0 +1,64 @@
+---
+const navigation = [
+  {
+    text: 'Señales',
+    path: '/senales'
+  },
+  {
+    text: 'Seguridad',
+    path: '/seguridad'
+  },
+  {
+    text: 'Posts',
+    path: '/posts/senales-viales'
+  },
+  {
+    text: 'Galeria',
+    path: '/galeria'
+  },
+  {
+    text: 'Contacto',
+    path: '/contacto'
+  }
+]
+
+const url = Astro.url
+const currentPage = url.pathname
+---
+
+<div class="desktop-nav">
+  <ul class="nav-list">
+    {
+      navigation.map(({path, text}) => {
+        const regexp = /^\/[a-z]+/
+        const match = regexp.exec(path)[0]
+        const isActive = currentPage.startsWith(match) 
+        return (
+          <li class="nav-item">
+            <a aria-current={isActive ? 'page': ''} href={path}>
+              {text}
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
+</div>
+<style>
+  .desktop-nav {
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-item a {
+    color: var(--theme-text-lighter);
+  }
+
+  .nav-item a[aria-current="page"] {
+    color: var(--theme-text);
+    font-weight: 700;
+  }
+</style>

@@ -112,7 +112,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
       <main>
         <aside id="left-sidebar" class='sidebar'>
           <slot name="primary-sidebar">
-            <LeftSidebar />
+            <LeftSidebar {currentPage} />
           </slot>
         </aside>
         <aside id="right-sidebar" class="sidebar">

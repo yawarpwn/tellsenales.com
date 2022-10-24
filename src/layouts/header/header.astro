@@ -4,6 +4,7 @@ import SocialIcons from '@components/social-icons'
 import ThemeToggleButton from '@components/theme-toggle-button'
 import Search from '@components/search/search.astro'
 import Autocomplete from '@components/search/autocomplete';
+import DesktopNav from './desktop-nav.astro';
 ---
 
 <header>
@@ -29,30 +30,11 @@ import Autocomplete from '@components/search/autocomplete';
           </svg>
         </a>
       </div>
-      <div class="desktop-nav">
-        <ul class="hidden md:flex items-center gap-4">
-          <li>
-            <a href="/senales"> Senales</a>
-          </li>
-          <li>
-            <a href="/seguridad"> Seguridad</a>
-          </li>
-          <li>
-            <a href="/galeria" >Galeria</a>
-          </li>
-          <li>
-            <a href="/contacto" > Contacto</a>
-          </li>
-          <li>
-            <a href="/posts/senales-viales">Posts</a>
-          </li>
-        </ul>
-      </div>
+      <DesktopNav />
       <div class="hidden md:flex items-center">
         <div class="flex items-center gap-2">
           <SocialIcons />
           <ThemeToggleButton client:visible isInsideHeader={true} />
-			
         </div>
       </div>
       <div class="w-full min-w-[180px] md:max-w-[300px]">
@@ -83,6 +65,7 @@ import Autocomplete from '@components/search/autocomplete';
     width: 100%;
     height: 100%;
     background: var(--theme-bg-header);
+    color: var(--theme-text-lighter);
     backdrop-filter: blur(10px) saturate(180%);
     padding-inline: var(--theme-min-spacing-inline);
     box-shadow: 0 5px 25px -5px rgba(2, 1, 1, 0.2);

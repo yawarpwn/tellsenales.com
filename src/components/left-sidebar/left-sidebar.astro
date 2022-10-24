@@ -1,67 +1,18 @@
 ---
 import manifest from '../../config/manifest.json'
 import ThemeToggleButton from '@components/theme-toggle-button'
+// import { removeTrailingSlash, removeLeadingSlash } from '@utils/index'
+const { currentPage } = Astro.props
+import SidebarContent from './sidebar-content.astro'
+// const currentPageMatch = removeLeadingSlash(removeTrailingSlash(currentPage))
 ---
 
 <nav>
   <ul class="nav-groups">
     {
-      manifest.routes.map(({ title, routes, path, icon }) => {
-        if (path) {
-          return (
-            <li class="nav-group">
-            <div class="nav-group-title">
-              <a class="flex items-center gap-2" href={path}>
-                <img
-                  width="25"
-                  height="25"
-                  src={`/icons${icon.replace('.svg', '-light.svg')}`}
-                />
-                {title}
-              </a>
-            </div>
-            </li>
-          )
-        }
-        return (
-          <li class="nav-group">
-          <details open>
-            <summary class="nav-group-title">
-              <h2>
-                <img
-                  width="25"
-                  height="25"
-                  src={`/icons${icon.replace('.svg', '-light.svg')}`}
-                />
-                <span>{title}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 1 16 16"
-                  width="16"
-                  height="16"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"
-                  />
-                </svg>
-              </h2>
-            </summary>
-            <ul>
-              {routes.map(({ title, path }) => {
-                return (
-                  <li class="nav-link">
-                    <a href={path}>{title}</a>
-                  </li>
-                )
-              })}
-            </ul>
-          </details>
-          </li>
-        )
-      })
+      manifest.routes.map(routes => <SidebarContent navigation={routes} currentPage={currentPage} />) 
     }
+    
     <li style="text-align: center;">
       <ThemeToggleButton client:visible />
     </li>
@@ -97,7 +48,6 @@ import ThemeToggleButton from '@components/theme-toggle-button'
     margin-bottom: 1rem;
   }
 
-
   details > summary {
     list-style: none;
   }
@@ -109,7 +59,6 @@ import ThemeToggleButton from '@components/theme-toggle-button'
     gap: 0.5rem;
     font-weight: 700;
   }
-
 
   .nav-group-title {
     font-size: 1rem;
@@ -126,23 +75,38 @@ import ThemeToggleButton from '@components/theme-toggle-button'
     text-decoration: none;
     display: block;
     font: inherit;
+
+    &:hover,
+    &:focus {
+      background-color: var(--theme-bg-hover);
+    }
+
+    &[aria-current='page'] {
+      color: var(--theme-text);
+      background-color: var(--theme-bg-accent);
+      font-weight: 500;
+      /* Indicates the current page for forced colors users in older browsers */
+      outline: 1px solid transparent;
+      &:focus {
+        outline: 2px solid;
+      }
+    }
+
+
   }
 
-	@media (min-width: 50em) {
-		.nav-group-title {
 
-			padding: 0.2rem 1rem;
+
+  @media (min-width: 50em) {
+    .nav-group-title {
+      padding: 0.2rem 1rem;
     }
 
     .nav-link a {
-			padding: 0.2rem 1.5rem;
+      padding: 0.2rem 1.5rem;
     }
-	}
-
-  .nav-link a:hover,
-  .nav-link a:focus {
-    background-color: var(--theme-bg-hover);
   }
+
   details > summary {
     list-style: none;
   }
