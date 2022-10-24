@@ -46,6 +46,13 @@ const currentPage = url.pathname
 </div>
 <style>
   .desktop-nav {
+    display: none;
+  }
+
+  @media(min-width: 50em) {
+    .desktop-nav {
+      display: block;
+    }
   }
 
   .nav-list {
