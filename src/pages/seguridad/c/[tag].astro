@@ -8,7 +8,7 @@ import slugify from 'slugify'
 export async function getStaticPaths() {
   const allProducts = await getAllProducts()
   const allTags = [
-    ...new Set(allProducts.map(senal => senal.contentfulMetadata.tags[0]?.name))
+    ...new Set(allProducts.map(product => product.contentfulMetadata.tags[0]?.name))
   ]
 
 
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     params: { tag },
     props: {
       products: allProducts.filter(
-        senal => senal.contentfulMetadata.tags[0]?.name === tag
+        product => product.contentfulMetadata.tags[0]?.name === tag
       )
     }
   }))

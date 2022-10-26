@@ -47,7 +47,7 @@ const { title, routes, path, icon } = navigation
             return (
               <li class="nav-link">
                 <a
-                  aria-current={currentPage === path ? 'page' : ''}
+                  aria-current={`${currentPage === path ? 'page' : 'false'}`}
                   href={path}
                 >
                   {title}

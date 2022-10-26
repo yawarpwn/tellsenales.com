@@ -2,19 +2,23 @@
 import ArticleNavigationButton from './article-navigation-button.astro'
 
 export interface Props {
+  content: { title: string }
   previous?: { text: string; link: string }
   next?: { text: string; link: string }
-  content: { title: string }
 }
 
 const { content, previous, next } = Astro.props
+
+const title = content.title
+	.replace('@astrojs/', '<span class="scope">@astrojs/</span><wbr>')
+	.replaceAll('-', '&#8288;-&#8288;');
 ---
 
 <article id="article" class="content">
   <section class="main-section">
     <header>
       <slot name='before-title' />
-      <h1 class="content-title" id="overview">{content.title}</h1>
+      <h1 class="content-title" id="overview" set:html={title}></h1>
       <slot name='after-title' />
     </header>
     <slot />

@@ -2,6 +2,7 @@
 import site from '../../config/setting'
 export interface Props {
   canonicalUrl: URL,
+  content: any,
 }
 const { content, canonicalURL } = Astro.props
 const { title, description, image } = content

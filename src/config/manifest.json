@@ -9,37 +9,37 @@
         {
           "title": "Seguridad",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/seguridad",
+          "path": "/senales/c/seguridad/",
           "icon": "/seguridad.svg"
         },
         {
           "title": "Fotoluminiscentes",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/fotoluminiscentes",
+          "path": "/senales/c/fotoluminiscentes/",
           "icon": "/fotoluminiscente.svg"
         },
         {
           "title": "Decorativas",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/decorativas",
+          "path": "/senales/c/decorativas/",
           "icon": "/aluminio.svg"
         },
         {
           "title": "Covid-19",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/covid-19",
+          "path": "/senales/c/covid-19/",
           "icon": "/covid.svg"
         },
         {
           "title": "Viales",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/viales",
+          "path": "/senales/c/viales/",
           "icon": "/vial.svg"
         },
         {
           "title": "Obras",
           "keywords": "getting started, start, nextui",
-          "path": "/senales/c/obras",
+          "path": "/senales/c/obras/",
           "icon": "/obras.svg"
         }
       ]
@@ -57,7 +57,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/proteccion-vial.svg",
-          "path": "/seguridad/c/proteccion-vial",
+          "path": "/seguridad/c/proteccion-vial/",
           "isLast": true
         },
         {
@@ -65,7 +65,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/cinta-seguridad.svg",
-          "path": "/seguridad/c/cintas-seguridad",
+          "path": "/seguridad/c/cintas-seguridad/",
           "isLast": true
         },
         {
@@ -73,7 +73,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/articulos-seguridad.svg",
-          "path": "/seguridad/c/articulos-seguridad",
+          "path": "/seguridad/c/articulos-seguridad/",
           "isLast": true
         },
         {
@@ -81,7 +81,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/ropa-seguridad.svg",
-          "path": "/seguridad/c/ropa-seguridad",
+          "path": "/seguridad/c/ropa-seguridad/",
           "isLast": true
         },
         {
@@ -89,7 +89,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/extintor.svg",
-          "path": "/seguridad/c/lucha-contra-incendio",
+          "path": "/seguridad/c/lucha-contra-incendio/",
           "isLast": true
         },
         {
@@ -97,7 +97,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/vinil.svg",
-          "path": "/seguridad/c/viniles",
+          "path": "/seguridad/c/viniles/",
           "isLast": true
         },
         {
@@ -105,7 +105,7 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/casco.svg",
-          "path": "/seguridad/c/epps",
+          "path": "/seguridad/c/epps/",
           "isLast": true
         }
       ]
@@ -122,31 +122,31 @@
           "title": "Señales Viales",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "path": "/posts/senales-viales"
+          "path": "/posts/senales-viales/"
         },
         {
           "title": "Láminas Reflectivas",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "path": "/posts/laminas-senales-verticales"
+          "path": "/posts/laminas-senales-verticales/"
         },
         {
           "title": "Soportes señales verticales",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "path": "/posts/soportes-senales-verticales"
+          "path": "/posts/soportes-senales-verticales/"
         },
         {
           "title": "Señales Fotoluminiscentes",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "path": "/posts/senales-fotoluminiscentes"
+          "path": "/posts/senales-fotoluminiscentes/"
         },
         {
           "title": "Señales en Aluminio",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
-          "path": "/posts/senales-aluminio"
+          "path": "/posts/senales-aluminio/"
         }
       ]
     },
@@ -155,7 +155,7 @@
       "open": true,
       "keywords": "guide, getting started, start, nextui",
       "icon": "/galeria.svg",
-      "path": "/galeria",
+      "path": "/galeria/",
       "isLast": true
     },
     {
@@ -163,7 +163,7 @@
       "open": true,
       "keywords": "guide, getting started, start, nextui",
       "icon": "/contacto.svg",
-      "path": "/contacto",
+      "path": "/contacto/",
       "isLast": true
     }
   ]
