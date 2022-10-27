@@ -3,6 +3,7 @@ import { getAllProducts } from '../../../lib/contentful-request'
 import ProductCard from '@components/product-card.astro'
 import MainLayout from '@layouts/main-layout.astro'
 import PageNavigation from '@components/page-navigation/page-navigation.astro'
+import PageHeader from '@components/page-header/page-header.astro'
 import manifest from '../../../config/manifest.json'
 import slugify from 'slugify'
 export async function getStaticPaths() {
@@ -34,16 +35,7 @@ const content = {
 
 ---
 <MainLayout {content}>
-  <!--Navigation -->
-  <div class="relative h-24 md:h-32 flex items-center justify-center overflow-hidden mb-4">
-    <div class="absolute inset-0">
-      <div class="shadow-image"></div>
-      <img class="w-full h-full object-cover" src={`/assets/images/${slugify(title, {lower: true})}.webp`} alt={title} />
-    </div>
-    <h1 class="text-2xl md:text-3xl text-center font-extrabold z-[1] text-white uppercase">{title}</h1>
-  </div>
-
-  <!--Page Navigation -->
+  <PageHeader {title} />
   <PageNavigation navigation={manifest.routes[1].routes} />
 
   <!-- Product List -->
@@ -54,19 +46,3 @@ const content = {
   </div>
 
 </MainLayout>
-<style>
-.shadow-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* background: var(--theme-gradient); */
-  background: black;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
-}
-
-
-</style>

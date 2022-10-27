@@ -7,7 +7,7 @@
       "icon": "/seguridad.svg",
       "routes": [
         {
-          "title": "Seguridad",
+          "title": "Señales Seguridad",
           "keywords": "getting started, start, nextui",
           "path": "/senales/c/seguridad/",
           "icon": "/seguridad.svg"
@@ -19,25 +19,25 @@
           "icon": "/fotoluminiscente.svg"
         },
         {
-          "title": "Decorativas",
+          "title": "Señales Decorativas",
           "keywords": "getting started, start, nextui",
           "path": "/senales/c/decorativas/",
           "icon": "/aluminio.svg"
         },
         {
-          "title": "Covid-19",
+          "title": "Señales Covid-19",
           "keywords": "getting started, start, nextui",
           "path": "/senales/c/covid-19/",
           "icon": "/covid.svg"
         },
         {
-          "title": "Viales",
+          "title": "Señales Viales",
           "keywords": "getting started, start, nextui",
           "path": "/senales/c/viales/",
           "icon": "/vial.svg"
         },
         {
-          "title": "Obras",
+          "title": "Obras y Construcción",
           "keywords": "getting started, start, nextui",
           "path": "/senales/c/obras/",
           "icon": "/obras.svg"
@@ -61,7 +61,7 @@
           "isLast": true
         },
         {
-          "title": "Cintas seguridad",
+          "title": "Cintas de Seguridad",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/cinta-seguridad.svg",
@@ -69,7 +69,7 @@
           "isLast": true
         },
         {
-          "title": "Articulos seguridad",
+          "title": "Articulos de Seguridad",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/articulos-seguridad.svg",
@@ -77,7 +77,7 @@
           "isLast": true
         },
         {
-          "title": "Ropa seguridad",
+          "title": "Ropa de Seguridad",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/ropa-seguridad.svg",
@@ -85,7 +85,7 @@
           "isLast": true
         },
         {
-          "title": "Lucha contra incendio",
+          "title": "Lucha contra Incendio",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/extintor.svg",
@@ -93,7 +93,7 @@
           "isLast": true
         },
         {
-          "title": "Viniles",
+          "title": "Viniles y Reflectivos",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/vinil.svg",
@@ -101,7 +101,7 @@
           "isLast": true
         },
         {
-          "title": "Epps",
+          "title": "Protección Personal (Epp)",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "icon": "/casco.svg",

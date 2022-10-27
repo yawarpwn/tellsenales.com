@@ -1,4 +1,5 @@
 ---
+import PageHeader from '@components/page-header/page-header.astro';
 import MainLayout from '@layouts/main-layout.astro'
 const content = {
   title: 'Contacta con nosotros',
@@ -9,6 +10,7 @@ const content = {
 ---
 
 <MainLayout {content}>
+  <PageHeader title='contacto' />
   <div class="grid gap-10 md:grid-cols-2 px-4 md:px-0">
     <section>
       <div class="mt-4">

@@ -2,7 +2,7 @@
 import { readdir } from 'node:fs/promises'
 import MainLayout from "@layouts/main-layout.astro";
 import GalerySlider from '@components/galery-slide.astro'
-import Iframe from '@components/iframe/iframe.astro'
+import PageHeader from '@components/page-header/page-header.astro'
 
 async function getAllPaths(dir: string) {
   let files = []
@@ -23,8 +23,8 @@ const allImages = (await getAllPaths(dirURL)).map(imgUrl => imgUrl.split('public
 const entries = await readdir(dirURL)
 const allPathImages = entries.map(entry => {
   return {
-    paths: allImages.filter(img => img.includes(entry)),
-    title: entry.replace('-', ' ')
+    paths: allImages.filter(srcImg => srcImg.startsWith(`/galery/${entry}`)),
+    title: entry.replace(/-/g, ' ')
   }
 }).reverse() 
 
@@ -35,9 +35,9 @@ const content = {
   image: '/assets/images/chevron.webp'
 }
 ---
-<MainLayout hideRightSidebar {content}>
+<MainLayout {content}>
+  <PageHeader title='galeria' />
   <div class="flex flex-col px-4 md:pr-6 mt-4 md:mt-8">
-    <h1 class="text-center">Galeria</h1>
     <p class="max-w-5xl">
       Con dedicación, esfuerzo y buen desempeño, hemos desarrollado a lo largo de los años diversas soluciones para nuestros clientes.
       A continuación, queremos enseñarles algo de lo que hemos hecho:
@@ -50,9 +50,3 @@ const content = {
     })}
   </div>
 </MainLayout>
-<style>
-.galery-title {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
-}
-</style>

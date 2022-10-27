@@ -3,6 +3,7 @@ import { getAllSenales } from '../../../lib/contentful-request'
 import ProductCard from '@components/product-card.astro'
 import MainLayout from '@layouts/main-layout.astro'
 import PageNavigation from '@components/page-navigation/page-navigation.astro'
+import PageHeader from '@components/page-header/page-header.astro'
 import manifest from '../../../config/manifest.json'
 import slugify from 'slugify'
 export async function getStaticPaths() {
@@ -24,44 +25,23 @@ export async function getStaticPaths() {
 
 const { products } = Astro.props
 const title = products[0].contentfulMetadata.tags[0]?.name.toUpperCase()
+
+const content = { 
+  title , 
+  description: `Venta y distribución de Señales de Seguridad ${title}`,
+  image: `/assets/images/${slugify(title, {lower: true})}.webp` 
+}
 ---
 
-<MainLayout content={{ title }}>
+<MainLayout {content}>
   <div>
-    <div
-      class="relative h-24 md:h-32 flex items-center justify-center overflow-hidden"
-    >
-      <div class="absolute inset-0">
-        <div class="shadow-image"></div>
-        <img
-          class="w-full h-full object-cover"
-          src={`/assets/images/${slugify(title, {lower: true})}.webp`}
-          alt={title}
-        />
-      </div>
-      <h1 class="text-2xl md:text-3xl font-extrabold z-[1] text-white uppercase text-center">
-        Señales {title}
-      </h1>
-    </div>
-  <!--Page Navigation -->
-  <PageNavigation navigation={manifest.routes[0].routes} />
+    <PageHeader {title} />
+    <PageNavigation navigation={manifest.routes[0].routes} />
+
+    <!-- Product List -->
     <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
       {products
         .map(product => <ProductCard product={product} />)}
     </div>
   </div>
 </MainLayout>
-<style>
-  .shadow-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* background: var(--theme-gradient); */
-    background: black;
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
-  }
-</style>
