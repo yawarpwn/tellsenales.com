@@ -11,13 +11,13 @@ import '../styles/main.css'
 const { content = {} } = Astro.props
 const url = new URL(Astro.url)
 const currentPage = url.pathname
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+const canonicalURL = new URL(Astro.url.pathname.replace(/([^/])$/,'$1/' ), Astro.site)
 ---
 
 <html dir="ltr" lang="es" class="initial">
   <head>
     <HeadCommon />
-    <HeadSeo {content} {canonicalUrl} />
+    <HeadSeo {content} {canonicalURL} />
     <title>{content.title} | Tell Señales</title>
     <style>
       .sidebar {

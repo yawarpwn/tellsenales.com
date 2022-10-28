@@ -1,0 +1,53 @@
+RewriteOptions inherit
+
+RewriteEngine on
+ErrorDocument 404 /404.html
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.tellsenales.com [NC]
+RewriteRule ^(.*)$ http://tellsenales.com/$1 [L,R=301,NC] 
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Proteccion vial
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/proteccion\-vial$ "https\:\/\/tellsenales\.com\/seguridad\/c\/proteccion\-vial\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/proteccion\-vial\/$ "https\:\/\/tellsenales\.com\/seguridad\/c\/proteccion\-vial\/" [R=301,L]
+
+# Cintas seguridad
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/cintas\-seguridad$ "https\:\/\/tellsenales\.com\/seguridad\/c\/cintas\-seguridad\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/cintas\-seguridad\/$ "https\:\/\/tellsenales\.com\/seguridad\/c\/cintas\-seguridad\/" [R=301,L]
+
+# Articulos Seguridad 
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/articulos\-seguridad$ "https\:\/\/tellsenales\.com\/seguridad\/c\/articulos\-seguridad\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/articulos\-seguridad\/$ "https\:\/\/tellsenales\.com\/seguridad\/c\/articulos\-seguridad\/" [R=301,L]
+
+# Ropa Seguridad
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/ropa\-seguridad$ "https\:\/\/tellsenales\.com\/seguridad\/c\/ropa\-seguridad\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/ropa\-seguridad\/$ "https\:\/\/tellsenales\.com\/seguridad\/c\/ropa\-seguridad\/" [R=301,L]
+
+# Lucha contra incendio
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/lucha\-contra\-incendio$ "https\:\/\/tellsenales\.com\/seguridad\/c\/lucha\-contra\-incendio\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/lucha\-contra\-incendio\/$ "https\:\/\/tellsenales\.com\/seguridad\/c\/lucha\-contra\-incendio\/" [R=301,L]
+
+# Viniles
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/viniles$ "https\:\/\/tellsenales\.com\/seguridad\/c\/viniles\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^seguridad\/viniles\/$ "https\:\/\/tellsenales\.com\/seguridad\/c\/viniles\/" [R=301,L]
+
+# Senales viales
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/viales\/$ "https\:\/\/tellsenales\.com\/posts\/senales\-viales\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/viales$ "https\:\/\/tellsenales\.com\/posts\/senales\-viales\/" [R=301,L]
