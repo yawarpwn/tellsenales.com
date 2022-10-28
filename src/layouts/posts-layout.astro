@@ -7,12 +7,12 @@ import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
 import { getNavLinks } from '@utils/get-nav-links'
 const { previous, next } = getNavLinks(Astro)
 const { content = {} } = Astro.props
+const headings = Astro.props.headings
 ---
 
 <BaseLayout {...Astro.props}>
-  <RightSidebar slot="secondary-sidebar" {content} />
-  <PageContent {...{content, previous, next}} >
+  <PostsRightSidebar slot="secondary-sidebar" {...{content, headings}} />
+  <PageContent {...{content, previous, next}}>
     <slot />
   </PageContent>
 </BaseLayout>
-

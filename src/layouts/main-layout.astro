@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "./base-layout.astro";
-import RightSidebar from "@components/right-sidebar/right-sidebar.astro";
+import BaseLayout from './base-layout.astro'
+import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
 ---
+
 <BaseLayout {...Astro.props}>
   <RightSidebar slot="secondary-sidebar" />
   <slot />
 </BaseLayout>
-

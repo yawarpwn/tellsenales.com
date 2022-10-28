@@ -1,9 +1,20 @@
 ---
-// import TableOfContents from './table-of-contents';
-const { content } = Astro.props
+import TableOfContents from './table-of-contents'
+const { content, headings } = Astro.props
 ---
 
-<nav aria-label="rightSidebar.a11yTitle">Estoy right sidebar</nav>
+<nav aria-label="rightSidebar.a11yTitle">
+  {
+    headings && (
+      <TableOfContents
+        client:media="(min-width: 50em)"
+        headings={headings}
+        isMobile={false}
+        title={content.title}
+      />
+    )
+  }
+</nav>
 
 <style>
   nav {

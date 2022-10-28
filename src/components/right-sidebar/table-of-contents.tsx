@@ -1,38 +1,32 @@
 import { unescape } from 'html-escaper';
-import type { FunctionalComponent } from 'preact';
-import { useState, useEffect, useRef } from 'preact/hooks';
-// import './TableOfContents.css';
+import { FunctionComponent } from "preact/compat"
+import { useState, useEffect, useRef } from 'preact/hooks'
+import './styles.css'
 
 interface Props {
-	headings: { depth: number; slug: string; text: string }[];
-	labels: {
-		onThisPage: string;
-		overview: string;
-	};
-	isMobile?: boolean;
+	headings: { depth: number, slug: string, text: string }[]
+	isMobile: boolean
+	title: string
 }
 
-const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels, isMobile }) => {
-	headings = [{ depth: 2, slug: 'overview', text: labels.overview }, ...headings].filter(
-		({ depth }) => depth > 1 && depth < 4
-	);
-	const toc = useRef<HTMLUListElement>();
-	const [currentID, setCurrentID] = useState('overview');
-	const [open, setOpen] = useState(!isMobile);
-	const onThisPageID = 'on-this-page-heading';
+const TableOfContent: FunctionComponent<Props> = ({ isMobile, headings = [], title }) => {
+	const toc = useRef<HTMLUListElement>()
+	const [currentId, setCurrentId] = useState('overview')
+	const [open, setOpen] = useState(false)
+	const onThisPageID = 'on-this-page-heading'
 
-	const Container = ({ children }) => {
+	function Container({ children }) {
 		return isMobile ? (
-			<details {...{ open }} onToggle={(e) => setOpen(e.target.open)} class="toc-mobile-container">
+			<details {...{ open }} onToggle={(e) => setOpen(e.target.open)} class='toc-mobile-container'>
 				{children}
 			</details>
 		) : (
 			children
-		);
-	};
+		)
+	}
 
-	const HeadingContainer = ({ children }) => {
-		const currentHeading = headings.find(({ slug }) => slug === currentID);
+	function HeadingContainer({ children }) {
+		const currentHeading = headings.find(({ slug }) => slug === currentId)
 		return isMobile ? (
 			<summary class="toc-mobile-header">
 				<div class="toc-mobile-header-content">
@@ -56,31 +50,31 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels, is
 					)}
 				</div>
 			</summary>
+
 		) : (
 			children
-		);
-	};
+		)
+	}
 
 	useEffect(() => {
-		if (!toc.current) return;
-
+		if (!toc.current) return
 		const setCurrent: IntersectionObserverCallback = (entries) => {
 			for (const entry of entries) {
 				if (entry.isIntersecting) {
-					const { id } = entry.target;
-					if (id === onThisPageID) continue;
-					setCurrentID(entry.target.id);
-					break;
+					const { id } = entry.target
+					if (id === onThisPageID) continue
+					setCurrentId(entry.target.id)
+					break
 				}
 			}
-		};
+		}
 
 		const observerOptions: IntersectionObserverInit = {
 			// Negative top margin accounts for `scroll-margin`.
 			// Negative bottom margin means heading needs to be towards top of viewport to trigger intersection.
 			rootMargin: '-100px 0% -66%',
 			threshold: 1,
-		};
+		}
 
 		const headingsObserver = new IntersectionObserver(setCurrent, observerOptions);
 
@@ -89,7 +83,8 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels, is
 
 		// Stop observing when the component is unmounted.
 		return () => headingsObserver.disconnect();
-	}, [toc.current]);
+
+	}, [toc.current])
 
 	const onLinkClick = (e) => {
 		if (!isMobile) return;
@@ -97,19 +92,21 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels, is
 		setCurrentID(e.target.getAttribute('href').replace('#', ''));
 	};
 
+
 	return (
+
+
 		<Container>
 			<HeadingContainer>
 				<h2 class="heading" id={onThisPageID}>
-					{labels.onThisPage}
+					{title}
 				</h2>
 			</HeadingContainer>
 			<ul ref={toc}>
 				{headings.map(({ depth, slug, text }) => (
 					<li
-						class={`header-link depth-${depth} ${
-							currentID === slug ? 'current-header-link' : ''
-						}`.trim()}
+						class={`header-link depth-${depth} ${currentId === slug ? 'current-header-link' : ''
+							}`.trim()}
 					>
 						<a href={`#${slug}`} onClick={onLinkClick}>
 							{unescape(text)}
@@ -118,7 +115,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels, is
 				))}
 			</ul>
 		</Container>
-	);
-};
+	)
+}
 
-export default TableOfContents;
+export default TableOfContent

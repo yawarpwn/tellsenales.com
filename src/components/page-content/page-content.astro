@@ -10,16 +10,16 @@ export interface Props {
 const { content, previous, next } = Astro.props
 
 const title = content.title
-	.replace('@astrojs/', '<span class="scope">@astrojs/</span><wbr>')
-	.replaceAll('-', '&#8288;-&#8288;');
+  .replace('@astrojs/', '<span class="scope">@astrojs/</span><wbr>')
+  .replaceAll('-', '&#8288;-&#8288;')
 ---
 
 <article id="article" class="content">
   <section class="main-section">
     <header>
-      <slot name='before-title' />
+      <slot name="before-title" />
       <h1 class="content-title" id="overview" set:html={title}></h1>
-      <slot name='after-title' />
+      <slot name="after-title" />
     </header>
     <slot />
   </section>
@@ -33,10 +33,10 @@ const title = content.title
   }
 </article>
 <style>
-	.content-title :global(.scope) {
-		font-weight: 300;
-		color: var(--theme-text-lighter);
-	}
+  .content-title :global(.scope) {
+    font-weight: 300;
+    color: var(--theme-text-lighter);
+  }
   .content {
     padding-top: var(--doc-padding-block);
     padding-bottom: var(--doc-padding-block);
