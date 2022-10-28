@@ -62,7 +62,6 @@ const { title, routes, path, icon } = navigation
 }
 
 <style>
-
   .nav-group {
     margin-bottom: 1rem;
   }
@@ -96,16 +95,6 @@ const { title, routes, path, icon } = navigation
     align-items: center;
     font: inherit;
 
-    &:before {
-      content:'';
-      display: block;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      margin-right: 8px;
-      background: var(--theme-text-lighter);
-    }
-
     &:hover,
     &:focus {
       background-color: var(--theme-bg-hover);
@@ -120,17 +109,8 @@ const { title, routes, path, icon } = navigation
       &:focus {
         outline: 2px solid;
       }
-
-      &:before {
-        background: var(--theme-text);
-      }
-
     }
-
-
   }
-
-
 
   @media (min-width: 50em) {
     .nav-group-title {
@@ -176,5 +156,4 @@ const { title, routes, path, icon } = navigation
   svg path {
     fill: currentColor;
   }
-
 </style>
