@@ -10,7 +10,10 @@ const { content, headings } = Astro.props
         client:media="(min-width: 50em)"
         headings={headings}
         isMobile={false}
-        title={content.title}
+        labels={{
+        onThisPage:  'En está pagina',
+        overview: 'Sinopsis'
+        }}
       />
     )
   }

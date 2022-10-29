@@ -2,7 +2,7 @@
 import BaseLayout from './base-layout.astro'
 import PageContent from '@components/page-content/page-content.astro'
 import PostsRightSidebar from '@components/right-sidebar/posts-right-sidebar.astro'
-import RightSidebar from '@components/right-sidebar/right-sidebar.astro'
+import TableOfContent from '@components/right-sidebar/table-of-contents'
 
 import { getNavLinks } from '@utils/get-nav-links'
 const { previous, next } = getNavLinks(Astro)
@@ -13,6 +13,23 @@ const headings = Astro.props.headings
 <BaseLayout {...Astro.props}>
   <PostsRightSidebar slot="secondary-sidebar" {...{content, headings}} />
   <PageContent {...{content, previous, next}}>
+    {
+      headings && (
+        <Fragment slot="before-article">
+          <nav>
+            <TableOfContent
+              client:media="(max-width: 72em)"
+              headings={headings}
+              labels={{
+                onThisPage: 'En está pagina',
+                overview: 'Sinopsis'
+              }}
+              isMobile={true}
+            />
+          </nav>
+        </Fragment>
+      )
+    }
     <slot />
   </PageContent>
 </BaseLayout>

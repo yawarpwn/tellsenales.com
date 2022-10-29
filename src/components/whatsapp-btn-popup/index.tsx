@@ -6,15 +6,14 @@ export default function WhatsappBtnPopup() {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <div className='fixed bottom-[15px] right-[30px] z-[45] lg:animate-bounce '>
+      <div className='fixed bottom-[15px] right-[30px] z-[45] animate-bounce '>
         <div
           className={`
           duration-400 transition ease-in-out
-          ${
-            isOpen
+          ${isOpen
               ? 'invisible translate-y-10 opacity-0 '
               : 'visible translate-y-0 opacity-100'
-          }
+            }
           absolute right-full top-[10px] mr-1  hidden w-[155px] 
           rounded-md bg-[#f5f7f9] py-[6px] px-3 text-xs tracking-wide text-[#43474e] shadow-md md:block `}
         >
@@ -24,8 +23,7 @@ export default function WhatsappBtnPopup() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`
-          transition-all duration-300 ease-in-out
-          ${!isOpen ? 'rotate-0' : 'rotate-90'}
+          transition-all duration-300 ease-in-out cursor-pointer
           flex h-[42px] w-[42px] items-center justify-center rounded-full bg-green-500 text-white outline-none`}
         >
           {!isOpen ? (
@@ -68,18 +66,16 @@ export default function WhatsappBtnPopup() {
       <div
         className={`
             transition duration-300 
-            ${
-              !isOpen
-                ? 'invisible translate-x-12 opacity-0'
-                : 'visible translate-x-0 opacity-100'
-            }
+            ${!isOpen
+            ? 'invisible translate-x-12 opacity-0'
+            : 'visible translate-x-0 opacity-100'
+          }
 
         max-w-[calc(100% - 50px)] fixed right-[25px] bottom-[73px] z-50 mx-auto max-w-xs`}
       >
         <div
           className={`
-            rounded-md
-bg-white
+            rounded-md bg-white
           `}
         >
           <div className='rounded-lg p-4 shadow-lg WhatsappBtnPopup-Wrapper'>

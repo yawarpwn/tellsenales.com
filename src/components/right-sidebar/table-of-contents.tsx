@@ -1,32 +1,39 @@
 import { unescape } from 'html-escaper';
-import { FunctionComponent } from "preact/compat"
-import { useState, useEffect, useRef } from 'preact/hooks'
-import './styles.css'
+import type { FunctionalComponent } from 'preact';
+import { useState, useEffect, useRef } from 'preact/hooks';
+import './styles.css';
 
 interface Props {
-	headings: { depth: number, slug: string, text: string }[]
-	isMobile: boolean
-	title: string
+	headings: { depth: number; slug: string; text: string }[];
+	labels: {
+		onThisPage: string;
+		overview: string;
+	};
+	isMobile?: boolean;
 }
 
-const TableOfContent: FunctionComponent<Props> = ({ isMobile, headings = [], title }) => {
-	const toc = useRef<HTMLUListElement>()
-	const [currentId, setCurrentId] = useState('overview')
-	const [open, setOpen] = useState(false)
-	const onThisPageID = 'on-this-page-heading'
+const TableOfContents: FunctionalComponent<Props> = ({ headings = [], labels, isMobile }) => {
+	headings = [{ depth: 2, slug: 'overview', text: labels.overview }, ...headings].filter(
+		({ depth }) => depth > 1 && depth < 4
+	);
 
-	function Container({ children }) {
+	const toc = useRef<HTMLUListElement>();
+	const [currentID, setCurrentID] = useState('overview');
+	const [open, setOpen] = useState(!isMobile);
+	const onThisPageID = 'on-this-page-heading';
+
+	const Container = ({ children }) => {
 		return isMobile ? (
-			<details {...{ open }} onToggle={(e) => setOpen(e.target.open)} class='toc-mobile-container'>
+			<details {...{ open }} onToggle={(e) => setOpen(e.target.open)} class="toc-mobile-container">
 				{children}
 			</details>
 		) : (
 			children
-		)
-	}
+		);
+	};
 
-	function HeadingContainer({ children }) {
-		const currentHeading = headings.find(({ slug }) => slug === currentId)
+	const HeadingContainer = ({ children }) => {
+		const currentHeading = headings.find(({ slug }) => slug === currentID);
 		return isMobile ? (
 			<summary class="toc-mobile-header">
 				<div class="toc-mobile-header-content">
@@ -50,31 +57,31 @@ const TableOfContent: FunctionComponent<Props> = ({ isMobile, headings = [], tit
 					)}
 				</div>
 			</summary>
-
 		) : (
 			children
-		)
-	}
+		);
+	};
 
 	useEffect(() => {
-		if (!toc.current) return
+		if (!toc.current) return;
+
 		const setCurrent: IntersectionObserverCallback = (entries) => {
 			for (const entry of entries) {
 				if (entry.isIntersecting) {
-					const { id } = entry.target
-					if (id === onThisPageID) continue
-					setCurrentId(entry.target.id)
-					break
+					const { id } = entry.target;
+					if (id === onThisPageID) continue;
+					setCurrentID(entry.target.id);
+					break;
 				}
 			}
-		}
+		};
 
 		const observerOptions: IntersectionObserverInit = {
 			// Negative top margin accounts for `scroll-margin`.
 			// Negative bottom margin means heading needs to be towards top of viewport to trigger intersection.
 			rootMargin: '-100px 0% -66%',
 			threshold: 1,
-		}
+		};
 
 		const headingsObserver = new IntersectionObserver(setCurrent, observerOptions);
 
@@ -83,8 +90,7 @@ const TableOfContent: FunctionComponent<Props> = ({ isMobile, headings = [], tit
 
 		// Stop observing when the component is unmounted.
 		return () => headingsObserver.disconnect();
-
-	}, [toc.current])
+	}, [toc.current]);
 
 	const onLinkClick = (e) => {
 		if (!isMobile) return;
@@ -92,20 +98,17 @@ const TableOfContent: FunctionComponent<Props> = ({ isMobile, headings = [], tit
 		setCurrentID(e.target.getAttribute('href').replace('#', ''));
 	};
 
-
 	return (
-
-
 		<Container>
 			<HeadingContainer>
-				<h2 class="heading uppercase" id={onThisPageID}>
-					{title}
+				<h2 class="heading" id={onThisPageID}>
+					{labels.onThisPage}
 				</h2>
 			</HeadingContainer>
 			<ul ref={toc}>
 				{headings.map(({ depth, slug, text }) => (
 					<li
-						class={`header-link depth-${depth} ${currentId === slug ? 'current-header-link' : ''
+						class={`header-link depth-${depth} ${currentID === slug ? 'current-header-link' : ''
 							}`.trim()}
 					>
 						<a href={`#${slug}`} onClick={onLinkClick}>
@@ -115,7 +118,7 @@ const TableOfContent: FunctionComponent<Props> = ({ isMobile, headings = [], tit
 				))}
 			</ul>
 		</Container>
-	)
-}
+	);
+};
 
-export default TableOfContent
+export default TableOfContents;
