@@ -137,6 +137,12 @@
           "path": "/posts/soportes-senales-verticales/"
         },
         {
+          "title": "Señales para Obras y Construcción",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/senales-obras/"
+        },
+        {
           "title": "Señales Fotoluminiscentes",
           "open": true,
           "keywords": "guide, getting started, start, nextui",
@@ -147,6 +153,12 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "path": "/posts/vinil-celtex/"
+        },
+        {
+          "title": "Señales Acrílico",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/senales-acrilico/"
         },
         {
           "title": "Señales en Aluminio",

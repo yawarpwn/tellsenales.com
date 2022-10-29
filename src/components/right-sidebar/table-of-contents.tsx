@@ -98,7 +98,7 @@ const TableOfContent: FunctionComponent<Props> = ({ isMobile, headings = [], tit
 
 		<Container>
 			<HeadingContainer>
-				<h2 class="heading" id={onThisPageID}>
+				<h2 class="heading uppercase" id={onThisPageID}>
 					{title}
 				</h2>
 			</HeadingContainer>
