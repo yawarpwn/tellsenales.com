@@ -6,8 +6,10 @@ import PageNavigation from '@components/page-navigation/page-navigation.astro'
 import PageHeader from '@components/page-header/page-header.astro'
 import manifest from '../../../config/manifest.json'
 import slugify from 'slugify'
+import type { Product } from '@types'
+
 export async function getStaticPaths() {
-  const allProducts = await getAllProducts()
+  const allProducts: Product[] = await getAllProducts()
   const allTags = [
     ...new Set(allProducts.map(product => product.contentfulMetadata.tags[0]?.name))
   ]
@@ -23,6 +25,10 @@ export async function getStaticPaths() {
   }))
 }
 
+export interface Props {
+  products: Product[]
+}
+
 const { products  } = Astro.props
 const titleFromData = products[0].contentfulMetadata.tags[0]?.name
 const title = titleFromData.replace(/[-]/g, ' ').toUpperCase()
@@ -35,7 +41,7 @@ const content = {
 
 ---
 <MainLayout {content}>
-  <PageHeader {title} />
+  <PageHeader title={title} />
   <PageNavigation navigation={manifest.routes[1].routes} />
 
   <!-- Product List -->

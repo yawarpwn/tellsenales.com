@@ -6,12 +6,13 @@ import PageNavigation from '@components/page-navigation/page-navigation.astro'
 import PageHeader from '@components/page-header/page-header.astro'
 import manifest from '../../../config/manifest.json'
 import slugify from 'slugify'
+import type { Senal } from '@types'
+
 export async function getStaticPaths() {
-  const allSenales = await getAllSenales()
+  const allSenales: Senal[] = await getAllSenales()
   const allTags = [
     ...new Set(allSenales.map(senal => senal.contentfulMetadata.tags[0]?.name))
   ]
-
 
   return allTags.map(tag => ({
     params: { tag },
@@ -26,10 +27,10 @@ export async function getStaticPaths() {
 const { products } = Astro.props
 const title = products[0].contentfulMetadata.tags[0]?.name.toUpperCase()
 
-const content = { 
-  title , 
+const content = {
+  title,
   description: `Venta y distribución de Señales de Seguridad ${title}`,
-  image: `/assets/images/${slugify(title, {lower: true})}.webp` 
+  image: `/assets/images/${slugify(title, { lower: true })}.webp`
 }
 ---
 
@@ -40,8 +41,7 @@ const content = {
 
     <!-- Product List -->
     <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
-      {products
-        .map(product => <ProductCard product={product} />)}
+      {products.map((senal: Senal) => <ProductCard product={senal} />)}
     </div>
   </div>
 </MainLayout>

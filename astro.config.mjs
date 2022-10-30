@@ -1,4 +1,4 @@
-import path, { dirname } from 'path';
+import { dirname } from 'path';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import SITE from './src/config/setting';
@@ -47,48 +47,35 @@ export default defineConfig({
   server: {// port: 3000,
   },
   integrations: [
-    tailwind({ config: { applyBaseStyles: false}}), 
-    sitemap(), 
-    preact(), 
+    tailwind({ config: { applyBaseStyles: false } }),
+    sitemap(),
+    preact(),
     mdx({
       rehypePlugins: [
-        rehypeSlug, 
+        rehypeSlug,
         [rehypeAutolinkHeadings, {
-					properties: {
-						class: 'anchor-link',
-					},
-					behavior: 'after',
-					group: ({ tagName }) =>
-						h(`div.heading-wrapper.level-${tagName}`, {
-							tabIndex: -1,
-						}),
-					content: (heading) => [
-						h(
-							`span.anchor-icon`,
-							{
-								ariaHidden: 'true',
-							},
-							AnchorLinkIcon
-						),
-						createSROnlyLabel(toString(heading)),
-					],
+          properties: {
+            class: 'anchor-link',
+          },
+          behavior: 'after',
+          group: ({ tagName }) =>
+            h(`div.heading-wrapper.level-${tagName}`, {
+              tabIndex: -1,
+            }),
+          content: (heading) => [
+            h(
+              `span.anchor-icon`,
+              {
+                ariaHidden: 'true',
+              },
+              AnchorLinkIcon
+            ),
+            createSROnlyLabel(toString(heading)),
+          ],
         }]
       ],
     })
   ],
-  vite: {
-    plugins: [],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-        '@layouts': path.resolve(__dirname, './src/layouts'),
-        '@utils': path.resolve(__dirname, './src/utils'),
-        '@hooks': path.resolve(__dirname, './src/hooks'),
-        '@lib': path.resolve(__dirname, './src/lib'),
-        '@components': path.resolve(__dirname, './src/components')
-      }
-    }
-  },
   optimizeDeps: {
     allowNodeBuiltins: true
   }

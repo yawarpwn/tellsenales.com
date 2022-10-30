@@ -5,34 +5,13 @@ import MainLayout from '../../layouts/main-layout.astro'
 import { ChevronDown } from '@components/icons'
 import { getdiscountPorcent } from '@utils/maths'
 import { BASE_URL, WHATSAPP_LINK } from '@utils/constants'
+import type { Product } from '@types'
 
-type Img = {
-  url: string
-  title: string
-}
-interface Product {
-  sku: string
-  name: string
-  slug: string
-  price: number
-  offert?: number
-  minimumOrder: number
-  description: string[]
-  marca: string
-  category: string
-  dataSheet: string
-  available: string
-  shortDesc: string
-  img1: Img
-  img2: Img
-  img3: Img
-  img4: Img
-}
 
 export async function getStaticPaths() {
-  const products = await getAllProducts()
+  const products: Product[] = await getAllProducts()
 
-  return products.map((product: Product) => ({
+  return products.map((product) => ({
     params: { slug: product.slug },
     props: { product }
   }))

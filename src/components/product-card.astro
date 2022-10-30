@@ -1,26 +1,15 @@
 ---
 import { getdiscountPorcent } from '@utils/maths'
-interface Img {
-  url: string
-  title: string
-}
+import type { Senal, Product } from '@types'
 
-interface Sys {
-  id: string
-}
 export interface Props {
-  slug: string
-  name: string
-  marca: string
-  price: number
-  sku: string | null
-  offert: number | null
-  img1: Img
-  sys: Sys
+  product: Senal | Product
 }
 
 const { product } = Astro.props
 const { name, sku, price, offert, img1, slug, marca, img, code } = product
+
+console.log(product)
 const Component = slug ? 'a' : 'div'
 ---
 

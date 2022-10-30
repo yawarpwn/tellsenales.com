@@ -1,17 +1,29 @@
 {
-  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "types": ["astro/client"],
     "jsx": "react-jsx",
     "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "module": "ES2020",
+    "target": "ES2020",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
       "@lib/*": ["src/lib/*"], 
-      "@utils/*": ["src/utils/*"] 
-    }
+      "@utils/*": ["src/utils/*"],
+      "@types": ["src/types/index.ts"]
+    },
+    "outDir": "./dist",
+    "declarationDir": "./dist/types",
   }
 }
+
