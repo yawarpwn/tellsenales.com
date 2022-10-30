@@ -1,4 +1,4 @@
-type Image = { url: URL, title: string }
+type Img = { url: string, title: string }
 type Tag = { name: string; id: string }
 type ContentFulMetadata = { tags: Tag[] }
 
@@ -20,17 +20,17 @@ export interface Product {
   shortDesc?: string
   contentfulMetadata: ContentFulMetadata
   sys: Sys
-  img1: Image
-  img2?: Image
-  img3?: Image
-  img4?: Image
+  img1: Img
+  img2?: Img
+  img3?: Img
+  img4?: Img
 }
 
 export interface Senal {
   name: string
   code: string
   category: string
-  image: Image
+  img: Img
   contentfulMetadata: ContentFulMetadata
 }
 

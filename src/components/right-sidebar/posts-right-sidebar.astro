@@ -1,6 +1,6 @@
 ---
 import TableOfContents from './table-of-contents'
-const { content, headings } = Astro.props
+const { headings } = Astro.props
 ---
 
 <nav aria-label="rightSidebar.a11yTitle">
@@ -11,8 +11,8 @@ const { content, headings } = Astro.props
         headings={headings}
         isMobile={false}
         labels={{
-        onThisPage:  'En está pagina',
-        overview: 'Sinopsis'
+          onThisPage: 'En está pagina',
+          overview: 'Sinopsis'
         }}
       />
     )

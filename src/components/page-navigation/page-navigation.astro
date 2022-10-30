@@ -1,105 +1,110 @@
 ---
-const { navigation = []} = Astro.props
+const { navigation = [] } = Astro.props
+const currentPage = Astro.url.pathname
 ---
-  <div class='mb-5'>
-    <div class='flex h-[120px] items-center overflow-x-scroll overflow-y-hidden'>
-      {navigation
-      .map(({ icon, path, title }) => (
 
-    <div class='px-5'>
-        <a class='bubble__link' href={path}>
-          <div class='bubble__img-container'>
-            <span class='bubble__canvas' />
-            <span class='bubble__img-span' >
-              <img src={`/icons${icon?.replace('.svg', '')}-light.svg`} alt={title} />
-            </span>
-          </div>
-          <div class='bubble__text'>{title}</div>
-        </a>
-      </div>
-
-      ))}
-    </div>
+<div class="mb-5">
+  <div class="flex h-[135px] items-center overflow-x-scroll overflow-y-hidden">
+    {
+      navigation.map(
+        ({
+          icon,
+          path,
+          title
+        }: {
+          icon: string
+          path: string
+          title: string
+        }) => {
+          const isActive = currentPage === path
+          return (
+            <div class="px-5">
+              <a class="bubble__link" href={path}>
+                <div
+                  class={`bubble__img-container ${
+                    isActive && 'animate-bounce'
+                  }`}
+                >
+                  <span class={`bubble__canvas`}>
+                    <span class="bubble__img-span">
+                      <img
+                        src={`/icons${icon?.replace('.svg', '')}-light.svg`}
+                        alt={title}
+                      />
+                    </span>
+                  </span>
+                </div>
+                <div class="bubble__text">{title}</div>
+              </a>
+            </div>
+          )
+        }
+      )
+    }
   </div>
-  <style>
+</div>
+<style>
+  /* BUBBLE STYLES */
+  .bubble__link {
+    position: relative;
+    align-items: center;
+    align-self: center;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 64px;
+  }
 
-/* BUBBLE STYLES */
-        .bubble__link {
-          position: relative;
-          align-items: center;
-          align-self: center;
-          border: 0;
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          padding-bottom: 0;
-          padding-top: 0;
-          text-align: center;
-          width: 64px;
-        }
+  .bubble__img-container {
+    align-items: center;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+  }
 
-        .bubble__img-container {
-          margin-top: 8px;
-          margin-bottom: 4px;
-          align-items: center;
-          align-self: center;
-          display: block;
-          flex: none;
-          justify-content: center;
-        }
+  .bubble__canvas {
+    --color-a: rgb(93, 95, 255);
+    --color-b: #ffadf8;
+    width: 63px;
+    height: 63px;
+    border-radius: 100%;
+    background: rgb(93, 95, 255);
+    background: conic-gradient(var(--color-b), var(--color-a), indigo, pink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-        .bubble__canvas {
-          position: absolute;
-          width: 63px;
-          height: 63px;
-          border-radius: 100%;
-          left: 0px;
-          top: 5px;
-          background: rgb(93, 95, 255);
-        }
+  .bubble__img-span {
+    width: 56px;
+    height: 56px;
+    background-color: #ffadf8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #fff;
+  }
 
-        .bubble__img-span {
-          width: 56px;
-          height: 56px;
-          background-color: #FFADF8;
-          border-radius: 50%;
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 0 0 auto;
-          overflow: hidden;
-          position: relative;
-        }
+  .bubble__img-span img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+  }
 
-        .bubble__img-span:after {
-          border: 2px solid rgb(255, 255, 255);
-          border-radius: 50%;
-          bottom: 0;
-          content: '';
-          left: 0;
-          pointer-events: none;
-          position: absolute;
-          right: 0;
-          top: 0;
-        }
-
-        .bubble__img-span img {
-          width: 45px;
-          height: 45px;
-          object-fit: contain;
-        }
-
-        .bubble__text {
-          display: block;
-          font-size: 12px;
-          line-height: 16px;
-          max-width: 74px;
-          overflow: hidden;
-          text-align: center;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          margin-top: 4px;
-        }
-
-  </style>
+  .bubble__text {
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    max-width: 74px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+</style>

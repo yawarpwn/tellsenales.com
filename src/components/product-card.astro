@@ -8,8 +8,6 @@ export interface Props {
 
 const { product } = Astro.props
 const { name, sku, price, offert, img1, slug, marca, img, code } = product
-
-console.log(product)
 const Component = slug ? 'a' : 'div'
 ---
 
@@ -25,7 +23,7 @@ const Component = slug ? 'a' : 'div'
     <div class="product-card__body p-2">
       {
         code ? (
-          <span class="text-xs font-bold uppercase">Código: {code}</span>
+          <span class="text-[10px] font-bold uppercase">Código: {code}</span>
         ) : (
           <span class="text-xs font-bold uppercase">{marca || sku}</span>
         )

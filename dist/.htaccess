@@ -51,3 +51,9 @@ RewriteCond %{HTTP_HOST} ^.*$
 RewriteRule ^senales\/viales\/$ "https\:\/\/tellsenales\.com\/posts\/senales\-viales\/" [R=301,L]
 RewriteCond %{HTTP_HOST} ^.*$
 RewriteRule ^senales\/viales$ "https\:\/\/tellsenales\.com\/posts\/senales\-viales\/" [R=301,L]
+
+# senales Fotoluminiscentes
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/fotoluminiscentes$ "https\:\/\/tellsenales\.com\/posts\/senales\-fotoluminiscentes\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/fotoluminiscentes\/$ "https\:\/\/tellsenales\.com\/posts\/senales\-fotoluminiscentes\/" [R=301,L]

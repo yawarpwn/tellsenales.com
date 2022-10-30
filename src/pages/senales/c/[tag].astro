@@ -1,9 +1,9 @@
 ---
 import { getAllSenales } from '../../../lib/contentful-request'
-import ProductCard from '@components/product-card.astro'
 import MainLayout from '@layouts/main-layout.astro'
 import PageNavigation from '@components/page-navigation/page-navigation.astro'
 import PageHeader from '@components/page-header/page-header.astro'
+import ProductCard from '@/components/product-card.astro'
 import manifest from '../../../config/manifest.json'
 import slugify from 'slugify'
 import type { Senal } from '@types'
@@ -26,6 +26,9 @@ export async function getStaticPaths() {
 
 const { products } = Astro.props
 const title = products[0].contentfulMetadata.tags[0]?.name.toUpperCase()
+const categories = [
+  ...new Set(products.map((prod: Senal) => prod.category))
+] as string[]
 
 const content = {
   title,
@@ -41,7 +44,11 @@ const content = {
 
     <!-- Product List -->
     <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
-      {products.map((senal: Senal) => <ProductCard product={senal} />)}
+      {
+        products
+          .sort((a, b) => (a.category > b.category ? 1 : -1))
+          .map((senal: Senal) => <ProductCard product={senal} />)
+      }
     </div>
   </div>
 </MainLayout>

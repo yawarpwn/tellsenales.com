@@ -5,6 +5,7 @@ export interface Props {
 
 const { images } = Astro.props
 ---
+
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
@@ -18,7 +19,12 @@ const { images } = Astro.props
             if (!url) return
             return (
               <div class="swiper-slide">
-                <img src={url} alt={'Thumbs swiper producto seguridad'} width="75" height="auto" />
+                <img
+                  src={url}
+                  alt={'Thumbs swiper producto seguridad'}
+                  width="75"
+                  height="auto"
+                />
               </div>
             )
           })
@@ -30,7 +36,7 @@ const { images } = Astro.props
     <div class="swiper-wrapper">
       {
         images.map((url: string) => {
-          if(!url) return
+          if (!url) return
           return (
             <div class="swiper-slide">
               <img src={url} width="350" alt={'Slider producto segurida'} />
@@ -44,7 +50,6 @@ const { images } = Astro.props
     <div class="swiper-button-next"></div>
   </div>
 </div>
-
 
 <script type="module">
   import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js'
@@ -84,20 +89,17 @@ const { images } = Astro.props
     height: 354px;
   }
 
-
   .main-swiper .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-
   .main-swiper .swiper-slide img {
     height: 354px;
     width: 354px;
     object-fit: contain;
   }
-
 
   .thumb-swiper {
     height: 354px;
@@ -108,7 +110,7 @@ const { images } = Astro.props
     align-items: center;
     width: 75px;
     height: 75px !important;
-    border: 2px solid var(--theme-text);
+    border: 1px solid var(--theme-text-lighter);
   }
 
   .thumb-swiper .swiper-slide:first-child {
