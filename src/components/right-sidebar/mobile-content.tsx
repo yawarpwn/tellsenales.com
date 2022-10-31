@@ -5,37 +5,33 @@ import './styles.css';
 
 interface Props {
 	headings: { depth: number; slug: string; text: string }[];
-	isMobile?: boolean;
 }
 
-const TableOfContents: FunctionalComponent<Props> = ({ headings = [], isMobile }) => {
-	const labels = {
-		onThisPage: 'En está pagina',
-		overview: 'Sinopsis'
-	}
-
+const  MobileContent: FunctionalComponent<Props> = ({ headings = [] }) => {
+  const labels = {
+    overview: 'Sinopsis',
+    onThisPage: 'En está pagina'
+  }
 	headings = [{ depth: 2, slug: 'overview', text: labels.overview }, ...headings].filter(
 		({ depth }) => depth > 1 && depth < 4
 	);
 
 	const toc = useRef<HTMLUListElement>();
 	const [currentID, setCurrentID] = useState('overview');
-	const [open, setOpen] = useState(!isMobile);
+	const [open, setOpen] = useState(false);
 	const onThisPageID = 'on-this-page-heading';
 
 	const Container = ({ children }) => {
-		return isMobile ? (
+	  return (
 			<details {...{ open }} onToggle={(e) => setOpen(e.target.open)} class="toc-mobile-container">
 				{children}
 			</details>
-		) : (
-			children
-		);
+	  )
 	};
 
 	const HeadingContainer = ({ children }) => {
 		const currentHeading = headings.find(({ slug }) => slug === currentID);
-		return isMobile ? (
+		return (
 			<summary class="toc-mobile-header">
 				<div class="toc-mobile-header-content">
 					<div className="toc-toggle">
@@ -58,9 +54,7 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], isMobile }
 					)}
 				</div>
 			</summary>
-		) : (
-			children
-		);
+		)
 	};
 
 	useEffect(() => {
@@ -94,7 +88,6 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], isMobile }
 	}, [toc.current]);
 
 	const onLinkClick = (e) => {
-		if (!isMobile) return;
 		setOpen(false);
 		setCurrentID(e.target.getAttribute('href').replace('#', ''));
 	};
@@ -122,4 +115,4 @@ const TableOfContents: FunctionalComponent<Props> = ({ headings = [], isMobile }
 	);
 };
 
-export default TableOfContents;
+export default MobileContent;
