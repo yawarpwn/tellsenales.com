@@ -22,6 +22,7 @@ export default function WhatsappBtnPopup() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
+          aria-label='whatsapp contacto'
           className={`
           transition-all duration-300 ease-in-out cursor-pointer
           flex h-[42px] w-[42px] items-center justify-center rounded-full bg-green-500 text-white outline-none`}

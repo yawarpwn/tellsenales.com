@@ -18,18 +18,23 @@ const catalogos = [
 ]
 
 export interface Props {
-  hideOurSection: boolean
+  hideOurSection?: boolean
 }
 
 import SocialIcons from '@components/social-icons'
-import { ChevronRight} from '@components/icons'
+import { ChevronRight } from '@components/icons'
+
 const { hideOurSection } = Astro.props
 ---
 
-<div class={`grid grid-cols-1 ${hideOurSection ?  'md:grid-cols-3 ': 'md:grid-cols-4' }  gap-8 md:place-content-start md:place-items-start py-16`}>
+<div
+  class={`grid grid-cols-1 ${
+    hideOurSection ? 'md:grid-cols-3 ' : 'md:grid-cols-4'
+  }  gap-8 md:place-content-start md:place-items-start py-16`}
+>
   <!-- Nosotros-->
   <div class={`${hideOurSection ? 'hidden' : ''}`}>
-    <h4 class="footer__title">Nosotros</h4>
+    <p class="footer__title">Nosotros</p>
     <p>
       Somos Fabricantes de todo tipo de señalizaciones en Perú. Señales viales,
       para obras y construcción, seguridad laboral, industriales y otros.
@@ -40,12 +45,19 @@ const { hideOurSection } = Astro.props
   </div>
   <!-- Catalogos--->
   <div>
-    <h4 class="footer__title">Cátalogos</h4>
+    <p class="footer__title">Cátalogos</p>
     <div class="flex gap-2">
       {
         catalogos.map(({ title, imgSrc, href }) => (
           <a href={href} target="_blank">
-            <img class="rounded-lg" src={imgSrc} width="115" alt={title} height="auto" />
+            <img
+              class="h-full w-full rounded-lg"
+              src={imgSrc}
+              width="110"
+              height="155"
+              alt={title}
+              height="auto"
+            />
           </a>
         ))
       }
@@ -55,14 +67,14 @@ const { hideOurSection } = Astro.props
   <!-- Info-->
   <div>
     <div>
-      <h4 class="footer__title mb-0">Contacto</h4>
+      <p class="footer__title mb-0">Contacto</p>
       <p>ventas@tellsenales.com</p>
       <p>971 531 018</p>
     </div>
     <div>
-    <h4 class="footer__title mb-0 mt-2">ENCUÉNTRANOS</h4>
-    <p>Av. Argentina 538 Int. 1160 - Lima </p>
-    <p>Maquinaria 325 - Carmen de la Legua </p>
+      <p class="footer__title mb-0 mt-2">ENCUÉNTRANOS</p>
+      <p>Av. Argentina 538 Int. 1160 - Lima</p>
+      <p>Maquinaria 325 - Carmen de la Legua</p>
     </div>
 
     <p></p>
@@ -70,36 +82,34 @@ const { hideOurSection } = Astro.props
 
   <!-- Email -->
   <div>
-    <h4 class="footer__title">RECIBE LAS MEJORES OFERTAS</h4>
+    <p class="footer__title">RECIBE LAS MEJORES OFERTAS</p>
 
-      <form class='flex items-center'>
-        <input
-          class='w-40 rounded-l-md border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600'
-          placeholder='Ingresar Email'
-          type='email'
-          required
-        />
+    <form class="flex items-center">
+      <input
+        class="w-40 rounded-l-md border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        placeholder="Ingresar Email"
+        type="email"
+        required
+      />
 
-        <button
-          class='flex  border-3 border-primary items-center justify-center rounded-l-md border 
-          border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark 
-          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
-          disabled={false}
-        >
-            <ChevronRight fill={'white'} />
-          
-        </button>
-      </form>
+      <button
+        class="flex border-3 border-primary items-center justify-center rounded-l-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        aria-label="recibe nuestras ofertas"
+        disabled={false}
+      >
+        <ChevronRight fill={'white'} />
+      </button>
+    </form>
 
-    <h4 class="footer__title mt-4">REDES SOCIALES</h4>
+    <p class="footer__title mt-4">REDES SOCIALES</p>
     <SocialIcons />
   </div>
 </div>
 <style>
-.footer__title {
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--colors-accents8);
-}
+  .footer__title {
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--colors-accents8);
+  }
 </style>
