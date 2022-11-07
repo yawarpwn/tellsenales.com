@@ -1,35 +1,35 @@
-import type { IRawThemeSetting } from 'vscode-textmate';
+import type { IRawThemeSetting } from 'vscode-textmate'
 
 const red = {
 	0: '#ff657c',
-};
+}
 const yellow = {
 	0: '#EBCB8B',
 	1: '#ffbd2e',
-};
+}
 
 const blue = {
 	0: '#66adff',
 	1: '#5E81AC',
-};
+}
 
 const green = {
 	0: '#16c082',
-};
+}
 
 const cyan = {
 	0: '#23b1af',
-};
+}
 
 const grey = {
 	0: '#d8dee9',
 	1: '#c7c5d3',
 	2: '#aba8bd',
 	9: '#312749',
-};
+}
 
-export const foregroundPrimary = grey[0];
-export const backgroundPrimary = grey[9];
+export const foregroundPrimary = grey[0]
+export const backgroundPrimary = grey[9]
 
 export const tokens: IRawThemeSetting[] = [
 	{
@@ -956,4 +956,4 @@ export const tokens: IRawThemeSetting[] = [
 			foreground: yellow[1],
 		},
 	},
-];
+]

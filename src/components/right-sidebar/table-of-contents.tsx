@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'preact/hooks'
 import './styles.css'
 
 interface Props {
-	headings: { slug: string, text: string, depth: number }[]
+	headings: { slug: string; text: string; depth: number }[]
 	isMobile?: boolean
 }
 const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
@@ -11,7 +11,6 @@ const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
 	const toc = useRef<HTMLUListElement>()
 	const [currentID, setCurrentId] = useState('overview')
 	const onThisPageID = 'on-this-page-heading'
-
 
 	useEffect(() => {
 		if (!toc.current) return
@@ -34,22 +33,25 @@ const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
 
 		const headingsObserver = new IntersectionObserver(setCurrent, observerOptions)
 
-		document.querySelectorAll('article :is(h1, h2, h3)').forEach(h => headingsObserver.observe(h))
+		document.querySelectorAll('article :is(h1, h2, h3)').forEach((h) => headingsObserver.observe(h))
 
 		return () => headingsObserver.disconnect()
-
 	}, [toc.current])
 
 	return (
 		<div>
 			<div>
-				<h2 class='heading' id={onThisPageID} >
+				<h2 class="heading" id={onThisPageID}>
 					En está pagina
 				</h2>
 			</div>
 			<ul ref={toc}>
 				{headings.map(({ depth, slug, text }) => (
-					<li className={`header-link depth-${depth} ${currentID === slug ? 'current-header-link' : ''}`.trim()}>
+					<li
+						className={`header-link depth-${depth} ${
+							currentID === slug ? 'current-header-link' : ''
+						}`.trim()}
+					>
 						<a href={`#${slug}`}>{text}</a>
 					</li>
 				))}
@@ -57,6 +59,5 @@ const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
 		</div>
 	)
 }
-
 
 export default TableOfContent

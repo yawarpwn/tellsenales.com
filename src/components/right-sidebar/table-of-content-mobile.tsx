@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'preact/hooks'
 import './styles.css'
 
 interface Props {
-	headings: { slug: string, text: string, depth: number }[]
+	headings: { slug: string; text: string; depth: number }[]
 	isMobile?: boolean
 }
 const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
@@ -40,20 +40,17 @@ const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
 
 		const headingsObserver = new IntersectionObserver(setCurrent, observerOptions)
 
-		document.querySelectorAll('article :is(h1, h2, h3)').forEach(h => headingsObserver.observe(h))
+		document.querySelectorAll('article :is(h1, h2, h3)').forEach((h) => headingsObserver.observe(h))
 
 		return () => headingsObserver.disconnect()
-
 	}, [toc.current])
 
-
-
 	return (
-		<details open={open} className='toc-mobile-container' onToggle={(e) => setOpen(e.target.open)}>
+		<details open={open} className="toc-mobile-container" onToggle={(e) => setOpen(e.target.open)}>
 			<summary className="toc-mobile-header">
 				<div class="toc-mobile-header-content">
 					<div className="toc-toggle">
-						<h2 className='heading' id={onThisPageID} >
+						<h2 className="heading" id={onThisPageID}>
 							En está pagina
 						</h2>
 						<svg
@@ -76,8 +73,14 @@ const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
 			</summary>
 			<ul ref={toc}>
 				{headings.map(({ depth, slug, text }) => (
-					<li className={`header-link depth-${depth} ${currentID === slug ? 'current-header-link' : ''}`.trim()}>
-						<a href={`#${slug}`} onClick={onLinkClick}>{text}</a>
+					<li
+						className={`header-link depth-${depth} ${
+							currentID === slug ? 'current-header-link' : ''
+						}`.trim()}
+					>
+						<a href={`#${slug}`} onClick={onLinkClick}>
+							{text}
+						</a>
 					</li>
 				))}
 			</ul>
@@ -85,6 +88,4 @@ const TableOfContent: FunctionComponent<Props> = ({ headings }) => {
 	)
 }
 
-
 export default TableOfContent
-

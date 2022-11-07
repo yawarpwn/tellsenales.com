@@ -2,11 +2,11 @@
 // import UIString from '../UIString.astro';
 
 export interface Props {
-	item: { link: string; text: string };
-	rel: 'next' | 'prev';
+	item: { link: string; text: string }
+	rel: 'next' | 'prev'
 }
 
-const { item, rel } = Astro.props as Props;
+const { item, rel } = Astro.props as Props
 ---
 
 <a class={rel === 'next' ? 'rtl' : 'ltr'} rel={rel} href={new URL(item.link, Astro.site).pathname}>
@@ -38,11 +38,11 @@ const { item, rel } = Astro.props as Props;
 	}
 	<div class="copy">
 		<div class="heading">
-      <!--
+			<!--
 			<UIString key={rel === 'next' ? 'articleNav.nextPage' : 'articleNav.prevPage'} />
 -->
 		</div>
-		<div class="name" set:html={item.text}></div>
+		<div class="name" set:html={item.text} />
 	</div>
 </a>
 

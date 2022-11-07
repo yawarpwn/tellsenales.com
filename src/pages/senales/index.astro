@@ -7,16 +7,16 @@ import manifest from '../../config/manifest.json'
 
 const products = await getAllSenales()
 const content = {
-  title: 'Señales Seguridad',
-  description: 'Fabricación de todo tipo de señales de seguridad',
-  image: '/assets/images/banner-seguridad.webp'
+	title: 'Señales Seguridad',
+	description: 'Fabricación de todo tipo de señales de seguridad',
+	image: '/assets/images/banner-seguridad.webp',
 }
 ---
 
-<MainLayout {content} >
-  <!--Page Navigation -->
-  <PageNavigation navigation={manifest.routes[0].routes} />
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 px-4 md:px-0">
-      {products.map(product => <ProductCard product={product} />)}
-    </div>
+<MainLayout {content}>
+	<!--Page Navigation -->
+	<PageNavigation navigation={manifest.routes[0].routes} />
+	<div class="grid grid-cols-2 md:grid-cols-4 gap-2 px-4 md:px-0">
+		{products.map((product) => <ProductCard product={product} />)}
+	</div>
 </MainLayout>

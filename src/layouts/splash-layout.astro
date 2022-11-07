@@ -1,44 +1,44 @@
 ---
 import HeadCommon from '@components/head/head-common.astro'
-import Header from '@layouts/header/header.astro';
-import FooterInfo from '@layouts/footer/footer-info.astro';
-import FooterLinks from '@layouts/footer/footer-links.astro';
+import Header from '@layouts/header/header.astro'
+import FooterInfo from '@layouts/footer/footer-info.astro'
+import FooterLinks from '@layouts/footer/footer-links.astro'
 import '../styles/main.css'
 const { title } = Astro.props
 ---
 
 <html dir="ltr" lang="es" class="initial">
-  <head>
-    <HeadCommon />
-    <title> {title} | Tell Señales</title>
-    <style>
-    html,
-    body,
-    main {
-      height: 100%;
-    }
+	<head>
+		<HeadCommon />
+		<title>{title} | Tell Señales</title>
+		<style>
+			html,
+			body,
+			main {
+				height: 100%;
+			}
 
-    main {
-      display: grid;
-      place-items: center;
-      padding-inline: var(--min-spacing-inline);
-    }
+			main {
+				display: grid;
+				place-items: center;
+				padding-inline: var(--min-spacing-inline);
+			}
 
-    :global(#menu-toggle) {
-      display: none;
-    }
-  </style>
-  </head>
-  <body>
-    <main>
-      <Header />
-      <article class="mt-24">
-        <slot />
-      </article>
-    </main>
-    <div class="px-4 mt-16 md:px-0 max-w-7xl mx-auto">
-      <FooterLinks />
-      <FooterInfo hideOurSection />
-    </div>
-  </body>
+			:global(#menu-toggle) {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<Header />
+			<article class="mt-24">
+				<slot />
+			</article>
+		</main>
+		<div class="px-4 mt-16 md:px-0 max-w-7xl mx-auto">
+			<FooterLinks />
+			<FooterInfo hideOurSection />
+		</div>
+	</body>
 </html>

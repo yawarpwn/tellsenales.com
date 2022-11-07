@@ -1,8 +1,8 @@
 ---
 import site from '../../config/setting'
 export interface Props {
-  canonicalUrl: URL,
-  content: any,
+	canonicalUrl: URL
+	content: any
 }
 const { content, canonicalURL } = Astro.props
 const { title, description, image } = content
@@ -29,31 +29,56 @@ const { title, description, image } = content
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ERP9CTT7P"
-></script>
 <script is:inline>
-  window.dataLayer = window.dataLayer || []
-  function gtag() {
-    dataLayer.push(arguments)
-  }
-  gtag('js', new Date())
+	const loadScript = (src) =>
+		new Promise((resolve, reject) => {
+			const script = document.createElement('script')
+			script.src = src
 
-  gtag('config', 'G-3ERP9CTT7P')
+			script.onload = resolve
+			script.onerror = reject
+			document.head.appendChild(script)
+		})
+
+	loadScript('https://www.googletagmanager.com/gtag/js?id=G-3ERP9CTT7P')
+		.then(() => {
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date())
+			gtag('config', 'G-3ERP9CTT7P')
+		})
+		.catch((err) => console.log(err))
 </script>
-<!-- Meta Pixel Code -->
 <script is:inline>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '825596415540655');
-fbq('track', 'PageView');
+	function load3rdPartyLoad() {
+		!(function (f, b, e, v, n, t, s) {
+			if (f.fbq) return
+			n = f.fbq = function () {
+				n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			}
+			if (!f._fbq) f._fbq = n
+			n.push = n
+			n.loaded = !0
+			n.version = '2.0'
+			n.queue = []
+			t = b.createElement(e)
+			t.async = !0
+			t.src = v
+			s = b.getElementsByTagName(e)[0]
+			s.parentNode.insertBefore(t, s)
+		})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+		fbq('init', '825596415540655')
+		fbq('track', 'PageView')
+	}
+
+	load3rdPartyLoad()
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=825596415540655&ev=PageView&noscript=1"
-/></noscript>
+<noscript></noscript><img
+	height="1"
+	width="1"
+	style="display:none"
+	src="https://www.facebook.com/tr?id=825596415540655&ev=PageView&noscript=1"
+/>
 <!-- End Meta Pixel Code -->

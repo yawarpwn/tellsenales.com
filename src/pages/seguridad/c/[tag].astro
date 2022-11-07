@@ -9,46 +9,43 @@ import slugify from 'slugify'
 import type { Product } from '@types'
 
 export async function getStaticPaths() {
-  const allProducts: Product[] = await getAllProducts()
-  const allTags = [
-    ...new Set(allProducts.map(product => product.contentfulMetadata.tags[0]?.name))
-  ]
+	const allProducts: Product[] = await getAllProducts()
+	const allTags = [
+		...new Set(allProducts.map((product) => product.contentfulMetadata.tags[0]?.name)),
+	]
 
-
-  return allTags.map(tag => ({
-    params: { tag },
-    props: {
-      products: allProducts.filter(
-        product => product.contentfulMetadata.tags[0]?.name === tag
-      )
-    }
-  }))
+	return allTags.map((tag) => ({
+		params: { tag },
+		props: {
+			products: allProducts.filter((product) => product.contentfulMetadata.tags[0]?.name === tag),
+		},
+	}))
 }
 
 export interface Props {
-  products: Product[]
+	products: Product[]
 }
 
-const { products  } = Astro.props
+const { products } = Astro.props
 const titleFromData = products[0].contentfulMetadata.tags[0]?.name
 const title = titleFromData.replace(/[-]/g, ' ').toUpperCase()
-const content = { 
-  title , 
-  description: `Venta y distribución de implementos de seguridad ${title}`,
-  image: `/assets/images/${slugify(title, {lower: true})}.webp` 
+const content = {
+	title,
+	description: `Venta y distribución de implementos de seguridad ${title}`,
+	image: `/assets/images/${slugify(title, { lower: true })}.webp`,
 }
-
-
 ---
+
 <MainLayout {content}>
-  <PageHeader title={title} />
-  <PageNavigation navigation={manifest.routes[1].routes} />
+	<PageHeader title={title} />
+	<PageNavigation navigation={manifest.routes[1].routes} />
 
-  <!-- Product List -->
-  <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
-  {products
-    .sort((a, b) => a.name > b.name ? 1 : -1)
-    .map(product => <ProductCard product={product} />)}
-  </div>
-
+	<!-- Product List -->
+	<div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
+		{
+			products
+				.sort((a, b) => (a.name > b.name ? 1 : -1))
+				.map((product) => <ProductCard product={product} />)
+		}
+	</div>
 </MainLayout>

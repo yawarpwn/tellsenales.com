@@ -1,29 +1,29 @@
 {
   "compilerOptions": {
-    "types": ["astro/client"],
-    "jsx": "react-jsx",
     "allowJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "strict": true,
+    "baseUrl": ".",
     "moduleResolution": "node",
     "module": "ES2020",
     "target": "ES2020",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
-      "@lib/*": ["src/lib/*"], 
+      "@lib/*": ["src/lib/*"],
       "@utils/*": ["src/utils/*"],
       "@types": ["src/types/index.ts"]
     },
     "outDir": "./dist",
     "declarationDir": "./dist/types",
-  }
+    "types": ["vite/client"]
+  },
+  "include": ["scripts/**/*"]
 }
-

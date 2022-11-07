@@ -1,69 +1,74 @@
 ---
 const links = [
-  {
-    href: '/senales/posts/senales-viales',
-    title: 'Señales Viales',
-  },
-  {
-    href: '/senales/c/obras',
-    title: 'Señales Obras',
-  },
-  {
-    href: '/senales/c/fotoluminiscentes/info',
-    title: 'Fotoluminiscentes',
-  },
-  {
-    href: '/senales/c/seguridad',
-    title: 'Celtex',
-  },
-  {
-    href: '/senales/c/seguridad',
-    title: 'Vinil',
-  },
-  {
-    href: '/senales/c/decorativas',
-    title: 'Aluminio',
-  },
-  {
-    href: '/senales/c/seguridad',
-    title: 'Acrilico',
-  },
-  {
-    href: '/senales/c/viales',
-    title: 'Preventivas',
-  },
-  {
-    href: '/senales/c/viales',
-    title: 'Reguladoras',
-  },
-  {
-    href: '/senales/c/viales',
-    title: 'Informativas',
-  },
-  {
-    href: '/senales/c/obras',
-    title: 'Triplay',
-  },
-  {
-    href: '/senales/c/obras',
-    title: 'MDF',
-  },
-  {
-    href: '/senales/c/viales',
-    title: 'Sustrato de Aluminio',
-  },
-  {
-    href: '/posts/senales-viales',
-    title: 'Fibra de vidrio',
-  },
-  {
-    href: '/senales/c/viales',
-    title: 'Reflectivo',
-  },
+	{
+		href: '/senales/posts/senales-viales',
+		title: 'Señales Viales',
+	},
+	{
+		href: '/senales/c/obras',
+		title: 'Señales Obras',
+	},
+	{
+		href: '/senales/c/fotoluminiscentes/info',
+		title: 'Fotoluminiscentes',
+	},
+	{
+		href: '/senales/c/seguridad',
+		title: 'Celtex',
+	},
+	{
+		href: '/senales/c/seguridad',
+		title: 'Vinil',
+	},
+	{
+		href: '/senales/c/decorativas',
+		title: 'Aluminio',
+	},
+	{
+		href: '/senales/c/seguridad',
+		title: 'Acrilico',
+	},
+	{
+		href: '/senales/c/viales',
+		title: 'Preventivas',
+	},
+	{
+		href: '/senales/c/viales',
+		title: 'Reguladoras',
+	},
+	{
+		href: '/senales/c/viales',
+		title: 'Informativas',
+	},
+	{
+		href: '/senales/c/obras',
+		title: 'Triplay',
+	},
+	{
+		href: '/senales/c/obras',
+		title: 'MDF',
+	},
+	{
+		href: '/senales/c/viales',
+		title: 'Sustrato de Aluminio',
+	},
+	{
+		href: '/posts/senales-viales',
+		title: 'Fibra de vidrio',
+	},
+	{
+		href: '/senales/c/viales',
+		title: 'Reflectivo',
+	},
 ]
 ---
+
 <div class="max-5xl mx-auto text-center">
-  {links.map(({href, title}) => (
-  <a class="inline-flex mx-4 hover:text-orange-500" href={href}>{title}</a>
-  ))}
+	{
+		links.map(({ href, title }) => (
+			<a class="mx-4 inline-flex hover:text-orange-500" href={href}>
+				{title}
+			</a>
+		))
+	}
 </div>

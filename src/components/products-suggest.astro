@@ -4,28 +4,26 @@ import ProductCard from './product-card.astro'
 import type { Product } from '@types'
 
 export interface Props {
-  name: string
+	name: string
 }
 
 const { name } = Astro.props
 
 const products: Product[] = await getAllProducts()
-const suggested = products.filter(product => {
-  return product.name
-    .toLowerCase()
-    .startsWith(name.trim().toLowerCase().split(' ')[0])
+const suggested = products.filter((product) => {
+	return product.name.toLowerCase().startsWith(name.trim().toLowerCase().split(' ')[0])
 })
 ---
 
 <div class="px-4 md:px-0">
-  <h2>Productos relacionados sugeridos</h2>
-  <div class="flex gap-2 overflow-x-scroll py-4">
-    {
-      suggested.map(product => (
-        <div class="w-[200px] min-w-[200px]">
-          <ProductCard product={product} />
-        </div>
-      ))
-    }
-  </div>
+	<h2>Productos relacionados sugeridos</h2>
+	<div class="flex gap-2 overflow-x-scroll py-4">
+		{
+			suggested.map((product) => (
+				<div class="w-[200px] min-w-[200px]">
+					<ProductCard product={product} />
+				</div>
+			))
+		}
+	</div>
 </div>

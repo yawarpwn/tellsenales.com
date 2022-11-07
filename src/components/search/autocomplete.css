@@ -8,7 +8,7 @@
 
 /* text Color */
 --aa-text-color-rgb: 255, 255, 255;
---aa-text-color-alpha: 1, 
+--aa-text-color-alpha: 1; 
 --aa-input-background-color-alpha: 0.9;
 --aa-primary-color-rgb: 100, 25, 230;
 --aa-primary-color-alpha: 1;

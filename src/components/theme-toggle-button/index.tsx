@@ -1,13 +1,13 @@
-import type { FunctionalComponent } from 'preact';
-import { h, Fragment } from 'preact';
-import { useState, useEffect } from 'preact/hooks';
-import './styles.css';
+import type { FunctionalComponent } from 'preact'
+import { h, Fragment } from 'preact'
+import { useState, useEffect } from 'preact/hooks'
+import './styles.css'
 
 interface Props {
-	isInsideHeader: boolean;
+	isInsideHeader: boolean
 }
 
-const themes = ['light', 'dark'];
+const themes = ['light', 'dark']
 
 const icons = [
 	<svg
@@ -32,32 +32,32 @@ const icons = [
 	>
 		<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
 	</svg>,
-];
+]
 
 const ThemeToggle: FunctionalComponent<Props> = ({ isInsideHeader }) => {
 	const [theme, setTheme] = useState(() => {
 		if (import.meta.env.SSR) {
-			return undefined;
+			return undefined
 		}
-		return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-	});
+		return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+	})
 
 	useEffect(() => {
-		const root = document.documentElement;
+		const root = document.documentElement
 		if (theme === 'light') {
-			root.classList.remove('dark');
+			root.classList.remove('dark')
 		} else {
-			root.classList.add('dark');
+			root.classList.add('dark')
 		}
-	}, [theme]);
+	}, [theme])
 
 	return (
-		<div class={`theme-toggle ${isInsideHeader ? 'hide-toggle-on-smaller-screens' : ''}`}>
+		<div className={`theme-toggle ${isInsideHeader ? 'hide-toggle-on-smaller-screens' : ''}`}>
 			{themes.map((t, i) => {
-				const icon = icons[i];
-				const checked = t === theme;
+				const icon = icons[i]
+				const checked = t === theme
 				return (
-					<label  class={checked ? 'checked' : ''}>
+					<label className={checked ? 'checked' : ''}>
 						{icon}
 						<input
 							type="radio"
@@ -65,22 +65,22 @@ const ThemeToggle: FunctionalComponent<Props> = ({ isInsideHeader }) => {
 							checked={checked}
 							value={t}
 							onChange={() => {
-								const matchesDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+								const matchesDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 								if ((matchesDarkTheme && t === 'dark') || (!matchesDarkTheme && t === 'light')) {
-									localStorage.removeItem('theme');
+									localStorage.removeItem('theme')
 								} else {
-									localStorage.setItem('theme', t);
+									localStorage.setItem('theme', t)
 								}
 
-								setTheme(t);
+								setTheme(t)
 							}}
 						/>
 					</label>
-				);
+				)
 			})}
 		</div>
-	);
-};
+	)
+}
 
-export default ThemeToggle;
+export default ThemeToggle

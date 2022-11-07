@@ -9,46 +9,40 @@ import slugify from 'slugify'
 import type { Senal } from '@types'
 
 export async function getStaticPaths() {
-  const allSenales: Senal[] = await getAllSenales()
-  const allTags = [
-    ...new Set(allSenales.map(senal => senal.contentfulMetadata.tags[0]?.name))
-  ]
+	const allSenales: Senal[] = await getAllSenales()
+	const allTags = [...new Set(allSenales.map((senal) => senal.contentfulMetadata.tags[0]?.name))]
 
-  return allTags.map(tag => ({
-    params: { tag },
-    props: {
-      products: allSenales.filter(
-        senal => senal.contentfulMetadata.tags[0]?.name === tag
-      )
-    }
-  }))
+	return allTags.map((tag) => ({
+		params: { tag },
+		props: {
+			products: allSenales.filter((senal) => senal.contentfulMetadata.tags[0]?.name === tag),
+		},
+	}))
 }
 
 const { products } = Astro.props
 const title = products[0].contentfulMetadata.tags[0]?.name.toUpperCase()
-const categories = [
-  ...new Set(products.map((prod: Senal) => prod.category))
-] as string[]
+const categories = [...new Set(products.map((prod: Senal) => prod.category))] as string[]
 
 const content = {
-  title,
-  description: `Venta y distribución de Señales de Seguridad ${title}`,
-  image: `/assets/images/${slugify(title, { lower: true })}.webp`
+	title,
+	description: `Venta y distribución de Señales de Seguridad ${title}`,
+	image: `/assets/images/${slugify(title, { lower: true })}.webp`,
 }
 ---
 
 <MainLayout {content}>
-  <div>
-    <PageHeader {title} />
-    <PageNavigation navigation={manifest.routes[0].routes} />
+	<div>
+		<PageHeader {title} />
+		<PageNavigation navigation={manifest.routes[0].routes} />
 
-    <!-- Product List -->
-    <div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
-      {
-        products
-          .sort((a, b) => (a.category > b.category ? 1 : -1))
-          .map((senal: Senal) => <ProductCard product={senal} />)
-      }
-    </div>
-  </div>
+		<!-- Product List -->
+		<div class="grid grid-cols-2 md:grid-cols-4 px-4 md:px-0 gap-2">
+			{
+				products
+					.sort((a, b) => (a.category > b.category ? 1 : -1))
+					.map((senal: Senal) => <ProductCard product={senal} />)
+			}
+		</div>
+	</div>
 </MainLayout>

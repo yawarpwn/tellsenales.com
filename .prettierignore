@@ -1,4 +1,7 @@
-.git
-out
+dist
 node_modules
-build
+.github
+.changeset
+*.md
+*.mdx
+pnpm-lock.yaml

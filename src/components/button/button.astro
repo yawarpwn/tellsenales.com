@@ -1,8 +1,8 @@
 ---
-const { class: className = '', style, href } = Astro.props;
+const { class: className = '', style, href } = Astro.props
 // Wrap in <span> because Houdini is disabled for a[href] for security
 
-const { variant = 'primary' } = Astro.props;
+const { variant = 'primary' } = Astro.props
 ---
 
 <span class:list={[`link pixel variant-${variant}`, className]} {style}>

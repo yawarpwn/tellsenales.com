@@ -51,9 +51,45 @@ RewriteCond %{HTTP_HOST} ^.*$
 RewriteRule ^senales\/viales\/$ "https\:\/\/tellsenales\.com\/posts\/senales\-viales\/" [R=301,L]
 RewriteCond %{HTTP_HOST} ^.*$
 RewriteRule ^senales\/viales$ "https\:\/\/tellsenales\.com\/posts\/senales\-viales\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/viales\/preventivas$ "https\:\/\/tellsenales\.com\/senales\/c\/viales\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/viales\/reguladoras$ "https\:\/\/tellsenales\.com\/senales\/c\/viales\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/viales\/informativas$ "https\:\/\/tellsenales\.com\/senales\/c\/viales\/" [R=301,L]
 
 # senales Fotoluminiscentes
 RewriteCond %{HTTP_HOST} ^.*$
 RewriteRule ^senales\/fotoluminiscentes$ "https\:\/\/tellsenales\.com\/posts\/senales\-fotoluminiscentes\/" [R=301,L]
 RewriteCond %{HTTP_HOST} ^.*$
 RewriteRule ^senales\/fotoluminiscentes\/$ "https\:\/\/tellsenales\.com\/posts\/senales\-fotoluminiscentes\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/fotoluminiscentes/evacuacion$ "https\:\/\/tellsenales\.com\/senales\/c\/fotoluminiscentes\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/fotoluminiscentes/incendio$ "https\:\/\/tellsenales\.com\/senales\/c\/fotoluminiscentes\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/fotoluminiscentes/advertencia$ "https\:\/\/tellsenales\.com\/senales\/c\/fotoluminiscentes\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/fotoluminiscentes/prohibicion$ "https\:\/\/tellsenales\.com\/senales\/c\/fotoluminiscentes\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/fotoluminiscentes/obligaction$ "https\:\/\/tellsenales\.com\/senales\/c\/fotoluminiscentes\/" [R=301,L]
+
+# senales Seguridad
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/seguridad/evacuacion$ "https\:\/\/tellsenales\.com\/senales\/c\/seguridad\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/seguridad/prohibicion$ "https\:\/\/tellsenales\.com\/senales\/c\/seguridad\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/seguridad/obligacion$ "https\:\/\/tellsenales\.com\/senales\/c\/seguridad\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/seguridad/advertencia$ "https\:\/\/tellsenales\.com\/senales\/c\/seguridad\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/seguridad/incendio$ "https\:\/\/tellsenales\.com\/senales\/c\/seguridad\/" [R=301,L]
+
+# senales obras
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/obras/preventivas$ "https\:\/\/tellsenales\.com\/senales\/c\/obras\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/obras/epps$ "https\:\/\/tellsenales\.com\/senales\/c\/obras\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^senales\/obras/tranqueras$ "https\:\/\/tellsenales\.com\/senales\/c\/obras\/" [R=301,L]
