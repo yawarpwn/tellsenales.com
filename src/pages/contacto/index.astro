@@ -14,7 +14,7 @@ const content = {
 		<section>
 			<div class="mt-4">
 				<p class="mb-8 text-xl font-bold">
-					Tell Señales está interesado en sus clientes. Aprovecha nuestros datos y contáctate con
+					Tell Señales está interesad? en sus clientes. Aprovecha nuestros datos y contáctate con
 					nosotros.
 				</p><div>
 					<div class="mb-8 p-4 border border-orange-500 rounded-md">
@@ -88,27 +88,52 @@ const content = {
 				</div>
 			</div>
 		</section>
-		<div class="jsx-62eb6cc63965206d">
-			<h4 class="jsx-62eb6cc63965206d mb-4 text-2xl uppercase">Dejános un mensaje</h4><form
-				class="jsx-62eb6cc63965206d"
-			>
-				<div class="jsx-62eb6cc63965206d">
-					<input placeholder="Nombre" type="text" name="name" class="jsx-62eb6cc63965206d" />
-				</div><div class="jsx-62eb6cc63965206d">
-					<input placeholder="Email" type="email" name="email" class="jsx-62eb6cc63965206d" />
-				</div><div class="jsx-62eb6cc63965206d">
-					<div class="jsx-62eb6cc63965206d mt-5">
-						<textarea placeholder="Mensaje" name="message" class="jsx-62eb6cc63965206d"></textarea>
-					</div><div class="jsx-62eb6cc63965206d mt-5">
-						<button class="jsx-62eb6cc63965206d w-full bg-secondary rounded-lg p-2 text-white"
-							>Enviar</button
-						>
+		<div class="">
+			<h4 class="mb-4 text-2xl uppercase">Dejános un mensaje</h4>
+			<form class="" id="contact-form">
+				<div class="">
+					<input placeholder="Nombre" type="text" name="name" class="" required />
+				</div><div class="">
+					<input placeholder="Email" type="email" name="email" class="" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required />
+				</div><div class="">
+					<div class="mt-5">
+						<textarea placeholder="Mensaje" name="message" class="" data-pattern='^.{25,255}$' required></textarea>
+					</div><div class="mt-5">
+						<button type="submit" class="w-full bg-secondary rounded-lg p-2 text-white" id='input-button'>Enviar</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </MainLayout>
+<script>
+	const $contactForm = document.querySelector<HTMLFormElement>('#contact-form')!
+  const $inputButton = document.querySelector<HTMLButtonElement>('#input-button')!
+
+	$contactForm.addEventListener('submit', (e) => {
+		e.preventDefault()
+		const data = Object.fromEntries(new FormData(e.target))
+		const url = 'https://nodemailer-service.onrender.com/send-mail'
+
+		const options = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(data),
+		}
+
+    $inputButton.setAttribute('disabled', "true")
+    $inputButton.textContent = 'enviando...'
+		fetch(url, options)
+			.then(() => {
+        $inputButton.removeAttribute('disabled')
+        $inputButton.textContent = 'Enviar'
+        alert('mensaje recibido')
+        location.href = '/'
+      })
+			.catch((err) => console.error(err))
+
+	})
+</script>
 <style>
 	input {
 		display: block;
@@ -126,8 +151,14 @@ const content = {
 		}
 	}
 
+  button[disabled] {
+    background: gray;
+    user-select: none;
+  }
+
 	textarea {
 		display: block;
+		resize: none;
 		padding: 10px;
 		width: 100%;
 		min-height: 150px;

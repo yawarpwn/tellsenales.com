@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format:code": "prettier -w . --cache"
+    "format:code": "prettier -w . --cache",
+    "send-algolia": "node ./scripts/send-data-to-algolia.mjs"
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.7.1",
