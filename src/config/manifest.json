@@ -165,6 +165,18 @@
           "open": true,
           "keywords": "guide, getting started, start, nextui",
           "path": "/posts/senales-aluminio/"
+        },
+        {
+          "title": "Vinil Ploteado",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/vinil-ploteado/"
+        },
+        {
+          "title": "Trabajos en Acrílico",
+          "open": true,
+          "keywords": "guide, getting started, start, nextui",
+          "path": "/posts/trabajos-acrilico/"
         }
       ]
     },
