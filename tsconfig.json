@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "declaration": true,
     "emitDeclarationOnly": true,
     "esModuleInterop": true,

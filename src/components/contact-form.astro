@@ -1,0 +1,141 @@
+---
+---
+
+<form action="" id="contact-form" method="post" class="needs-validation" novalidate>
+	<div class="mb-5">
+		<input
+			type="text"
+			placeholder="Tu nombre"
+			pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+			required
+			class="input-form"
+			name="name"
+		/>
+		<div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+			* Nombre es requerido
+		</div>
+	</div>
+	<div class="mb-5">
+		<input
+			type="email"
+			id="email-address"
+			placeholder="Tu correo"
+			name="email"
+			pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})"
+			required
+			class="input-form"
+		/>
+		<div class="empty-feedback text-red-400 text-sm mt-1">* Correo es requerido</div>
+		<div class="invalid-feedback text-red-400 text-sm mt-1">* Correo no es válido</div>
+	</div>
+	<div class="mb-3">
+		<textarea
+			name="message"
+      placeholder="Tu mensaje aquí..."
+			required
+			class="input-form resize-none h-40"
+			data-patter="^.{1,255}$"
+		>
+		</textarea>
+		<div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+			* Mensaje es requerido
+		</div>
+	</div>
+	<button class="submit-button">Enviar Mensaje</button>
+	<div id="result" class="mt-3 text-center"></div>
+</form>
+<style>
+	.input-form {
+		/* @apply w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none border-gray-300 focus:border-gray-600 ring-gray-100 */
+		padding: 1rem 0.5rem;
+		width: 100%;
+		outline: none;
+		border: 2px solid var(--theme-dim-lighter);
+		border-radius: 6px;
+		background: var(--theme-bg-light);
+	}
+
+	.input-form:focus {
+		border-color: var(--theme-primary);
+	}
+
+
+
+  .submit-button {
+    background-color: var(--theme-bg);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    transition: background-color 0.15s ease ;
+  }
+
+  .submit-button:hover {
+    background-color: var(--theme-bg-hover);
+  }
+
+	.invalid-feedback,
+	.empty-feedback {
+		display: none;
+	}
+	.was-validated :placeholder-shown:invalid ~ .empty-feedback {
+		display: block;
+	}
+	.was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+		display: block;
+	}
+
+	.is-invalid,
+	.was-validated :invalid {
+		border-color: #dc3545;
+	}
+</style>
+<script is:inline>
+	const $contactForm = document.querySelector('#contact-form')
+	const $result = document.querySelector('#result')
+
+	$contactForm.addEventListener('submit', (e) => {
+		e.preventDefault()
+		$contactForm.classList.add('was-validated')
+		if (!$contactForm.checkValidity()) {
+			$contactForm.querySelectorAll(':invalid')[0].focus()
+			return
+		}
+		const formData = new FormData($contactForm)
+		const obj = Object.fromEntries(formData)
+		const json = JSON.stringify(obj)
+
+		$result.innerHTML = 'Enviando...'
+
+		fetch('https://nodemailer-service.onrender.com/send-mail', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: json,
+		})
+			.then(async (response) => {
+				// let json = await response.json()
+				if (response.status === 200) {
+					$result.classList.add('text-green-500')
+					$result.innerHTML = 'Mensaje Enviado'
+				} else {
+					console.log(response)
+					$result.classList.add('text-red-500')
+					$result.innerHTML = 'Mensaje No enviado'
+				}
+			})
+			.catch((error) => {
+				console.log(error)
+				$result.innerHTML = 'Algo salio mal!'
+			})
+			.then(() => {
+				$contactForm.reset()
+				$contactForm.classList.remove('was-validated')
+				setTimeout(() => {
+					$result.style.display = 'none'
+				}, 5000)
+			})
+	})
+</script>
