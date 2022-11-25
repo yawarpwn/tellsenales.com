@@ -49,7 +49,7 @@ const content = {
 			allPathImages.map(({ paths, title }) => {
 				return (
 					<>
-						<h2 class="galery-title text-lg uppercase md:text-xl">Señales {title}</h2>
+						<h2 class="galery-title text-lg uppercase md:text-xl" id={title}>Señales {title}</h2>
 						<GalerySlider images={paths} />
 					</>
 				)

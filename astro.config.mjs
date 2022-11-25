@@ -11,6 +11,7 @@ import { toString } from 'hast-util-to-string'
 import { escape } from 'html-escaper'
 import sitemap from '@astrojs/sitemap'
 import preact from '@astrojs/preact'
+import image from '@astrojs/image'
 // import { tokens, foregroundPrimary, backgroundPrimary } from './syntax-highlighting-theme';
 import mdx from '@astrojs/mdx'
 
@@ -53,6 +54,7 @@ export default defineConfig({
 		tailwind({ config: { applyBaseStyles: false } }),
 		sitemap(),
 		preact(),
+    image(),
 		mdx({
 			rehypePlugins: [
 				rehypeSlug,
