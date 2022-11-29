@@ -1,10 +1,15 @@
 import { AutocompleteApi, BaseItem, AutocompleteState } from "@algolia/autocomplete-core"
+import { NoResultsIcon } from "../icons/no-results-icon"
 import { Results } from './results'
 
 
 export function ScreenState(props) {
   if(!props.state.query) {
-    return 'NO hay query'
+    return (
+    <div className='DocSearch-StartScreen'>
+        <p className='DocSearch-Help'>No hay busquedas recientes</p>
+    </div>
+    ) 
   }
 
   const hasCollection = props.state.collections.some(
@@ -12,7 +17,15 @@ export function ScreenState(props) {
   )
 
   if(hasCollection === false) {
-    return 'No hay resultados'
+    return (
+    <div className='DocSearch-NoResults'>
+        <div className='DocSearch-Screen-Icon'>
+          <NoResultsIcon />
+        </div>
+        <p className='DocSearch-Title'>
+          No hay resultados para "<strong>{props.state.query}</strong>"</p>
+    </div>
+    ) 
   }
 
   return (

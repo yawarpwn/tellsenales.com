@@ -1,8 +1,8 @@
 import { useMemo, useState, useRef, useEffect } from 'preact/hooks'
 import { createAutocomplete } from "@algolia/autocomplete-core"
 import { Hit } from '@algolia/client-search'
-import  { AutocompleteApi, AutocompleteState, BaseItem } from '@algolia/autocomplete-core'
-import  { Product } from '../../types'
+import { AutocompleteApi, AutocompleteState, BaseItem } from '@algolia/autocomplete-core'
+import { Product } from '../../types'
 import { getAlgoliaResults } from "@algolia/autocomplete-js"
 import algoliasearch from 'algoliasearch'
 import { SearchBox } from './searchbox'
@@ -22,18 +22,17 @@ export type AutocompleteItem = Hit<{
 
 }>
 
-export default function AutocompleteModal({ onClose = () => {} }) {
+export default function AutocompleteModal({ onClose = () => { } }) {
   const [autocompleteState, setAutocompleteState] = useState<AutocompleteState<AutocompleteItem>>({
     collections: [],
     completion: null,
     context: {},
     isOpen: false,
-    query: '',
+    query: 'cintas',
     activeItemId: null,
     status: 'idle',
   })
 
-  console.log(autocompleteState)
 
   const autocomplete = useMemo(
     () =>
@@ -51,7 +50,10 @@ export default function AutocompleteModal({ onClose = () => {} }) {
                   queries: [
                     {
                       indexName,
-                      query
+                      query,
+                      params: {
+                        hitsPerPage: 7 
+                      }
                     }
                   ]
                 })
@@ -70,6 +72,7 @@ export default function AutocompleteModal({ onClose = () => {} }) {
 
   const inputRef = useRef(null)
   const modalRef = useRef(null)
+  const dropdownRef = useRef(null)
 
   //hidden scrollbar 
   useEffect(() => {
@@ -80,30 +83,48 @@ export default function AutocompleteModal({ onClose = () => {} }) {
   }, [])
 
   //??
+  // useEffect(() => {
+  //   const setFullViewPortHeight = () => {
+  //     if (modalRef.current) {
+  //       const vh = window.innerHeight * 0.01
+  //       modalRef.current.style.setProperty('--docsearch-vh', `${vh}px`)
+  //     }
+  //   }
+
+  //   setFullViewPortHeight()
+  //   window.addEventListener('resize', setFullViewPortHeight)
+
+  //   return () => window.removeEventListener('resize', setFullViewPortHeight)
+
+  // }, [])
+
   useEffect(() => {
-    const setFullViewPortHeight = () => {
-      if(modalRef.current) {
-        const vh = window.innerHeight * 0.01
-        modalRef.current.style.setProperty('--docsearch-vh', `${vh}px`)
-      }
-    } 
-
-    setFullViewPortHeight()
-    window.addEventListener('resize', setFullViewPortHeight)
-
-    return () => window.removeEventListener('resize', setFullViewPortHeight)
-
-  }, [])
+    if(dropdownRef.current) {
+      dropdownRef.current.scrollTop = 0
+    }
+  }, [autocompleteState.query])
 
   return (
     <div
-      className="DocSearch-Container"
+      className={[
+        'DocSearch',
+        'DocSearch-Container',
+        autocompleteState.status === 'stalled' && 'DocSearch-Container--Stalled',
+        autocompleteState.status === 'error' && 'DocSearch-Container--Errored',
+      ]
+      .filter(Boolean)
+      .join(' ')
+    }
+      role='button'
+      tabIndex={0}
       onMouseDown={e => {
-        if(e.target === e.currentTarget) {
+        if (e.target === e.currentTarget) {
           onClose()
         }
       }}
-      {...getRootProps()}
+      {...getRootProps({
+        'aria-expanded': true
+      })}
     >
       <div className='DocSearch-Modal' ref={modalRef}>
         <header className='DocSearch-SearchBar'>
@@ -115,12 +136,12 @@ export default function AutocompleteModal({ onClose = () => {} }) {
             {...autocomplete}
           />
         </header>
-        <div className='DocSearch-Dropdown'>
-          <ScreenState 
+        <div className='DocSearch-Dropdown' ref={dropdownRef}>
+          <ScreenState
             {...autocomplete}
             state={autocompleteState}
             inputRef={inputRef}
-            />
+          />
         </div>
         <footer className='DocSearch-Footer'>
           <Footer />
