@@ -1,0 +1,23 @@
+.DocSearch-Container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: hsl(250, 14%, 10%, 0.8);
+  z-index: 200;
+}
+
+.DocSearch-Modal {
+  max-width: 560px;
+  position: relative;
+  margin: 60px auto auto;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: hsl(256, 27%, 19%);
+}
+
+.aa-Panel {
+  z-index: 999;
+}
+

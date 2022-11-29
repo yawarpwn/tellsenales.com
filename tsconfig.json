@@ -27,5 +27,11 @@
     "declarationDir": "./dist/types",
     "types": ["vite/client"]
   },
-  "include": ["scripts/**/*"]
+  "include": [
+    "scripts/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx"
+  ]
 }

@@ -5,7 +5,7 @@ type ContentFulMetadata = { tags: Tag[] }
 interface Sys {
 	id: string
 }
-export interface Product {
+export declare interface Product {
 	sku: string
 	name: string
 	slug: string

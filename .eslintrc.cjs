@@ -25,6 +25,7 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       extends: ['plugin:@typescript-eslint/recommended'],
       rules: {
+        'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/no-unused-vars': [
           'error',
           { argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_' },

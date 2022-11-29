@@ -1,11 +1,15 @@
 import { createPortal } from 'preact/compat'
 import { useState, useEffect, useRef } from 'preact/hooks'
-import DocSearchModal from './doc-search-modal'
+import AutocompleteModal from './autocomplete-modal'
+import '@algolia/autocomplete-theme-classic'
+import './_variables.css'
 import './doc-search.css'
+import './custom.css'
 
 export default function DocSearch() {
 	const [isOpen, setIsOpen] = useState(false)
-	const buttonRef = useRef(document.querySelector('#docsearch-search-button'))
+	const searchButtonRef = useRef(document.querySelector('#docsearch-search-button'))
+  const [initialQuery, setInitialQuery] = useState<string>()
 
 	const onOpen = () => {
 		setIsOpen(true)
@@ -15,11 +19,16 @@ export default function DocSearch() {
 		setIsOpen(false)
 	}
 
+  const onInput = (e) => {
+    setIsOpen(true)
+    setInitialQuery(e.key)
+  }
+
 	useEffect(() => {
-		buttonRef.current?.addEventListener('click', onOpen)
-		return () => buttonRef.current?.removeEventListener('click', onOpen)
+		searchButtonRef.current?.addEventListener('click', onOpen)
+		return () => searchButtonRef.current?.removeEventListener('click', onOpen)
 	}, [setIsOpen])
 
 	if (!isOpen) return null
-	return createPortal(<DocSearchModal onClose={onClose} />, document.body)
+	return createPortal(<AutocompleteModal onClose={onClose} />, document.body)
 }
