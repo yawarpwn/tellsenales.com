@@ -7,6 +7,7 @@ import { createStoredSearches } from './store-searches'
 import { getAlgoliaResults } from "@algolia/autocomplete-js"
 import algoliasearch from 'algoliasearch'
 import { useTouchEvents } from './use-touch-events'
+import { useTrapFocus } from './use-trap-focus'
 import { SearchBox } from './searchbox'
 import { ScreenState } from './screen-state'
 import { Footer } from './Footer'
@@ -19,16 +20,9 @@ const searchClient = algoliasearch(appId, apiKey)
 
 
 
-export type AutocompleteItem = Hit<{
-  name: string
-  slug: string
-  objectID: string,
-  category: string
-  img1: {
-    ur: string
-  }
+export type AutocompleteItem = Hit<Product>  
+ 
 
-}>
 
 export default function AutocompleteModal({
   onClose = () => { },
@@ -43,6 +37,8 @@ export default function AutocompleteModal({
     activeItemId: null,
     status: 'idle',
   })
+
+  console.log('autocompleteState', autocompleteState.collections)
 
 
   const favoriteSearches = useRef(
@@ -190,6 +186,7 @@ export default function AutocompleteModal({
   const modalRef = useRef<HTMLDivElement | null>(null)
   const dropdownRef = useRef<HTMLDivElement | null>(null)
   const formRef = useRef<HTMLFormElement | null>(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
 
   useTouchEvents({
     getEnvironmentProps,
@@ -197,6 +194,8 @@ export default function AutocompleteModal({
     panelElement: dropdownRef.current,
     formElement: formRef.current
   })
+
+  useTrapFocus({ container: containerRef.current})
 
   //hidden scrollbar 
   useEffect(() => {
@@ -206,21 +205,21 @@ export default function AutocompleteModal({
     }
   }, [])
 
-  //??
-  // useEffect(() => {
-  //   const setFullViewPortHeight = () => {
-  //     if (modalRef.current) {
-  //       const vh = window.innerHeight * 0.01
-  //       modalRef.current.style.setProperty('--docsearch-vh', `${vh}px`)
-  //     }
-  //   }
+  //full sceen on mobile fix
+  useEffect(() => {
+    const setFullViewPortHeight = () => {
+      if (modalRef.current) {
+        const vh = window.innerHeight * 0.01
+        modalRef.current.style.setProperty('--docsearch-vh', `${vh}px`)
+      }
+    }
 
-  //   setFullViewPortHeight()
-  //   window.addEventListener('resize', setFullViewPortHeight)
+    setFullViewPortHeight()
+    window.addEventListener('resize', setFullViewPortHeight)
 
-  //   return () => window.removeEventListener('resize', setFullViewPortHeight)
+    return () => window.removeEventListener('resize', setFullViewPortHeight)
 
-  // }, [])
+  }, [])
 
   useEffect(() => {
     if (dropdownRef.current) {
@@ -239,6 +238,7 @@ export default function AutocompleteModal({
         .filter(Boolean)
         .join(' ')
       }
+      ref={containerRef}
       // role='button'
       tabIndex={0}
       onMouseDown={e => {

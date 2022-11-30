@@ -1,7 +1,6 @@
 ---
 import DocSearch from './doc-search'
 import './header-button.css'
-// import './DocSearch.css';
 ---
 
 <button class="search-input header-button" type="button" id="docsearch-search-button">
@@ -23,11 +22,12 @@ import './header-button.css'
 			transform="translate(-1)"></path>
 	</svg>
 	<span class="search-placeholder">
-		Buscar producto...
+		Buscar...
 		<span class="sr-only">shortcutlabel</span>
 	</span>
 	<span class="search-keyboard-hint">
-		<kbd aria-hidden="true">/</kbd>
+		<kbd aria-hidden="true">C+</kbd>
+		<kbd aria-hidden="true">K</kbd>
 	</span>
 </button>
 <DocSearch client:only="preact" />
@@ -64,7 +64,7 @@ import './header-button.css'
 		border-radius: 0.25rem;
 	}
 
-	@media (min-width: 50em) {
+	@media (min-width: 30em) {
 		.search-input {
 			border-radius: 9e9px;
 			padding-inline: 1rem;

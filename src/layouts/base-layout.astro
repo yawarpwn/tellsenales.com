@@ -12,7 +12,6 @@ const { content = {} } = Astro.props
 const url = new URL(Astro.url)
 const currentPage = url.pathname
 const canonicalURL = new URL(Astro.url.pathname.replace(/([^/])$/, '$1/'), Astro.site)
-const variable = ''
 ---
 
 <html dir="ltr" lang="es" class="initial">

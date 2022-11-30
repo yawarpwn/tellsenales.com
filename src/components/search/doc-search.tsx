@@ -1,6 +1,7 @@
 import { createPortal } from 'preact/compat'
 import { useState, useEffect, useRef } from 'preact/hooks'
 import AutocompleteModal from './autocomplete-modal'
+import { useSearchKeyboardEvents } from './useSearchKeyboardEvents'
 import '@algolia/autocomplete-theme-classic'
 import './_variables.css'
 import './doc-search.css'
@@ -23,6 +24,14 @@ export default function DocSearch() {
     setIsOpen(true)
     setInitialQuery(e.key)
   }
+
+  useSearchKeyboardEvents({
+    onOpen,
+    onClose,
+    onInput,
+    searchButtonRef,
+    isOpen
+  })
 
 	useEffect(() => {
 		searchButtonRef.current?.addEventListener('click', onOpen)
