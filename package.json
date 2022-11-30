@@ -15,6 +15,8 @@
   "dependencies": {
     "@algolia/autocomplete-core": "1.7.3",
     "@algolia/autocomplete-js": "^1.7.1",
+    "@algolia/autocomplete-plugin-query-suggestions": "1.7.3",
+    "@algolia/autocomplete-plugin-recent-searches": "1.7.3",
     "@algolia/autocomplete-preset-algolia": "1.7.3",
     "@algolia/autocomplete-theme-classic": "1.7.3",
     "@astrojs/image": "^0.11.6",

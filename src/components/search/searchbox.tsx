@@ -5,16 +5,20 @@ import { LoadingIcon } from '@components/icons/loading-icon'
 import { ResetIcon } from '@components/icons/reset-icon'
 import { AutocompleteApi, AutocompleteState } from '@algolia/autocomplete-core'
 import { AutocompleteItem } from './autocomplete-modal'
-import { Hit } from '@algolia/client-search'
 
 interface SearchBoxProps extends AutocompleteApi<
-  React.MouseEvent, React.KeyboardEvent, React.FormEvent
+  AutocompleteItem,
+  React.MouseEvent,
+  React.KeyboardEvent,
+  React.FormEvent
 > {
   state: AutocompleteState<AutocompleteItem>
+  onClose: () => void,
+  inputRef: React.MutableRefObject<HTMLInputElement>
 }
 
 export function SearchBox({
-  inputRef, onClose, getLabel, getInputProps, getFormProps, getLabelProps, state, autoFocus
+  inputRef, onClose, getInputProps, getFormProps, getLabelProps, state
 }: SearchBoxProps) {
 
   const { onReset } = getFormProps({
@@ -22,7 +26,7 @@ export function SearchBox({
   })
 
   useEffect(() => {
-    if(inputRef.current) {
+    if (inputRef.current) {
       inputRef.current.focus()
     }
   }, [inputRef])

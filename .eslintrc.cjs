@@ -21,11 +21,12 @@ module.exports = {
       rules: {},
     },
     {
-      files: ['*.ts'],
+      files: ['*.ts', '*.tsx'],
       parser: '@typescript-eslint/parser',
       extends: ['plugin:@typescript-eslint/recommended'],
       rules: {
         'react/react-in-jsx-scope': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-unused-vars': [
           'error',
           { argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_' },
