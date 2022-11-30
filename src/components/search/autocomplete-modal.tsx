@@ -38,8 +38,6 @@ export default function AutocompleteModal({
     status: 'idle',
   })
 
-  console.log('autocompleteState', autocompleteState.collections)
-
 
   const favoriteSearches = useRef(
     createStoredSearches({
@@ -94,7 +92,6 @@ export default function AutocompleteModal({
         getSources({ query }) {
 
           if (!query) {
-            console.log('no hay query')
             return [
               {
                 sourceId: 'recentSearches',
