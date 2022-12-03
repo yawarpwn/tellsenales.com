@@ -17,9 +17,6 @@ const appId = 'EVPE0RYU8N'
 const apiKey = '14bdd4985f3b412d4dd6ffb765545816'
 const searchClient = algoliasearch(appId, apiKey)
 
-
-
-
 export type AutocompleteItem = Hit<Product>  
  
 
