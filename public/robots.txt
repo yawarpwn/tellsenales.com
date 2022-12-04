@@ -1,3 +1,10 @@
+User-agent: Googlebot
+Disallow: /ficha-tecnica/
+
+User-agent: Googlebot
+Disallow: /documents/
+
 User-agent: *
+Allow: /
 
 Sitemap: https://tellsenales.com/sitemap-index.xml
