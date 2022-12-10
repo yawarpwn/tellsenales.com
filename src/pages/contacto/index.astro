@@ -4,57 +4,67 @@ import MainLayout from '@layouts/main-layout.astro'
 import ContactForm from '@/components/contact-form.astro'
 import { Icon } from 'astro-icon'
 const content = {
-	title: 'Contacta con nosotros',
-	description: 'Contacto con Tell Señales para mayor información y ateción personalizada',
-	image: '/assets/images/contacto.webp',
+    title: 'Contacta con nosotros',
+    description:
+        'Contacto con Tell Señales para mayor información y ateción personalizada',
+    image: '/assets/images/contacto.webp'
 }
 ---
 
 <MainLayout {content}>
-	<PageHeader title="contacto" />
-	<div class="grid gap-10 md:grid-cols-2 mt-16 px-4 md:px-0">
-		<section>
-			<div class="mt-4">
-				<p class="mb-8 text-xl font-bold">
-					Tell Señales está interesado en sus clientes. Aprovecha nuestros datos y contáctate con
-					nosotros.
-				</p>
-				<div>
-					<div class="mb-5 p-4 border border-orange-500 rounded-md">
-						<div class="flex items-center">
-							<Icon class="icon-form" name="uil:map-marker" />
-							<div class="ml-4">
-								<span class="block">Av. Argentina 538 Int. 1160 - Lima</span>
-								<span class="block">Maquinaria 325 - Carmen de la Legua - Callao</span>
-							</div>
-						</div>
-					</div>
-					<div class="mb-5 p-4 border border-secondary rounded-md">
-						<div class="flex items-center">
-							<Icon class="icon-form" name="uil:whatsapp" />
-							<div class="ml-4">
-								<p>971 531 018 / 992 536 019</p>
-							</div>
-						</div>
-					</div><div class="mb-5 p-4 border border-secondary rounded-md">
-						<div class="flex items-center">
-							<Icon class="icon-form" name="uil:envelope" />
-							<div class="ml-4">
-								<a href="mailto:ventas@tellsenales.com">ventas@tellsenales.com</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="">
-			<p class="mb-4 text-2xl font-bold uppercase">Dejános un mensaje</p>
-			<ContactForm />
-		</section>
-	</div>
+    <PageHeader title="contacto" />
+    <div class="grid gap-10 md:grid-cols-2 mt-16 px-4 md:px-0">
+        <section>
+            <div class="mt-4">
+                <p class="mb-8 text-xl font-bold">
+                    Tell Señales está interesado en sus clientes. Aprovecha
+                    nuestros datos y contáctate con nosotros.
+                </p>
+                <div>
+                    <div class="mb-5 p-4 border border-orange-500 rounded-md">
+                        <div class="flex items-center">
+                            <Icon class="icon-form" name="uil:map-marker" />
+                            <div class="ml-4">
+                                <span class="block"
+                                    >Av. Argentina 538 Int. 1160 - Lima</span
+                                >
+                                <span class="block"
+                                    >Maquinaria 325 - Carmen de la Legua -
+                                    Callao</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 p-4 border border-secondary rounded-md">
+                        <div class="flex items-center">
+                            <Icon class="icon-form" name="uil:whatsapp" />
+                            <div class="ml-4">
+                                <p>971 531 018 / 992 536 019</p>
+                            </div>
+                        </div>
+                    </div><div
+                        class="mb-5 p-4 border border-secondary rounded-md"
+                    >
+                        <div class="flex items-center">
+                            <Icon class="icon-form" name="uil:envelope" />
+                            <div class="ml-4">
+                                <a href="mailto:ventas@tellsenales.com"
+                                    >ventas@tellsenales.com</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="">
+            <p class="mb-4 text-2xl font-bold uppercase">Dejános un mensaje</p>
+            <ContactForm />
+        </section>
+    </div>
 </MainLayout>
 <style>
-	.icon-form {
-		@apply h-7 w-7;
-	}
+    .icon-form {
+        @apply h-7 w-7;
+    }
 </style>

@@ -3,7 +3,7 @@ import { getdiscountPorcent } from '@utils/maths'
 import type { Senal, Product } from '@types'
 
 export interface Props {
-	product: Senal | Product
+    product: Senal | Product
 }
 
 const { product } = Astro.props
@@ -12,47 +12,59 @@ const Component = slug ? 'a' : 'div'
 ---
 
 <Component href={`/seguridad/${slug}`}>
-	<div class="product-card shadow-md rounded-md transition-all">
-		<div class="relative h-0 w-full pb-[100%]">
-			<img
-				class="absolute inset-0 max-h-[155px] m-auto max-w-[85%]"
-				alt={name}
-				src={img ? img.url : img1.url}
-				loading="lazy"
-			/>
-		</div>
-		<div class="product-card__body p-2">
-			{
-				code ? (
-					<span class="text-[10px] font-bold uppercase">Código: {code}</span>
-				) : (
-					<span class="text-xs font-bold uppercase">{marca || sku}</span>
-				)
-			}
-			<div class="min-h-[60px] mt-2">
-				<p class="text-xs md:text-sm">{name}</p>
-			</div>
-			{
-				offert ? (
-					<div class="min-h-[50px]">
-						<div>
-							<span class="text-zinc-400 line-through">S/.{price}.00</span>
-							<span class="ml-2">-{getdiscountPorcent(price, offert)}%</span>
-						</div>
-						<div />
-						<div>
-							<span class="font-bold text-red-500">S/. {offert}.00</span>
-						</div>
-					</div>
-				) : (
-					<div class={`min-h-[50px] ${code && 'hidden'}`}>
-						<div>
-							<span class="font-bold text-red-500">S/. {price}.00</span>
-						</div>
-					</div>
-				)
-			}
-		</div>
-	</div>
+    <div class="product-card shadow-md rounded-md transition-all">
+        <div class="relative h-0 w-full pb-[100%]">
+            <img
+                class="absolute inset-0 max-h-[155px] m-auto max-w-[85%]"
+                alt={name}
+                src={img ? img.url : img1.url}
+                loading="lazy"
+            />
+        </div>
+        <div class="product-card__body p-2">
+            {
+                code ? (
+                    <span class="text-[10px] font-bold uppercase">
+                        Código: {code}
+                    </span>
+                ) : (
+                    <span class="text-xs font-bold uppercase">
+                        {marca || sku}
+                    </span>
+                )
+            }
+            <div class="min-h-[60px] mt-2">
+                <p class="text-xs md:text-sm">{name}</p>
+            </div>
+            {
+                offert ? (
+                    <div class="min-h-[50px]">
+                        <div>
+                            <span class="text-zinc-400 line-through">
+                                S/.{price}.00
+                            </span>
+                            <span class="ml-2">
+                                -{getdiscountPorcent(price, offert)}%
+                            </span>
+                        </div>
+                        <div />
+                        <div>
+                            <span class="font-bold text-red-500">
+                                S/. {offert}.00
+                            </span>
+                        </div>
+                    </div>
+                ) : (
+                    <div class={`min-h-[50px] ${code && 'hidden'}`}>
+                        <div>
+                            <span class="font-bold text-red-500">
+                                S/. {price}.00
+                            </span>
+                        </div>
+                    </div>
+                )
+            }
+        </div>
+    </div>
 </Component>
 <style></style>

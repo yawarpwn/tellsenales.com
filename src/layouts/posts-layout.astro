@@ -11,17 +11,20 @@ const headings = Astro.props.headings
 ---
 
 <BaseLayout {...Astro.props}>
-	<PostsRightSidebar slot="secondary-sidebar" {...{content, headings}} />
-	<PageContent {...{content, previous, next}}>
-		{
-			headings && (
-				<Fragment slot="before-article">
-					<nav>
-						<TableOfContentMobile client:media="(max-width: 72em)" headings={headings} />
-					</nav>
-				</Fragment>
-			)
-		}
-		<slot />
-	</PageContent>
+    <PostsRightSidebar slot="secondary-sidebar" {...{content, headings}} />
+    <PageContent {...{content, previous, next}}>
+        {
+            headings && (
+                <Fragment slot="before-article">
+                    <nav>
+                        <TableOfContentMobile
+                            client:media="(max-width: 72em)"
+                            headings={headings}
+                        />
+                    </nav>
+                </Fragment>
+            )
+        }
+        <slot />
+    </PageContent>
 </BaseLayout>

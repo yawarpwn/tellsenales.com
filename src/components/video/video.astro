@@ -2,8 +2,8 @@
 import { parse } from 'node:path'
 
 export interface Props {
-	src: string
-	type: string
+    src: string
+    type: string
 }
 
 const { src, type } = Astro.props as Props
@@ -22,5 +22,5 @@ const filename = parse(src).name
 ---
 
 <video controls>
-	<source src={src} type={type} />
+    <source src={src} type={type} />
 </video>

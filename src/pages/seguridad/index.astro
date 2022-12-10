@@ -7,17 +7,17 @@ import PageNavigation from '@components/page-navigation/page-navigation.astro'
 
 const products = await getAllProducts()
 const content = {
-	title: 'Dispositivos e Implementos de seguridad',
-	description:
-		'Venta y distribución de dispositivos de seguridad, proteccion vial, cintas de seguridad y equpos de epp',
-	image: '/assets/images/banner-seguridad.webp',
+    title: 'Dispositivos e Implementos de seguridad',
+    description:
+        'Venta y distribución de dispositivos de seguridad, proteccion vial, cintas de seguridad y equpos de epp',
+    image: '/assets/images/banner-seguridad.webp'
 }
 ---
 
 <MainLayout {content}>
-	<!--Page Navigation -->
-	<PageNavigation navigation={manifest.routes[1].routes} />
-	<div class="grid grid-cols-2 md:grid-cols-4 gap-2 px-4 md:px-0">
-		{products.map((product) => <ProductCard product={product} />)}
-	</div>
+    <!--Page Navigation -->
+    <PageNavigation navigation={manifest.routes[1].routes} />
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 px-4 md:px-0">
+        {products.map((product) => <ProductCard product={product} />)}
+    </div>
 </MainLayout>

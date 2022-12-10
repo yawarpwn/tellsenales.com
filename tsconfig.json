@@ -1,37 +1,31 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "baseUrl": ".",
-    "moduleResolution": "node",
-    "module": "ES2020",
-    "target": "ES2020",
-    "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
-      "@lib/*": ["src/lib/*"],
-      "@utils/*": ["src/utils/*"],
-      "@types": ["src/types/index.ts"]
-    },
-    "outDir": "./dist",
-    // "declarationDir": "./dist/types",
-    "types": ["vite/client"]
-  },
-  "include": [
-    "scripts/**/*",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/**/*.ts",
-    "**/**/*.tsx"
-  ]
+    "compilerOptions": {
+        // Enable top-level await, and other modern ESM features.
+        "target": "ESNext",
+        "module": "ESNext",
+        // Enable node-style module resolution, for things like npm package imports.
+        "moduleResolution": "node",
+        // Enable JSON imports.
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        // Enable stricter transpilation for better output.
+        "isolatedModules": true,
+        // Add type definitions for our Astro runtime.
+        "types": ["@astrojs/image/client"],
+        "strictNullChecks": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
+        "noUncheckedIndexedAccess": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@components/*": ["src/components/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@utils/*": ["src/utils/*"],
+            "@lib/*": ["src/lib/*"],
+            "@utils/*": ["src/utils/*"],
+            "@types": ["src/types/index.ts"]
+        }
+    }
 }

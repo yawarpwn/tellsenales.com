@@ -1,134 +1,140 @@
 ---
 const data = [
-	{
-		name: 'Señales Seguridad',
-		image: '/assets/images/seguridad.webp',
-		href: '/senales/c/seguridad/',
-	},
-	{
-		name: 'Fotoluminiscentes',
-		image: '/assets/images/foto-incendio.webp',
-		href: '/senales/c/fotoluminiscentes/',
-	},
-	{
-		name: 'Decorativas',
-		image: '/assets/images/aluminio.webp',
-		href: '/senales/c/decorativas/',
-	},
-	{
-		name: 'Vias y Calles',
-		image: '/assets/images/preventivas.webp',
-		href: '/senales/c/viales/',
-	},
-	{
-		name: 'Obras y Construcción',
-		image: '/assets/images/obras-preventivas.webp',
-		href: '/senales/c/obras/',
-	},
-	{
-		name: 'Protección Vial',
-		image: '/assets/images/proteccion-vial.webp',
-		href: '/seguridad/c/proteccion-vial/',
-	},
-	{
-		name: 'Cintas Seguridad',
-		image: '/assets/images/cintas-seguridad.webp',
-		href: '/seguridad/c/cintas-seguridad/',
-	},
-	{
-		name: 'Articulos seguridad',
-		image: '/assets/images/articulos-seguridad.webp',
-		href: '/seguridad/c/articulos-seguridad/',
-	},
-	{
-		name: 'Rollo de Viniles',
-		image: '/assets/images/viniles.webp',
-		href: '/seguridad/c/viniles/',
-	},
-	{
-		name: 'Lucha contra incendio',
-		image: '/assets/images/lucha-contra-incendio.webp',
-		href: '/seguridad/c/lucha-contra-incendio/',
-	},
-	{
-		name: 'Ropa Seguridad',
-		image: '/assets/images/ropa-seguridad.webp',
-		href: '/seguridad/c/ropa-seguridad/',
-	},
-	{
-		name: 'Epps',
-		image: '/assets/images/epps.webp',
-		href: '/seguridad/c/epps/',
-	},
+    {
+        name: 'Señales Seguridad',
+        image: '/assets/images/seguridad.webp',
+        href: '/senales/c/seguridad/'
+    },
+    {
+        name: 'Fotoluminiscentes',
+        image: '/assets/images/foto-incendio.webp',
+        href: '/senales/c/fotoluminiscentes/'
+    },
+    {
+        name: 'Decorativas',
+        image: '/assets/images/aluminio.webp',
+        href: '/senales/c/decorativas/'
+    },
+    {
+        name: 'Vias y Calles',
+        image: '/assets/images/preventivas.webp',
+        href: '/senales/c/viales/'
+    },
+    {
+        name: 'Obras y Construcción',
+        image: '/assets/images/obras-preventivas.webp',
+        href: '/senales/c/obras/'
+    },
+    {
+        name: 'Protección Vial',
+        image: '/assets/images/proteccion-vial.webp',
+        href: '/seguridad/c/proteccion-vial/'
+    },
+    {
+        name: 'Cintas Seguridad',
+        image: '/assets/images/cintas-seguridad.webp',
+        href: '/seguridad/c/cintas-seguridad/'
+    },
+    {
+        name: 'Articulos seguridad',
+        image: '/assets/images/articulos-seguridad.webp',
+        href: '/seguridad/c/articulos-seguridad/'
+    },
+    {
+        name: 'Rollo de Viniles',
+        image: '/assets/images/viniles.webp',
+        href: '/seguridad/c/viniles/'
+    },
+    {
+        name: 'Lucha contra incendio',
+        image: '/assets/images/lucha-contra-incendio.webp',
+        href: '/seguridad/c/lucha-contra-incendio/'
+    },
+    {
+        name: 'Ropa Seguridad',
+        image: '/assets/images/ropa-seguridad.webp',
+        href: '/seguridad/c/ropa-seguridad/'
+    },
+    {
+        name: 'Epps',
+        image: '/assets/images/epps.webp',
+        href: '/seguridad/c/epps/'
+    }
 ]
 ---
 
 <div class="relative mt-2 w-full h-full px-6">
-	<h4 class="text-lg m-0 font-semibold">Destacados:</h4>
-	<ul class="space-y-1 m-0 p-0">
-		{
-			data.map((item) => (
-				<li class="right-sidebar__item">
-					<a href={item.href}>
-						<h5 class="m-0 p-0 text-sm font-bold text-white">{item.name}</h5>
-						<img class="right-sidebar__img" src={item.image} alt={item.name} />
-					</a>
-				</li>
-			))
-		}
-	</ul>
+    <h4 class="text-lg m-0 font-semibold">Destacados:</h4>
+    <ul class="space-y-1 m-0 p-0">
+        {
+            data.map((item) => (
+                <li class="right-sidebar__item">
+                    <a href={item.href}>
+                        <h5 class="m-0 p-0 text-sm font-bold text-white">
+                            {item.name}
+                        </h5>
+                        <img
+                            class="right-sidebar__img"
+                            src={item.image}
+                            alt={item.name}
+                        />
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
 </div>
 <style>
-	.right-sidebar__container {
-		margin-top: var(--theme-navbar-height);
-	}
-	.right-sidebar__item {
-		height: 35px;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		overflow: hidden;
-		border-radius: 0.2rem;
-		cursor: pointer;
-	}
+    .right-sidebar__container {
+        margin-top: var(--theme-navbar-height);
+    }
+    .right-sidebar__item {
+        height: 35px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 0.2rem;
+        cursor: pointer;
+    }
 
-	.right-sidebar__item a {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+    .right-sidebar__item a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-	.right-sidebar__item:hover img {
-		transform: scale(1.1);
-		transition: all 0.5s ease;
-	}
+    .right-sidebar__item:hover img {
+        transform: scale(1.1);
+        transition: all 0.5s ease;
+    }
 
-	.right-sidebar__item:after {
-		content: '';
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		background: black;
-		opacity: 0.4;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: -2;
-	}
+    .right-sidebar__item:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: black;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -2;
+    }
 
-	.right-sidebar__img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -3;
-		object-fit: cover;
-	}
+    .right-sidebar__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -3;
+        object-fit: cover;
+    }
 </style>

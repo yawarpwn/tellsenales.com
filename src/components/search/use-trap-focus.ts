@@ -1,42 +1,40 @@
-import { useEffect } from "preact/hooks";
+import { useEffect } from 'preact/hooks'
 
 interface UseTrapFocusProps {
-  container: HTMLDivElement | null
+    container: HTMLDivElement | null
 }
 
 export function useTrapFocus({ container }: UseTrapFocusProps) {
-  useEffect(() => {
-    if (!container) {
-      return undefined
-    }
-
-    const focusableElements = container.querySelectorAll<HTMLElement>(
-      'a[href]:not([disabled]), button:not([disabled]), input:not([disabled])'
-    )
-
-    const firstElement = focusableElements[0]
-    const lastElement = focusableElements[focusableElements.length - 1]
-
-    function trapFocus(event: KeyboardEvent) {
-      if (event.key !== 'Tab') {
-        return
-      }
-
-      if (event.shiftKey) {
-        if (document.activeElement === firstElement) {
-          event.preventDefault()
-          lastElement.focus()
+    useEffect(() => {
+        if (!container) {
+            return undefined
         }
-      } else if (document.activeElement === lastElement) {
-        event.preventDefault()
-        firstElement.focus()
-      }
 
-    }
+        const focusableElements = container.querySelectorAll<HTMLElement>(
+            'a[href]:not([disabled]), button:not([disabled]), input:not([disabled])'
+        )
 
-    container?.addEventListener('keydown', trapFocus)
+        const firstElement = focusableElements[0]
+        const lastElement = focusableElements[focusableElements.length - 1]
 
-    return () => container?.removeEventListener('keydown', trapFocus)
-  }, [container])
+        function trapFocus(event: KeyboardEvent) {
+            if (event.key !== 'Tab') {
+                return
+            }
 
+            if (event.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    event.preventDefault()
+                    lastElement.focus()
+                }
+            } else if (document.activeElement === lastElement) {
+                event.preventDefault()
+                firstElement.focus()
+            }
+        }
+
+        container?.addEventListener('keydown', trapFocus)
+
+        return () => container?.removeEventListener('keydown', trapFocus)
+    }, [container])
 }

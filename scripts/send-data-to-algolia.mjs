@@ -3,7 +3,7 @@ import algoliasearch from 'algoliasearch'
 
 const products = await getAllProducts()
 products.forEach((product) => {
-	console.log(product.contentfulMetadata.tags[0])
+    console.log(product.contentfulMetadata.tags[0])
 })
 
 const ALGOLIA_APP_ID = 'EVPE0RYU8N'
@@ -12,13 +12,16 @@ const ALGOLIA_INDEX_NAME = 'seguridad-tellsenales'
 
 const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_API_KEY)
 const index = client.initIndex(ALGOLIA_INDEX_NAME)
-const productsToSend = products.map((product) => ({ ...product, objectID: product.sku }))
+const productsToSend = products.map((product) => ({
+    ...product,
+    objectID: product.sku
+}))
 
 index
-	.saveObjects(productsToSend)
-	.then((objectIds) => {
-		console.log(objectIds)
-	})
-	.catch((error) => {
-		console.log(error)
-	})
+    .saveObjects(productsToSend)
+    .then((objectIds) => {
+        console.log(objectIds)
+    })
+    .catch((error) => {
+        console.log(error)
+    })

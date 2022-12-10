@@ -1,65 +1,65 @@
 {
-  "name": "Tellsenales Website",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "format:code": "prettier -w . --cache",
-    "send-algolia": "node ./scripts/send-data-to-algolia.mjs"
-  },
-  "dependencies": {
-    "@algolia/autocomplete-core": "1.7.3",
-    "@algolia/autocomplete-js": "^1.7.1",
-    "@algolia/autocomplete-plugin-query-suggestions": "1.7.3",
-    "@algolia/autocomplete-plugin-recent-searches": "1.7.3",
-    "@algolia/autocomplete-preset-algolia": "1.7.3",
-    "@algolia/autocomplete-theme-classic": "1.7.3",
-    "@astrojs/image": "^0.11.6",
-    "@astrojs/mdx": "^0.11.4",
-    "@astrojs/preact": "^1.2.0",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^2.0.1",
-    "@docsearch/react": "^3.2.1",
-    "algoliasearch": "^4.14.2",
-    "astro": "^1.3.0",
-    "astro-icon": "^0.8.0",
-    "graphql-request": "^5.0.0",
-    "hast-util-to-string": "^2.0.0",
-    "hastscript": "^7.1.0",
-    "html-escaper": "^3.0.3",
-    "preact": "^10.11.1",
-    "rehype-autolink-headings": "^6.1.1",
-    "rehype-slug": "^5.0.1",
-    "slugify": "1.6.5",
-    "tailwindcss": "^3.1.8"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.7",
-    "@types/node": "^18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
-    "astro-eslint-parser": "^0.7.4",
-    "eslint": "^8.24.0",
-    "eslint-plugin-astro": "^0.21.0",
-    "postcss": "^8.4.18",
-    "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.7.0",
-    "prettier-plugin-tailwindcss": "^0.1.13",
-    "typescript": "^4.9.3"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@types/react",
-        "react",
-        "react-dom",
-        "vite"
-      ]
+    "name": "Tellsenales Website",
+    "type": "module",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "format:code": "prettier -w . --cache",
+        "send-algolia": "node ./scripts/send-data-to-algolia.mjs"
+    },
+    "dependencies": {
+        "@algolia/autocomplete-core": "1.7.3",
+        "@algolia/autocomplete-js": "^1.7.1",
+        "@algolia/autocomplete-plugin-query-suggestions": "1.7.3",
+        "@algolia/autocomplete-plugin-recent-searches": "1.7.3",
+        "@algolia/autocomplete-preset-algolia": "1.7.3",
+        "@algolia/autocomplete-theme-classic": "1.7.3",
+        "@astrojs/image": "^0.11.6",
+        "@astrojs/mdx": "^0.11.4",
+        "@astrojs/preact": "^1.2.0",
+        "@astrojs/sitemap": "^1.0.0",
+        "@astrojs/tailwind": "^2.0.1",
+        "@docsearch/react": "^3.2.1",
+        "algoliasearch": "^4.14.2",
+        "astro": "^1.3.0",
+        "astro-icon": "^0.8.0",
+        "graphql-request": "^5.0.0",
+        "hast-util-to-string": "^2.0.0",
+        "hastscript": "^7.1.0",
+        "html-escaper": "^3.0.3",
+        "preact": "^10.11.1",
+        "rehype-autolink-headings": "^6.1.1",
+        "rehype-slug": "^5.0.1",
+        "slugify": "1.6.5",
+        "tailwindcss": "^3.1.8"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.7",
+        "@types/node": "^18.11.9",
+        "@typescript-eslint/eslint-plugin": "^5.38.0",
+        "@typescript-eslint/parser": "^5.38.0",
+        "astro-eslint-parser": "^0.7.4",
+        "eslint": "^8.24.0",
+        "eslint-plugin-astro": "^0.21.0",
+        "postcss": "^8.4.18",
+        "prettier": "^2.7.1",
+        "prettier-plugin-astro": "^0.7.0",
+        "prettier-plugin-tailwindcss": "^0.1.13",
+        "typescript": "^4.9.3"
+    },
+    "pnpm": {
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "@types/react",
+                "react",
+                "react-dom",
+                "vite"
+            ]
+        }
     }
-  }
 }

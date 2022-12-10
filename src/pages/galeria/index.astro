@@ -5,55 +5,64 @@ import GalerySlider from '@components/galery-slide.astro'
 import PageHeader from '@components/page-header/page-header.astro'
 
 async function getAllPaths(dir: string): Promise<string[]> {
-	let files: string[] = []
-	const entries = await readdir(dir, { withFileTypes: true })
-	for (const entry of entries) {
-		if (entry.isDirectory()) {
-			const deepDir = await getAllPaths(`${dir}/${entry.name}`)
-			files = [...files, ...deepDir]
-		} else {
-			files.push(`${dir}/${entry.name}`)
-		}
-	}
-	return files
+    let files: string[] = []
+    const entries = await readdir(dir, { withFileTypes: true })
+    for (const entry of entries) {
+        if (entry.isDirectory()) {
+            const deepDir = await getAllPaths(`${dir}/${entry.name}`)
+            files = [...files, ...deepDir]
+        } else {
+            files.push(`${dir}/${entry.name}`)
+        }
+    }
+    return files
 }
 
 const dirURL = 'public/galery'
-const allImages = (await getAllPaths(dirURL)).map((imgUrl) => imgUrl.split('public')[1])
+const allImages = (await getAllPaths(dirURL)).map(
+    (imgUrl) => imgUrl.split('public')[1]
+)
 const entries = await readdir(dirURL)
 const allPathImages = entries
-	.map((entry) => {
-		return {
-			paths: allImages.filter((srcImg) => srcImg.startsWith(`/galery/${entry}`)),
-			title: entry.replace(/-/g, ' '),
-		}
-	})
-	.reverse()
+    .map((entry) => {
+        return {
+            paths: allImages.filter((srcImg) =>
+                srcImg.startsWith(`/galery/${entry}`)
+            ),
+            title: entry.replace(/-/g, ' ')
+        }
+    })
+    .reverse()
 
 const content = {
-	title: 'Galeria',
-	description: 'Nuestra galeria de trabajos',
-	image: '/assets/images/chevron.webp',
+    title: 'Galeria',
+    description: 'Nuestra galeria de trabajos',
+    image: '/assets/images/chevron.webp'
 }
 ---
 
 <MainLayout {content}>
-	<PageHeader title="galeria" />
-	<div class="flex flex-col px-4 md:pr-6 mt-4 md:mt-8">
-		<p class="max-w-5xl">
-			Con dedicación, esfuerzo y buen desempeño, hemos desarrollado a lo largo de los años diversas
-			soluciones para nuestros clientes. A continuación, queremos enseñarles algo de lo que hemos
-			hecho:
-		</p>
-		{
-			allPathImages.map(({ paths, title }) => {
-				return (
-					<>
-						<h2 class="galery-title text-lg uppercase md:text-xl" id={title}>Señales {title}</h2>
-						<GalerySlider images={paths} />
-					</>
-				)
-			})
-		}
-	</div>
+    <PageHeader title="galeria" />
+    <div class="flex flex-col px-4 md:pr-6 mt-4 md:mt-8">
+        <p class="max-w-5xl">
+            Con dedicación, esfuerzo y buen desempeño, hemos desarrollado a lo
+            largo de los años diversas soluciones para nuestros clientes. A
+            continuación, queremos enseñarles algo de lo que hemos hecho:
+        </p>
+        {
+            allPathImages.map(({ paths, title }) => {
+                return (
+                    <>
+                        <h2
+                            class="galery-title text-lg uppercase md:text-xl"
+                            id={title}
+                        >
+                            Señales {title}
+                        </h2>
+                        <GalerySlider images={paths} />
+                    </>
+                )
+            })
+        }
+    </div>
 </MainLayout>

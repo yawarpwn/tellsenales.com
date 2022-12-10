@@ -10,16 +10,19 @@ const links = manifest.routes[2].routes
  *@returns `previous` and `next` links if available
  */
 export function getNavLinks(Astro: AstroGlobal) {
-	const index = links.findIndex((x) => Astro.url.pathname.endsWith(x.path))
-	const makeLink = ({ title, path }) => ({ text: title, link: path })
+    const index = links.findIndex((x) => Astro.url.pathname.endsWith(x.path))
+    const makeLink = ({ title, path }) => ({ text: title, link: path })
 
-	const previous = index > 0 ? makeLink(links[index - 1]) : undefined
-	const next = index !== -1 && index < links.length - 1 ? makeLink(links[index + 1]) : undefined
+    const previous = index > 0 ? makeLink(links[index - 1]) : undefined
+    const next =
+        index !== -1 && index < links.length - 1
+            ? makeLink(links[index + 1])
+            : undefined
 
-	return {
-		previous,
-		next,
-	}
+    return {
+        previous,
+        next
+    }
 }
 
 // const markdownPaths =  await getMarkdownPaths(new URL('../pages/posts/', import.meta.url))

@@ -1,12 +1,12 @@
 export interface IconProps {
-	fill?: string
-	filled?: boolean
-	size?: string | number
-	height?: string | number
-	width?: string | number
-	label?: string
-	onClick?: () => void
-	className?: string
+    fill?: string
+    filled?: boolean
+    size?: string | number
+    height?: string | number
+    width?: string | number
+    label?: string
+    onClick?: () => void
+    className?: string
 }
 
 export const Icon = {}
