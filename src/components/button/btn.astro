@@ -1,0 +1,101 @@
+---
+export interface Props {
+    href?: string
+    class?: string
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+    color?: 'primary' | 'secondary' | 'outline'
+    type?: 'button' | 'submit' | 'reset'
+    external?: boolean
+    full?: boolean
+}
+
+// padding: 0.8rem;
+// overflow: visible;
+// background-color: var(--background-color-default, transparent);
+// border-style: solid;
+// border-width: 1px;
+// border-color: var(--border-color-default);
+// border-radius: 0.25rem;
+// color: var(--text-color-default);
+// font-size: 1rem;
+// font-family: inherit;
+// font-weight: 500;
+// line-height: 1;
+// cursor: pointer;
+// transition-timing-function: ease-out;
+// transition-duration: 0.2s;
+// transition-property: border-color;
+// -webkit-font-smoothing: antialiased;
+const {
+    href,
+    size = 'md',
+    color = 'primary',
+    class: className,
+    external,
+    type,
+    full,
+    ...props
+} = Astro.props
+const Component = href ? 'a' : 'button'
+---
+
+<Component
+    {...props}
+    class={[
+        'btn',
+        `btn--${size}`,
+        `btn--${color}`,
+        full && 'w-full',
+        className
+    ].join(' ')}
+    href={href}
+    type={type}
+    target={href && external ? '_blank' : undefined}
+>
+    <slot />
+</Component>
+<style>
+    .btn {
+        --border-color-default: var(--theme-shade-subtle);
+        --border-color-hocus: var(--theme-text-light);
+        --text-color-default: var(--theme-text-light);
+        --text-color-hocus: var(--theme-text);
+        display: inline-flex;
+        border: 1px solid transparent;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        animation: all 150ms ease-out;
+        @apply focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
+    }
+
+    .btn:not(.btn--hollow) {
+        @apply shadow-sm;
+    }
+    .btn--outline {
+        color: var(--text-color-default);
+        border-color: var(--border-color-default);
+    }
+    .btn--outline:hover {
+        color: var(--text-color-hocus);
+        border-color: var(--border-color-hocus);
+    }
+    .btn--primary {
+        @apply bg-primary text-neutral-50 hover:bg-primary-dark;
+    }
+    .btn--xs {
+        @apply rounded px-2.5 py-1.5 text-xs;
+    }
+    .btn--sm {
+        @apply rounded-md px-3 py-2 text-sm leading-4;
+    }
+    .btn--md {
+        @apply rounded-md  px-6 py-2 text-sm;
+    }
+    .btn--lg {
+        @apply rounded-lg px-6 py-2 text-base;
+    }
+    .btn--xl {
+        @apply rounded-xl px-8 py-3 text-base;
+    }
+</style>
