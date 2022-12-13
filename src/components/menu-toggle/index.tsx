@@ -19,7 +19,7 @@ export default function ToggleMenu() {
     }, [sidebarShown])
     return (
         <button
-            className="header-button min-h-[38px]"
+            className="header-button min-h-[45px]"
             id="menu-toggle"
             aria-label="toggle menu button"
             onClick={() => setSidebarShown(!sidebarShown)}

@@ -1,72 +1,144 @@
 ---
+import Button from '@components/button/btn.astro'
+export interface Props {
+    titleColor: 'yellow' | 'warning' | 'cyan' | 'green' | 'blue' | 'violet'
+    img1: string
+    img2: string
+    img3: string
+    reverse?: boolean
+    subtitle: string
+    title: string
+    href?: string
+}
+
 const { title, subtitle, titleColor, img1, img2, img3, href, reverse } =
     Astro.props
 ---
 
-<section class="max-w-7xl mx-auto py-8 md:py-16 px-4">
-    <div class={`grid-container ${reverse ? 'reverse-true' : 'reverse-false'}`}>
-        <!-- first child -->
+<section
+    class={['hero-section', reverse && 'hero-section--reverse']
+        .filter(Boolean)
+        .join(' ')}
+>
+    <div class="absolute">
+        {
+            reverse ? (
+                <img
+                    class="h-full w-full object-cover"
+                    src="/assets/images/dark-mode-gradient.svg"
+                    alt="fondo degradado para reverse"
+                />
+            ) : (
+                <img
+                    class="h-full w-full object-cover"
+                    src="/assets/images/stitches-gradient.svg"
+                    alt="fondo degradado para no reverse"
+                />
+            )
+        }
+    </div>
+    <div class="max-w-7xl mx-auto px-4 xl:px-0">
         <div
-            class={`flex items-center  ${
-                reverse ? 'order-1 md:order-2' : 'order-1 md:order-2'
+            class={`grid-container ${
+                reverse ? 'reverse-true' : 'reverse-false'
             }`}
         >
-            <div>
-                <h2
-                    class={`text-3xl  md:text-5xl font-extrabold  ${titleColor}`}
-                >
-                    {title}
-                </h2>
-                <p class="text-xl">{subtitle}</p>
-                {
-                    href && (
-                        <a class={`mt-4 block ${titleColor}`} href={href}>
-                            Más info
-                        </a>
-                    )
-                }
+            <!-- first child -->
+            <div
+                class={`flex items-center  ${
+                    reverse ? 'order-1 md:order-2' : 'order-1 md:order-2'
+                }`}
+            >
+                <div class="md:space-y-8 z-10">
+                    <h2
+                        class={`text-3xl  md:text-5xl font-extrabold  ${titleColor}`}
+                    >
+                        {title}
+                    </h2>
+                    <p class="text-xl">{subtitle}</p>
+                    {
+                        href && (
+                            <Button class={`mt-4 `} color="outline" href={href}>
+                                Más info
+                            </Button>
+                        )
+                    }
+                </div>
             </div>
-        </div>
 
-        <!-- second child -->
-        <div
-            class={`grid-child ${
-                reverse ? 'order-2 md:order-1' : 'order-1 md:order-2'
-            } `}
-        >
-            <div class="images-container">
-                <div class="img-container first">
-                    <img
-                        src={img1}
-                        alt={`Señales ${title} 1`}
-                        width="400"
-                        height="373"
-                    />
-                </div>
-                <div class="img-container second">
-                    <img
-                        src={img2}
-                        alt={`Señales ${title} 2`}
-                        width="400"
-                        height="373"
-                    />
-                </div>
-                <div class="img-container third">
-                    <img
-                        src={img3}
-                        alt={`Señales ${title} 3`}
-                        width="400"
-                        height="373"
-                    />
+            <!-- second child -->
+            <div
+                class={`grid-child ${
+                    reverse ? 'order-2 md:order-1' : 'order-1 md:order-2'
+                } `}
+            >
+                <div class="images-container">
+                    <div class="grid-lines z-10">
+                        <div class="right-1/4 vertical"></div>
+                        <div class="right-1/2 vertical"></div>
+                        <div class="right-3/4 vertical"></div>
+                        <div class="top-1/2 horizontal"></div>
+                        <div class="right-0 vertical"></div>
+                        <div class="bottom-0 horizontal"></div>
+                        <div class="left-0 vertical"></div>
+                        <div class="top-0 horizontal"></div>
+                        <div class="-right-[25%] vertical outer"></div>
+                        <div class="-left-[25%] vertical outer"></div>
+                    </div>
+                    <div class="img-container first">
+                        <img
+                            src={img1}
+                            alt={`Señales ${title} 1`}
+                            width="400"
+                            height="373"
+                        />
+                    </div>
+                    <div class="img-container second">
+                        <img
+                            src={img2}
+                            alt={`Señales ${title} 2`}
+                            width="400"
+                            height="373"
+                        />
+                    </div>
+                    <div class="img-container third">
+                        <img
+                            src={img3}
+                            alt={`Señales ${title} 3`}
+                            width="400"
+                            height="373"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <style>
-    .text-gradient {
+    .grid-lines > div {
+        @apply absolute from-indigo-100/0 via-indigo-500/50 to-indigo-100/0;
+    }
+    .grid-lines > .vertical {
+        @apply -top-1/2 h-[200%] w-px bg-gradient-to-b;
+    }
+    .grid-lines > .horizontal {
+        @apply -left-1/2 h-px w-[200%] bg-gradient-to-r;
+    }
+    .grid-lines > .outer {
+        @apply via-indigo-500/20;
     }
 
+    .hero-section {
+        @apply relative flex min-h-screen items-center overflow-hidden;
+    }
+    .hero-section--reverse {
+        /* background: var(--theme-bg-gradient); */
+        background: linear-gradient(
+            270deg,
+            var(--theme-bg-gradient-top),
+            var(--theme-bg-gradient-bottom)
+        );
+    }
     .yellow {
         background: linear-gradient(180deg, #ffc420 25%, #f69f00 100%);
         -webkit-text-fill-color: transparent;
@@ -142,7 +214,6 @@ const { title, subtitle, titleColor, img1, img2, img3, href, reverse } =
         rotate: -5deg;
         left: 250px;
         top: 0;
-        display: none;
     }
 
     @media (min-width: 960px) {

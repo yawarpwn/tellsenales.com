@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   darkMode: 'class',
@@ -26,9 +27,7 @@ module.exports = {
         'primary-dark': 'hsl(262 80% 40%)',
         secondary: 'hsl(316 70% 50%)',
         'secondary-dark': 'hsl(316 70% 40%)',
-        success: 'hsl(158 65% 52%)',
-        warning: 'hsl(43 96% 56%)',
-        error: 'hsl(0 91% 71%)'
+        accent: colors.fuchsia
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans]
